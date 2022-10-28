@@ -60,11 +60,11 @@
 .devInfo h1{
     text-align: center;
     margin: 20px 0;
-    font-size: 3em;
+    font-size: 5em;
 }
 .devInfo p{
     margin-top: 20px;
-    font-size: 1.5em;
+    font-size: 2em;
 }
 
 
@@ -97,7 +97,7 @@
         display: none;
     }
     .devInfo{
-        font-size: 5px;
+        font-size: 8px;
     }
     .devInfo h1{
         /* margin: 30px 40px; */
