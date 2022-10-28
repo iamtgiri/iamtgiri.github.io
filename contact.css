@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:wgth@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar {
+    background-color: rgb(233, 231, 231);
+    /* width: 200px; */
+    height: 100vh;
+    font-family: 'Fira Sans', sans-serif;
+    transition: transform 0.4s ease-in ;
+    position: absolute;
+}
+
+.sidebar nav {
+    padding: 30px;
+}
+
+.sidebar nav li {
+    list-style: none;
+    font-size: 20px;
+    padding: 33px 0px;
+}
+
+.sidebar nav li a {
+    text-decoration: none;
+    color: black;
+}
+
+.main {
+    width: 100vw;
+}
+
+.container {
+    display: flex;
+    font-family: "Sofia", sans-serif;
+}
+
+
+.contactForm {
+    display: flex;
+    justify-content: center;
+    padding: 0 14px;
+    padding-top: 70px;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 15px;
+}
+.contactForm form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.contactForm  h1 {
+    padding: 30px;
+    font-size: 3em;
+}
+
+.contactForm form div {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    flex-direction: column;
+    font-size: 1.5em;
+}
+.contactForm form div input {
+    font-family: 'Source Code Pro', monospace;
+    text-align: center;
+    font-size: 1em;
+    height: 29px;
+    width: 26vw;
+    border-radius: 20px;
+    margin: 6px 0 0 0;
+    padding: 3px;
+}
+::placeholder{
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.7em;
+    justify-content: center;
+    color: cadetblue;
+}
+#emailHelp {
+    font-size: 0.7em;
+    color: midnightblue;
+    margin: 10px 0px;
+    padding: 3px 0 0 0;
+}
+
+#form-check{
+    font-size: 1.2em;
+    display: block;
+    justify-content: center;
+}
+
+#form-check input {
+    width: 15px;
+    margin-top: 0px;
+    margin-right: 10px;
+}
+.form-check-label{
+    margin-bottom: 5px;
+}
+.contactForm form button {
+    padding: 7px 27px;
+    border-radius: 47px;
+    color: whitesmoke;
+    background-color: dodgerblue;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 3px 12px;
+    cursor: pointer;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+
+}
+.contactForm form button:hover{
+    background-color: whitesmoke;
+    color: dodgerblue;
+}
+.sidebargo {
+
+    transform: translate(-200px, 0px);
+    position: absolute;
+
+}
+
+.hamburg {
+    position: absolute;
+    cursor: pointer;
+    top: 10px;
+    left: 10px;
+}
+.ham{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.cross {
+    margin-left: 89px;
+}
+
+@media (max-width:900px) {
+    .devPic{
+        display: none;
+    }
+    .contactForm form div input {
+        /* font-size: 15px; */
+        height: 5vh;
+        width: 50vw;
+        margin: 6px 0 0 0;
+        padding: 3px;
+    }
+    .sidebar nav li {
+        font-size: 12px;
+    }
+    .cross {
+        width: 12px;
+        margin-left: 70px;
+    }
+    .ham{
+        width: 12px;
+    }
+    .contactForm {
+        font-size: 8px;
+    }
+}
