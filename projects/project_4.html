@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Generator | Project</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../education.html">Education</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="project-details">
+      <h1>APCR Govt College - Level of Attainment Report Generator</h1>
+      <!-- <div class="project-images">
+        <img src="../images/project4_image1.png" alt="APCR Report Generator Screenshot 1">
+        <img src="../images/project4_image2.png" alt="APCR Report Generator Screenshot 2">
+        <img src="../images/project4_image3.png" alt="APCR Report Generator Screenshot 3">
+      </div> -->
+
+      <div class="project-description">
+        <h2>Project Description</h2>
+        <p>
+          The <strong>Level of Attainment Report Generator</strong> is a Python-based desktop application developed for a government college to automate the generation of detailed academic performance reports. It processes Excel data to calculate semester-wise attainment levels and generates comprehensive reports with a user-friendly Tkinter GUI.
+        </p>
+
+        <h2>Features</h2>
+        <ul>
+          <li>
+            <strong>User-Friendly Interface:</strong>
+            <ul>
+              <li>Built with <strong>Tkinter</strong> for an intuitive and easy-to-use GUI.</li>
+              <li>Allows users to select input and output files, choose semesters, and set cutoff percentages.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Automated Report Generation:</strong>
+            <ul>
+              <li>Processes Excel files to calculate attainment levels for end-semester theory, internal, and practical exams.</li>
+              <li>Generates detailed reports with metrics like student percentages, attainment levels, and course-wise summaries.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Dynamic Data Handling:</strong>
+            <ul>
+              <li>Uses <strong>pandas</strong> and <strong>openpyxl</strong> for efficient data processing and Excel file manipulation.</li>
+              <li>Supports multiple courses and semesters, with customizable cutoff percentages.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Final PO Sheet:</strong>
+            <ul>
+              <li>Creates a "Final PO" sheet summarizing Program Outcome (PO) levels for each department.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2>Technical Details</h2>
+        <ul>
+          <li>
+            <strong>Languages and Libraries:</strong>
+            <ul>
+              <li><strong>Python</strong> for core logic and scripting.</li>
+              <li><strong>Tkinter</strong> for the graphical user interface.</li>
+              <li><strong>pandas</strong> for data manipulation and analysis.</li>
+              <li><strong>openpyxl</strong> for Excel file handling and formatting.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Input Data:</strong>
+            <ul>
+              <li>Excel files containing student marks and course details.</li>
+              <li>Columns include <code>papcode</code>, <code>subject</code>, <code>r_mrkint</code>, <code>r_mrkprc</code>, <code>r_mrkext</code>, and more.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Output Data:</strong>
+            <ul>
+              <li>Excel files with detailed attainment reports and a "Final PO" sheet.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2>How It Works</h2>
+        <ol>
+          <li>
+            <strong>User Input:</strong>
+            <ul>
+              <li>Users select an input Excel file, output file location, and semester.</li>
+              <li>Set cutoff percentages for end-semester theory, internal, and practical exams.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Data Processing:</strong>
+            <ul>
+              <li>The application processes the input data to calculate attainment levels for each course.</li>
+              <li>Generates metrics like student percentages, attainment levels, and total course attainment.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Report Generation:</strong>
+            <ul>
+              <li>Creates detailed Excel sheets for each course with formatted data.</li>
+              <li>Adds a "Final PO" sheet summarizing Program Outcome (PO) levels for all departments.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <h2>Usage</h2>
+        <ul>
+          <li>Ideal for academic institutions to automate the generation of performance reports.</li>
+          <li>Helps educators analyze student performance and program outcomes efficiently.</li>
+        </ul>
+
+        <!-- <h2>GitHub Link</h2>
+        <p>
+          Check out the code and contribute on GitHub:
+          <br>
+          <a href="https://github.com/your-username/apcr-report-generator" target="_blank">APCR Report Generator Repository</a>
+        </p> -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Tanmoy Giri. All rights reserved.</p>
+</footer>
+</body>
+</html>

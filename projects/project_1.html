@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emoji Quiz Game | Project</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../education.html">Education</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="project-details">
+      <h1 style="text-align: center;">Emoji Quiz Game</h1>
+      <div class="project-images">
+        <img src="../images/project_1_1.png" alt="Emoji Quiz Game Screenshot 1">
+        <img src="../images/project_1_2.png" alt="Emoji Quiz Game Screenshot 2">
+        <img src="../images/project_1_3.png" alt="Emoji Quiz Game Screenshot 3">
+      </div>
+
+      <div class="project-description">
+        <h2>Project Description</h2>
+        <p>
+          The <strong>Emoji Quiz Game</strong> is an interactive desktop application built with <strong>PyQt5</strong>, designed to entertain and challenge users by testing their ability to interpret emojis. This fun and educational game presents users with emoji hints and prompts them to guess the correct word or phrase represented by the emojis. The game keeps track of the user's score, providing immediate feedback on their responses and encouraging continuous play with randomly selected emoji hints.
+        </p>
+
+        <h2>Features</h2>
+        <ul>
+          <li>
+            <strong>User Interface:</strong>
+            <ul>
+              <li>A clean and intuitive GUI created using <strong>PyQt5</strong> and designed in <strong>Qt Designer</strong> (<code>emojiGameGui.ui</code>).</li>
+              <li>Displays emoji hints, user input fields, and current score.</li>
+              <li>Buttons for submitting answers, revealing correct answers, and moving to the next question.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Game Mechanics:</strong>
+            <ul>
+              <li>Randomly selects emoji hints from a <strong>CSV file</strong> (<code>data.csv</code>) containing emojis, hints, and correct answers.</li>
+              <li>Allows users to input their guess and receive instant feedback.</li>
+              <li>Updates and displays the user's score based on correct or incorrect answers.</li>
+              <li>Provides the option to reveal the correct answer if the user is stuck.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Interactivity:</strong>
+            <ul>
+              <li>Encourages user engagement through immediate feedback and score tracking.</li>
+              <li>Simple and user-friendly controls for ease of use by players of all ages.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2>Technical Details</h2>
+        <ul>
+          <li>
+            <strong>Languages and Libraries:</strong>
+            <ul>
+              <li><strong>Python</strong> for the core application logic.</li>
+              <li><strong>PyQt5</strong> for the graphical user interface.</li>
+              <li><strong>Pandas</strong> for reading and managing emoji data from the CSV file.</li>
+              <li><strong>NumPy</strong> and <strong>random</strong> for efficient data handling and random selection.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>CSV Data File (<code>data.csv</code>):</strong>
+            <ul>
+              <li>Contains columns for emojis (<code>emoji</code>), hints (<code>hint</code>), and answers (<code>answer</code>).</li>
+            </ul>
+          </li>
+          <li>
+            <strong>GUI Design:</strong>
+            <ul>
+              <li>Built using <strong>Qt Designer</strong> and loaded into the application using <code>uic.loadUi</code>.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2>How It Works</h2>
+        <ol>
+          <li>
+            <strong>Initialization:</strong>
+            <ul>
+              <li>The application loads the user interface and initializes the game state.</li>
+              <li>The first emoji hint is displayed along with the current score (starting at zero).</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Gameplay:</strong>
+            <ul>
+              <li>Users type their guess into the text field and submit it by clicking the "Submit" button.</li>
+              <li>The game checks the response against the correct answer and updates the score accordingly.</li>
+              <li>Feedback is provided in the text field, indicating whether the guess was correct or incorrect.</li>
+              <li>Users can click the "Next" button to proceed to a new emoji hint or the "Show Answer" button to reveal the correct answer if needed.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Score Tracking:</strong>
+            <ul>
+              <li>The score is displayed and updated in real-time, motivating users to improve with each round.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <h2>Usage</h2>
+        <ul>
+          <li>Suitable for both educational purposes and casual entertainment.</li>
+          <li>Can be easily extended with more emojis and hints by updating the CSV file.</li>
+        </ul>
+
+        <h2>GitHub Link</h2>
+        <p>
+          Check out the code and contribute on GitHub:
+          <br>
+          <a href="https://github.com/iamtgiri/Emoji_Quiz_Game" class="btn" style="color: white;">Emoji Quiz Game Repository</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Tanmoy Giri. All rights reserved.</p>
+  </footer>
+</body>
+</html>

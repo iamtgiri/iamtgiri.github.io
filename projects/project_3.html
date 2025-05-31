@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turtle Race | Project</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../education.html">Education</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="project-details">
+      <h1>Turtle Race</h1>
+      <!-- <div class="project-images">
+        <img src="../images/project3_image1.png" alt="Turtle Race Screenshot 1">
+        <img src="../images/project3_image2.png" alt="Turtle Race Screenshot 2">
+        <img src="../images/project3_image3.png" alt="Turtle Race Screenshot 3">
+      </div> -->
+
+      <div class="project-description">
+        <h2>Project Description</h2>
+        <p>
+          The <strong>Turtle Race</strong> is an engaging and interactive desktop application built using Python's <strong>Turtle graphics library</strong>. This fun game combines elements of chance and strategy, allowing users to bet on turtles racing to a finish line. The application also incorporates user authentication, enabling both new and returning users to manage their profiles and track their points.
+        </p>
+
+        <h2>Features</h2>
+        <ul>
+          <li>
+            <strong>User Authentication:</strong>
+            <ul>
+              <li>New users can create a username and password, with their details and starting points recorded in a CSV file (<code>usersdata.csv</code>).</li>
+              <li>Returning users can log in with their existing credentials, retrieving their saved points.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>User Interface:</strong>
+            <ul>
+              <li>Full-screen mode for an immersive gaming experience.</li>
+              <li>Colorful and dynamic graphics created using the Turtle graphics library.</li>
+              <li>Text inputs for user interaction and bet placement.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Gameplay:</strong>
+            <ul>
+              <li>Four colorful turtles (blue, pink, yellow, and red) race on a defined track.</li>
+              <li>Users place bets on which turtle they think will win the race.</li>
+              <li>Turtles move randomly across the screen, adding excitement and unpredictability to each race.</li>
+              <li>The game declares a winner based on which turtle crosses the finish line first.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Scoring System:</strong>
+            <ul>
+              <li>Points are awarded or deducted based on the outcome of the race and the user's bet.</li>
+              <li>Scores are updated in real-time and saved to the user's profile for future sessions.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Visual and Sound Effects:</strong>
+            <ul>
+              <li>Eye-catching animations as turtles race and celebrate victory.</li>
+              <li>Visual feedback on successful login, betting results, and end-of-game messages.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2>Technical Details</h2>
+        <ul>
+          <li>
+            <strong>Languages and Libraries:</strong>
+            <ul>
+              <li><strong>Python</strong> for the core logic.</li>
+              <li><strong>Turtle</strong> for graphics and animations.</li>
+              <li><strong>Pandas</strong> and <strong>CSV</strong> for user data management.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>CSV Data File (<code>usersdata.csv</code>):</strong>
+            <ul>
+              <li>Stores user credentials and points.</li>
+              <li>Columns include <code>Name</code>, <code>Password</code>, and <code>Points</code>.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2>How It Works</h2>
+        <ol>
+          <li>
+            <strong>User Authentication:</strong>
+            <ul>
+              <li>On launch, users are asked if they are new or returning.</li>
+              <li>New users register with a username and password, starting with 5000 points.</li>
+              <li>Returning users log in, with their details verified against the CSV file.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Gameplay Setup:</strong>
+            <ul>
+              <li>Users are welcomed with a custom message and current score displayed.</li>
+              <li>The game screen transitions to the racetrack, setting up the turtles and the finish line.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Betting:</strong>
+            <ul>
+              <li>Users choose a turtle to bet on (options 1-4).</li>
+              <li>Users enter the amount of points they wish to bet, ensuring it does not exceed their current points.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Race:</strong>
+            <ul>
+              <li>Turtles race with random movements towards the finish line.</li>
+              <li>The race continues until one turtle crosses the finish line, determining the winner.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Results:</strong>
+            <ul>
+              <li>If the user's chosen turtle wins, they gain points equivalent to their bet.</li>
+              <li>If another turtle wins, the user loses the bet amount from their score.</li>
+              <li>Updated points are saved to the CSV file.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Repeat or Exit:</strong>
+            <ul>
+              <li>Users are given the option to play again or exit.</li>
+              <li>On exiting, a thank-you message is displayed.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <h2>Usage</h2>
+        <ul>
+          <li>Ideal for casual entertainment and as an educational tool for teaching basic programming concepts with Turtle graphics.</li>
+          <li>Encourages users to develop a strategy and manage their points effectively.</li>
+        </ul>
+
+        <h2>GitHub Link</h2>
+        <p>
+            Check out the code and contribute on GitHub:
+            <br>
+            <a href="https://github.com/iamtgiri/Emoji_Quiz_Game" class="btn"">Emoji Quiz Game Repository</a>
+          </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Tanmoy Giri. All rights reserved.</p>
+</footer>
+</body>
+</html>
