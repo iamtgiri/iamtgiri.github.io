@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiRAG — Multi-input RAG | Project</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../education.html">Education</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="project-details">
+      <h1 style="text-align: center;">MiRAG — Multi-input Retrieval-Augmented Generation</h1>
+      <div class="project-description">
+        <h2>Project Description</h2>
+        <p>
+          <strong>MiRAG</strong> is a multi-modal RAG (Retrieval-Augmented Generation) tool built using Streamlit and LangChain. It allows interactive question-answering and summarization from diverse content sources such as web pages, PDFs, YouTube videos, and user-defined text.
+        </p>
+
+        <h2>Features</h2>
+        <ul>
+          <li><strong>Web QA:</strong> Extracts and processes content from public URLs (JS and non-JS) for contextual Q&A and summarization.</li>
+          <li><strong>PDF QA:</strong> Upload PDFs to enable question answering, document summarization, and PDF export of chats.</li>
+          <li><strong>YouTube QA:</strong> Uses transcripts of YouTube videos for contextual queries and video summarization.</li>
+          <li><strong>Custom Text QA:</strong> Accepts raw text input for temporary vector store creation and contextual querying with chat history export.</li>
+        </ul>
+
+        <h2>Technical Stack</h2>
+        <ul>
+          <li><strong>Languages:</strong> Python 3.10+</li>
+          <li><strong>Libraries:</strong> LangChain, FAISS, FPDF, Streamlit, Google Gemini API</li>
+          <li><strong>APIs:</strong> YouTube Transcript API</li>
+          <li><strong>Tools:</strong> VS Code, Git, Google Colab</li>
+        </ul>
+
+        <h2>How It Works</h2>
+        <ol>
+          <li><strong>Input Processing:</strong> Scrape or load data from web, PDFs, videos, or raw text.</li>
+          <li><strong>Embedding Generation:</strong> Text data is converted into semantic vectors using Gemini embeddings.</li>
+          <li><strong>Vector Store:</strong> FAISS-based retrieval for efficient chunk search.</li>
+          <li><strong>RAG Chain:</strong> LangChain routes queries to the appropriate retriever and LLM pipeline.</li>
+        </ol>
+
+        <h2>Usage</h2>
+        <ul>
+          <li>Great for intelligent summarization and Q&A across unstructured formats.</li>
+          <li>Supports context persistence across conversation turns.</li>
+          <li>Exportable chat history for later review.</li>
+        </ul>
+
+        <h2>GitHub Link</h2>
+        <p>
+          Explore the source code and documentation on GitHub:<br>
+          <a href="https://github.com/iamtgiri/MiRAG" class="btn" style="color: white;">MiRAG GitHub Repository</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Tanmoy Giri. All rights reserved.</p>
+  </footer>
+</body>
+</html>

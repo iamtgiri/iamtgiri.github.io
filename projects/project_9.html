@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanNest | Real Estate Price Estimation</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../education.html">Education</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="project-details">
+      <h1 style="text-align: center;">UrbanNest – Intelligent Flat Price Estimator for Kolkata</h1>
+      <div class="project-description">
+        <h2>Project Description</h2>
+        <p>
+          UrbanNest is a Streamlit-powered machine learning web application that estimates residential flat prices in the Kolkata region. The system is built using advanced regression models trained on over 1,100 real estate listings scraped from 99acres, incorporating detailed structural, amenity-based, and spatial features.
+        </p>
+
+        <h2>Features</h2>
+        <ul>
+          <li>Web-based UI for user-friendly price estimation.</li>
+          <li>Reverse geocoding support for location extraction.</li>
+          <li>Real-time prediction with model selection and explainability plots.</li>
+          <li>Input validation and robust feature handling.</li>
+          <li>Joblib-based model serialization for efficient loading.</li>
+        </ul>
+
+        <h2>Technical Stack</h2>
+        <ul>
+          <li><strong>Language:</strong> Python</li>
+          <li><strong>Frameworks:</strong> Streamlit, scikit-learn, XGBoost</li>
+          <li><strong>Libraries:</strong> pandas, numpy, joblib, geopy</li>
+          <li><strong>Other Tools:</strong> Google Colab, VS Code</li>
+        </ul>
+
+        <h2>Model Performance</h2>
+        <ul>
+          <li><strong>XGBoost:</strong> RMSE = ₹30.30L, R² = 0.8425</li>
+          <li><strong>Gradient Boosting:</strong> RMSE = ₹31.07L, R² = 0.8344</li>
+          <li><strong>Random Forest:</strong> RMSE = ₹35.48L, R² = 0.7840</li>
+          <li><strong>ElasticNet:</strong> RMSE = ₹36.35L, R² = 0.7733</li>
+        </ul>
+
+        <h2>How It Works</h2>
+        <ol>
+          <li><strong>Data Collection:</strong> Web scraping of flat listings across Kolkata.</li>
+          <li><strong>Feature Engineering:</strong> BHK, area, floors, amenities, geo-coordinates, etc.</li>
+          <li><strong>Model Training:</strong> Trained multiple models and evaluated performance.</li>
+          <li><strong>UI Deployment:</strong> Built a clean Streamlit interface with real-time predictions.</li>
+        </ol>
+
+        <h2>Usage</h2>
+        <ul>
+          <li>Input flat details via sidebar</li>
+          <li>Select regression model for prediction</li>
+          <li>View price estimate and feature contributions</li>
+        </ul>
+
+        <h2>GitHub Link</h2>
+        <p>
+          Explore the repository and source code:
+          <br>
+          <a href="https://github.com/iamtgiri/UrbanNest" class="btn" style="color: white;">UrbanNest GitHub Repo</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Tanmoy Giri. All rights reserved.</p>
+  </footer>
+</body>
+</html>

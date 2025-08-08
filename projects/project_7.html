@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KNN Classifier in C++ | Project</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../education.html">Education</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="project-details">
+      <h1 style="text-align: center;">KNN Classifier in C++</h1>
+      <div class="project-description">
+        <h2>Project Description</h2>
+        <p>
+          This C++ project is a high-performance implementation of the <strong>K-Nearest Neighbors (KNN)</strong> algorithm, built from scratch with a focus on modularity, extensibility, and computational efficiency. The pipeline supports both brute-force and KD-Tree–based approaches, includes a custom vector class, parallel processing with OpenMP, and tools for benchmarking on real-world datasets such as Fashion MNIST.
+        </p>
+
+        <h2>Features</h2>
+        <ul>
+          <li><strong>Custom Vector Class:</strong> Abstraction over <code>std::vector&lt;double&gt;</code> with support for mathematical operations (dot product, L2 norm, Euclidean distance) and safety checks.</li>
+          <li><strong>Brute-Force KNN:</strong> Implements exact neighbor search with optional OpenMP parallelization and efficient voting logic.</li>
+          <li><strong>Data Utilities:</strong> CSV loading, synthetic data generation, and deterministic train-test splitting for reproducibility.</li>
+          <li><strong>Evaluation Module:</strong> Accuracy calculation with input validation and benchmarking using <code>chrono</code>.</li>
+          <li><strong>KD-Tree Accelerator:</strong> Optimized spatial index for high-dimensional neighbor search with heap-based pruning and recursive construction.</li>
+          <li><strong>KD-Tree KNN:</strong> Fast tree-based classification with deterministic results, OpenMP support, and clean modular design.</li>
+          <li><strong>CLI Interface:</strong> Built using <code>cxxopts</code> to toggle parameters (algorithm mode, neighbors, parallelism, dataset path) and output benchmark metrics.</li>
+        </ul>
+
+        <h2>Benchmarks</h2>
+        <ul>
+          <li><strong>Brute-force (OpenMP):</strong> ~6.5s (84.04% accuracy) vs ~362s serial.</li>
+          <li><strong>KD-Tree (OpenMP):</strong> ~7.5s vs ~19s serial (same accuracy).</li>
+        </ul>
+
+        <h2>Technical Stack</h2>
+        <ul>
+          <li><strong>Language:</strong> C++17</li>
+          <li><strong>Libraries:</strong> OpenMP, STL, cxxopts</li>
+          <li><strong>Tools:</strong> g++, VS Code, Makefile</li>
+        </ul>
+
+        <h2>How It Works</h2>
+        <ol>
+          <li><strong>Data Loading:</strong> CSV read and preprocessing (features + labels).</li>
+          <li><strong>Training:</strong> Data is indexed using either brute-force or KD-Tree.</li>
+          <li><strong>Prediction:</strong> Parallel or serial prediction using majority voting from k-nearest neighbors.</li>
+          <li><strong>Evaluation:</strong> Accuracy computed and benchmarked for comparison.</li>
+        </ol>
+
+        <h2>Usage</h2>
+        <ul>
+          <li>Suitable for educational purposes and benchmarking ML algorithms in C++.</li>
+          <li>Modular components enable future integration with more complex datasets or dimensionality reduction techniques.</li>
+        </ul>
+
+        <h2>GitHub Link</h2>
+        <p>
+          Explore the codebase and contribute on GitHub:
+          <br>
+          <a href="https://github.com/iamtgiri/knncpp" class="btn" style="color: white;">KNN C++ Repository</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Tanmoy Giri. All rights reserved.</p>
+  </footer>
+</body>
+</html>
