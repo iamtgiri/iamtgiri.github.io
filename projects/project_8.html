@@ -1,12 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MiRAG — Multi-input RAG | Project</title>
   <link rel="stylesheet" href="../styles/style.css">
 </head>
+
 <body>
   <header>
     <nav>
@@ -25,15 +26,21 @@
       <div class="project-description">
         <h2>Project Description</h2>
         <p>
-          <strong>MiRAG</strong> is a multi-modal RAG (Retrieval-Augmented Generation) tool built using Streamlit and LangChain. It allows interactive question-answering and summarization from diverse content sources such as web pages, PDFs, YouTube videos, and user-defined text.
+          <strong>MiRAG</strong> is a multi-modal RAG (Retrieval-Augmented Generation) tool built using Streamlit and
+          LangChain. It allows interactive question-answering and summarization from diverse content sources such as web
+          pages, PDFs, YouTube videos, and user-defined text.
         </p>
 
         <h2>Features</h2>
         <ul>
-          <li><strong>Web QA:</strong> Extracts and processes content from public URLs (JS and non-JS) for contextual Q&A and summarization.</li>
-          <li><strong>PDF QA:</strong> Upload PDFs to enable question answering, document summarization, and PDF export of chats.</li>
-          <li><strong>YouTube QA:</strong> Uses transcripts of YouTube videos for contextual queries and video summarization.</li>
-          <li><strong>Custom Text QA:</strong> Accepts raw text input for temporary vector store creation and contextual querying with chat history export.</li>
+          <li><strong>Web QA:</strong> Extracts and processes content from public URLs (JS and non-JS) for contextual
+            Q&A and summarization.</li>
+          <li><strong>PDF QA:</strong> Upload PDFs to enable question answering, document summarization, and PDF export
+            of chats.</li>
+          <li><strong>YouTube QA:</strong> Uses transcripts of YouTube videos for contextual queries and video
+            summarization.</li>
+          <li><strong>Custom Text QA:</strong> Accepts raw text input for temporary vector store creation and contextual
+            querying with chat history export.</li>
         </ul>
 
         <h2>Technical Stack</h2>
@@ -47,7 +54,8 @@
         <h2>How It Works</h2>
         <ol>
           <li><strong>Input Processing:</strong> Scrape or load data from web, PDFs, videos, or raw text.</li>
-          <li><strong>Embedding Generation:</strong> Text data is converted into semantic vectors using Gemini embeddings.</li>
+          <li><strong>Embedding Generation:</strong> Text data is converted into semantic vectors using Gemini
+            embeddings.</li>
           <li><strong>Vector Store:</strong> FAISS-based retrieval for efficient chunk search.</li>
           <li><strong>RAG Chain:</strong> LangChain routes queries to the appropriate retriever and LLM pipeline.</li>
         </ol>
@@ -64,12 +72,19 @@
           Explore the source code and documentation on GitHub:<br>
           <a href="https://github.com/iamtgiri/MiRAG" class="btn" style="color: white;">MiRAG GitHub Repository</a>
         </p>
+        <h2>Live Demo</h2>
+        <p>
+          Experience the application live:
+          <br>
+          <a href="https://mirag-iamtgiri.streamlit.app/" class="btn" style="color: white;" target="_blank">MiRAG Live Demo</a>
+        </p>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Tanmoy Giri. All rights reserved.</p>
+    <p>&copy; 2026 Tanmoy Giri. All rights reserved.</p>
   </footer>
 </body>
+
 </html>
