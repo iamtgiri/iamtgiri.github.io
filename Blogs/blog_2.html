@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inside the C++ Compiler | Tanmoy Giri</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+
+<body>
+<header>…same nav…</header>
+
+<main class="blog-content">
+<article>
+<h1>Inside the C++ Compiler: From Tokens to Assembly</h1>
+
+<p>
+Compilation is not a single step. Modern C++ compilers perform a sophisticated
+pipeline that analyzes, verifies, transforms, and optimizes your code before
+generating machine instructions.
+</p>
+
+<h2>1. Lexical Analysis (Lexing)</h2>
+<p>
+The compiler converts raw text into <strong>tokens</strong>.
+</p>
+
+<pre><code>int sum = a + b;</code></pre>
+
+<p>Becomes:</p>
+<ul>
+<li><code>int</code> (keyword)</li>
+<li><code>sum</code> (identifier)</li>
+<li><code>=</code> (operator)</li>
+<li><code>a</code>, <code>+</code>, <code>b</code></li>
+</ul>
+
+<h2>2. Syntax Analysis (Parsing)</h2>
+<p>
+Tokens are arranged into a grammar-validated structure (AST).
+</p>
+
+<div class="note">
+Parsing answers: “Is this valid C++?”
+</div>
+
+<h2>3. Semantic Analysis</h2>
+<p>
+The compiler checks meaning:
+</p>
+
+<ul>
+<li>Type correctness</li>
+<li>Scope and lifetime</li>
+<li>Valid function calls</li>
+</ul>
+
+<h2>4. Intermediate Representation</h2>
+<p>
+Most compilers lower code into an intermediate form (IR) before assembly.
+</p>
+
+<h2>5. Optimization</h2>
+<ul>
+<li>Dead code elimination</li>
+<li>Constant folding</li>
+<li>Inlining</li>
+<li>Loop unrolling</li>
+</ul>
+
+<h2>C++ → Assembly Example</h2>
+
+<pre><code>int add(int a, int b) {
+  return a + b;
+}</code></pre>
+
+<pre><code>
+add:
+  mov eax, edi
+  add eax, esi
+  ret
+</code></pre>
+
+<div class="warning">
+Optimizations can drastically change assembly — debugging optimized builds is harder.
+</div>
+
+<h2>Key Takeaways</h2>
+<ul>
+<li>Compilation is a pipeline, not a black box</li>
+<li>Most errors are caught before codegen</li>
+<li>Optimization trades debuggability for speed</li>
+</ul>
+</article>
+</main>
+
+<footer>…</footer>
+</body>
+</html>

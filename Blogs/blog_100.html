@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How C++ Works: From Source to Execution | Tanmoy Giri</title>
+  <link rel="stylesheet" href="../styles/style.css">
+  <style>
+
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../education.html">Education</a></li>
+        <li><a href="../blogs.html" aria-current="page">Blogs</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="blog-content">
+    <img src="blog_1.png" alt="C++ Build Process Cover" class="blog-cover-image">
+    <article>
+      <h1>How C++ Works: The Journey from Source Code to Execution</h1>
+
+      <p>C++ is both a powerful compiled programming language and also often used in building systems programming, game
+        development, and other high-performance applications. Unlike interpreted languages, where the code is run by the
+        interpreter one line at a time at run-time, C++ is a compiled language, meaning it executes a few steps prior to
+        running to convert human-readable source code into machine-executable instructions.</p>
+
+      <h2>The Three Key Stages</h2>
+      <p>A C++ file (often with a <code>.cpp</code> suffix) must go through these three steps:</p>
+      <ol>
+        <li><strong>Preprocessing</strong> - Text manipulation and preparation</li>
+        <li><strong>Compilation</strong> - Translation to machine code</li>
+        <li><strong>Linking</strong> - Combining all components into an executable</li>
+      </ol>
+
+      <h2>1. Preprocessing: Preparing C++ Code for Compilation</h2>
+      <p>Before your C++ program reaches the compiler, it goes through a crucial first step called
+        <strong>preprocessing</strong>. This stage handles special instructions called <strong>directives</strong>
+        (lines starting with <code>#</code>) and prepares your code for the actual compilation process.
+      </p>
+
+      <h3>What Does the Preprocessor Do?</h3>
+      <p>The preprocessor performs several key tasks:</p>
+
+      <h4>I. Including Header Files (#include)</h4>
+      <p>When you write <code>#include &lt;iostream&gt;</code>, the preprocessor finds the file and copies its entire
+        content into your source file.</p>
+
+      <pre><code>#include &lt;iostream&gt;  // Replaced with 1000+ lines of declarations</code></pre>
+
+      <h4>II. Macro Expansion (#define)</h4>
+      <pre><code>#define PI 3.14
+#define SQUARE(x) (x * x)  
+
+double area = PI * SQUARE(5);  
+// Becomes: double area = 3.14 * (5 * 5);</code></pre>
+
+      <div class="warning">
+        <strong>Caution:</strong> Macros don't understand C++ syntax—they just do blind substitution!
+      </div>
+
+      <h4>III. Conditional Compilation (#ifdef, #ifndef)</h4>
+      <p>Allows including/excluding code based on conditions:</p>
+      <pre><code>#define DEBUG_MODE  // Comment this to disable debug logs
+
+#ifdef DEBUG_MODE  
+    std::cout &lt;&lt; "Debug: x = " &lt;&lt; x &lt;&lt; std::endl;  
+#endif</code></pre>
+      <p>Used heavily for:</p>
+      <ul>
+        <li>Platform-specific code (<code>#ifdef _WIN32</code>)</li>
+        <li>Feature toggles</li>
+        <li>Preventing duplicate header inclusions</li>
+      </ul>
+
+      <h4>IV. Comment Removal</h4>
+      <p>All comments (<code>//</code> and <code>/* */</code>) are stripped out—they don't affect execution.</p>
+
+      <h3>Real-World Preprocessing Example</h3>
+      <p><strong>Original Code:</strong></p>
+      <pre><code>#define MAX_USERS 100  
+#include &lt;iostream&gt;  
+
+int main() {  
+    std::cout &lt;&lt; "Max users: " &lt;&lt; MAX_USERS &lt;&lt; std::endl;
+    return 0;  
+}</code></pre>
+
+      <p><strong>After Preprocessing (Simplified):</strong></p>
+      <pre><code>/* Hundreds of lines from iostream */  
+int main() {  
+    std::cout &lt;&lt; "Max users: " &lt;&lt; 100 &lt;&lt; std::endl;  
+    return 0;  
+}</code></pre>
+
+      <h3>Why Preprocessing Matters</h3>
+      <ul>
+        <li><strong>Enables Code Reuse</strong>: Headers let you share declarations across files</li>
+        <li><strong>Configurable Code</strong>: Macros and <code>#ifdef</code>s make programs adaptable</li>
+        <li><strong>Cleaner Input for Compiler</strong>: Removes unnecessary elements like comments</li>
+      </ul>
+
+      <h3>Common Pitfalls</h3>
+      <table>
+        <tr>
+          <th>Issue</th>
+          <th>Example</th>
+          <th>Solution</th>
+        </tr>
+        <tr>
+          <td><strong>Missing Header</strong></td>
+          <td><code>cout &lt;&lt; "Hi";</code> (no <code>#include</code>)</td>
+          <td>Add <code>#include &lt;iostream&gt;</code></td>
+        </tr>
+        <tr>
+          <td><strong>Macro Side Effects</strong></td>
+          <td><code>#define SQUARE(x) x*x</code> → <code>SQUARE(1+1)</code> becomes <code>1+1*1+1</code></td>
+          <td>Use parentheses: <code>#define SQUARE(x) ((x)*(x))</code></td>
+        </tr>
+        <tr>
+          <td><strong>Circular Includes</strong></td>
+          <td><code>a.h</code> includes <code>b.h</code>, which includes <code>a.h</code></td>
+          <td>Use <code>#pragma once</code> or include guards</td>
+        </tr>
+      </table>
+
+      <h2>2. Compilation: Translating C++ Code into Machine Instructions</h2>
+      <p>The <strong>compilation</strong> stage is where your C++ code gets transformed into machine-readable
+        instructions. This process involves multiple steps that ensure your program is syntactically correct, logically
+        sound, and optimized for execution.</p>
+
+      <h3>What Happens During Compilation?</h3>
+      <p>The compiler processes your preprocessed C++ code (a <strong>translation unit</strong>) and converts it into
+        <strong>object code</strong>—binary instructions that the CPU can execute. However, this code isn't yet a
+        complete program; it may still reference external functions (like <code>std::cout</code>) that need to be
+        resolved later by the <strong>linker</strong>.
+      </p>
+
+      <h4>Key Stages of Compilation</h4>
+      <ol>
+        <li>
+          <strong>Lexical Analysis</strong><br>
+          The compiler breaks the code into <strong>tokens</strong>—small meaningful units like:
+          <ul>
+            <li>Keywords (<code>int</code>, <code>return</code>)</li>
+            <li>Identifiers (<code>main</code>, <code>sum</code>)</li>
+            <li>Literals (<code>5</code>, <code>"hello"</code>)</li>
+            <li>Operators (<code>+</code>, <code>&lt;&lt;</code>, <code>=</code>)</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Syntax Analysis (Parsing)</strong><br>
+          The compiler checks if the tokens form valid C++ structures (e.g., correct <code>if</code> statements, loops,
+          function definitions).
+        </li>
+        <li>
+          <strong>Semantic Analysis</strong><br>
+          The compiler verifies logical correctness, such as:
+          <ul>
+            <li><strong>Type checking</strong> (e.g., can't assign a string to an <code>int</code>)</li>
+            <li><strong>Variable declaration</strong> (e.g., using <code>x</code> without declaring it first)</li>
+            <li><strong>Function call validity</strong> (e.g., calling <code>sqrt("abc")</code> is invalid)</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Code Generation</strong><br>
+          The compiler converts the parsed code into <strong>machine code</strong> (or optionally
+          <strong>assembly</strong>).
+        </li>
+        <li>
+          <strong>Optimization</strong><br>
+          The compiler may simplify or rearrange code for better performance (e.g., removing unused variables,
+          precomputing constant expressions).
+        </li>
+      </ol>
+
+      <h4>Example: C++ to Assembly</h4>
+      <p><strong>C++ Code:</strong></p>
+      <pre><code>#include &lt;iostream&gt;
+int main() {
+    int a = 5;
+    int b = 10;
+    int sum = a + b;
+    std::cout &lt;&lt; sum &lt;&lt; std::endl;
+    return 0;
+}</code></pre>
+
+      <p><strong>Simplified Assembly Output (x86-64, GCC):</strong></p>
+      <pre><code>_main:
+    push    rbp           ; Save base pointer
+    mov     rbp, rsp      ; Set up stack frame
+    mov     DWORD PTR [rbp-4], 5    ; int a = 5
+    mov     DWORD PTR [rbp-8], 10   ; int b = 10
+    mov     eax, DWORD PTR [rbp-4]  ; Load 'a' into register
+    add     eax, DWORD PTR [rbp-8]  ; Add 'b' to 'a'
+    mov     DWORD PTR [rbp-12], eax ; Store result in 'sum'
+    ; (std::cout &lt;&lt; sum &lt;&lt; std::endl would appear here)
+    mov     eax, 0        ; return 0;
+    pop     rbp
+    ret</code></pre>
+
+      <div class="note">
+        <strong>Note:</strong> Real-world assembly is more complex due to optimizations and system calls.
+      </div>
+
+      <h3>Memory Allocation: Compile-Time vs. Runtime</h3>
+      <p>Memory can be allocated in two ways:</p>
+
+      <h4>1. Compile-Time Allocation</h4>
+      <p>The compiler reserves memory for:</p>
+      <ul>
+        <li><strong>Global variables</strong></li>
+        <li><strong>Static variables</strong></li>
+        <li><strong>Fixed-size local variables</strong></li>
+      </ul>
+
+      <p><strong>Example:</strong></p>
+      <pre><code>int arr[10];  // Stack-allocated at compile time</code></pre>
+
+      <h4>2. Runtime (Dynamic) Allocation</h4>
+      <p>Memory is allocated during program execution using <code>new</code>, <code>malloc</code>, etc.</p>
+
+      <p><strong>Example:</strong></p>
+      <pre><code>int* ptr = new int[10];  // Heap-allocated at runtime</code></pre>
+
+      <div class="warning">
+        <strong>Danger:</strong> Forgetting <code>delete[] ptr;</code> causes <strong>memory leaks</strong>, but the
+        compiler won't catch this—it's a runtime issue.
+      </div>
+
+      <h3>Common Compile-Time Errors</h3>
+      <table>
+        <tr>
+          <th>Error Type</th>
+          <th>Example</th>
+          <th>Fix</th>
+        </tr>
+        <tr>
+          <td><strong>Syntax Error</strong></td>
+          <td><code>int main( { ... }</code></td>
+          <td>Add missing <code>)</code></td>
+        </tr>
+        <tr>
+          <td><strong>Undeclared Variable</strong></td>
+          <td><code>y = 5;</code></td>
+          <td>Declare <code>int y;</code> first</td>
+        </tr>
+        <tr>
+          <td><strong>Type Mismatch</strong></td>
+          <td><code>int x = "hello";</code></td>
+          <td>Use <code>std::string</code> instead</td>
+        </tr>
+        <tr>
+          <td><strong>Invalid Function Call</strong></td>
+          <td><code>print(10);</code></td>
+          <td>Include correct header</td>
+        </tr>
+      </table>
+
+      <div class="warning">
+        <strong>Important:</strong> If compilation fails, the program won't proceed to linking.
+      </div>
+
+      <h2>3. Linking: The Final Step to Creating an Executable Program</h2>
+      <p>After successful compilation, your C++ program goes through one last critical stage called
+        <strong>linking</strong>. This is where all the pieces come together to form a complete, runnable program.
+      </p>
+
+      <h3>What Does the Linker Do?</h3>
+      <p>The linker performs several crucial tasks to prepare your program for execution:</p>
+      <ol>
+        <li><strong>Combining Object Files</strong> - Merges all <code>.o</code> or <code>.obj</code> files into a
+          single executable</li>
+        <li><strong>Resolving External References</strong> - Finds implementations for all used functions</li>
+        <li><strong>Memory Organization</strong> - Determines where code and data will reside in memory</li>
+        <li><strong>Handling Static Initialization</strong> - Arranges initialization of global/static objects</li>
+      </ol>
+
+      <h3>Linking: A Simple Example</h3>
+      <p><strong>main.cpp:</strong></p>
+      <pre><code>#include &lt;iostream&gt;
+extern void helper(); // Declaration
+
+int main() {
+    std::cout &lt;&lt; "Starting program\n";
+    helper();
+    return 0;
+}</code></pre>
+
+      <p><strong>helper.cpp:</strong></p>
+      <pre><code>#include &lt;iostream&gt;
+
+void helper() {
+    std::cout &lt;&lt; "Helper function called\n";
+}</code></pre>
+
+      <p>The linking process:</p>
+      <ol>
+        <li>Compiler creates <code>main.o</code> and <code>helper.o</code></li>
+        <li>Linker combines them with standard libraries</li>
+        <li>Resolves that <code>helper()</code> in <code>main.o</code> points to the function in <code>helper.o</code>
+        </li>
+        <li>Creates final executable</li>
+      </ol>
+
+      <h3>Types of Linking</h3>
+
+      <h4>Static Linking</h4>
+      <ul>
+        <li>All needed code included in executable</li>
+        <li>Produces larger files but more portable</li>
+        <li>Example: Linking with <code>libstdc++.a</code></li>
+      </ul>
+
+      <p><strong>Command (GCC):</strong></p>
+      <pre><code>g++ main.o helper.o -static -o program</code></pre>
+
+      <h4>Dynamic Linking</h4>
+      <ul>
+        <li>Links to shared libraries (<code>.dll</code>/<code>.so</code>) at runtime</li>
+        <li>Produces smaller executables</li>
+        <li>Requires libraries on target system</li>
+        <li>Example: Default linking with <code>libstdc++.so</code></li>
+      </ul>
+
+      <p><strong>Command:</strong></p>
+      <pre><code>g++ main.o helper.o -o program</code></pre>
+
+      <h3>Common Linker Errors</h3>
+      <table>
+        <tr>
+          <th>Error</th>
+          <th>Example</th>
+          <th>Solution</th>
+        </tr>
+        <tr>
+          <td><strong>Undefined Reference</strong></td>
+          <td>
+            <pre>main.o: In function `main':
+main.cpp:(.text+0x15): undefined reference to `helper()'</pre>
+          </td>
+          <td>Add missing file to link command</td>
+        </tr>
+        <tr>
+          <td><strong>Multiple Definitions</strong></td>
+          <td>
+            <pre>helper.o:helper.cpp:(.text+0x0): multiple definition of `helper()'</pre>
+          </td>
+          <td>Use <code>inline</code> or proper header guards</td>
+        </tr>
+        <tr>
+          <td><strong>Missing Library</strong></td>
+          <td>
+            <pre>cannot find -lboost_system</pre>
+          </td>
+          <td>Install library or correct path</td>
+        </tr>
+      </table>
+
+      <h3>Viewing Linking Details</h3>
+      <p>To examine linking process:</p>
+
+      <p><strong>Show linker commands (GCC):</strong></p>
+      <pre><code>g++ -v main.cpp helper.cpp</code></pre>
+
+      <p><strong>View shared library dependencies:</strong></p>
+      <pre><code>ldd program  # Linux
+otool -L program  # macOS</code></pre>
+
+      <h2>The Complete Journey of a C++ Program: From Source to Execution</h2>
+      <p>Let's follow the entire lifecycle of a simple C++ program to understand how it transforms from human-readable
+        code to an executable application.</p>
+
+      <h3>Our Example Program</h3>
+      <pre><code>#include &lt;iostream&gt;
+
+int main() {
+    std::cout &lt;&lt; "Hello, World!" &lt;&lt; std::endl;
+    return 0;
+}</code></pre>
+
+      <h3>Stage 1: Preprocessing - The Text Transformation</h3>
+      <p><strong>What happens:</strong></p>
+      <ol>
+        <li>The preprocessor scans for directives starting with <code>#</code></li>
+        <li><code>#include &lt;iostream&gt;</code> is replaced with the entire iostream header content</li>
+        <li>All comments are removed</li>
+        <li>Macros (if any) are expanded</li>
+      </ol>
+
+      <p><strong>Visualization:</strong></p>
+      <pre><code>// Original
+#include &lt;iostream&gt;  // 1 line
+
+// After preprocessing
+/* Hundreds of lines from iostream */
+namespace std {
+    extern ostream cout;  // Declaration
+    // ... many more declarations
+}
+int main() {
+    std::cout &lt;&lt; "Hello, World!" &lt;&lt; std::endl;
+    return 0;
+}</code></pre>
+
+      <div class="note">
+        <strong>Key Point:</strong> The preprocessor doesn't understand C++ syntax - it just does text manipulation.
+      </div>
+
+      <h3>Stage 2: Compilation - From C++ to Machine Code</h3>
+      <p><strong>What happens:</strong></p>
+      <ol>
+        <li>The compiler parses the preprocessed code</li>
+        <li>Checks syntax and semantics</li>
+        <li>Generates object code (machine instructions)</li>
+        <li>Creates symbol table for linking</li>
+      </ol>
+
+      <p><strong>What's in the object file (main.o):</strong></p>
+      <ul>
+        <li>Machine code for main() function</li>
+        <li>Unresolved references to:
+          <ul>
+            <li><code>std::cout</code></li>
+            <li><code>std::endl</code></li>
+            <li>Other library functions</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p><strong>Compiler's View:</strong></p>
+      <pre><code>main:
+    ; Setup stack frame
+    push    rbp
+    mov     rbp, rsp
+    
+    ; Prepare arguments for cout
+    mov     esi, OFFSET FLAT:.L.str  ; "Hello, World!"
+    mov     edi, OFFSET FLAT:std::cout
+    
+    ; Call operator&lt;&lt; (unresolved)
+    call    std::basic_ostream&lt;char&gt;::operator&lt;&lt;
+    
+    ; More unresolved calls...
+    
+    ; Return 0
+    mov     eax, 0
+    pop     rbp
+    ret</code></pre>
+
+      <h3>Stage 3: Linking - The Final Assembly</h3>
+      <p><strong>What happens:</strong></p>
+      <ol>
+        <li>Linker combines our object file with:
+          <ul>
+            <li>C++ standard library (<code>libstdc++</code>)</li>
+            <li>Startup code (calls <code>main()</code>)</li>
+            <li>System libraries</li>
+          </ul>
+        </li>
+        <li>Resolves all symbol references</li>
+        <li>Determines memory layout</li>
+        <li>Creates executable file format</li>
+      </ol>
+
+      <h4>Dynamic Linking Example:</h4>
+      <ul>
+        <li>Our executable contains references to:
+          <ul>
+            <li><code>libstdc++.so</code> (C++ standard library)</li>
+            <li><code>libc.so</code> (C library)</li>
+          </ul>
+        </li>
+        <li>Actual linking happens at runtime</li>
+      </ul>
+
+      <h4>Static Linking Alternative:</h4>
+      <ul>
+        <li>All library code copied into executable</li>
+        <li>Results in larger binary but more portable</li>
+      </ul>
+
+      <h2>Running the Program</h2>
+      <p>When you execute the program:</p>
+      <ol>
+        <li>OS loader reads executable headers</li>
+        <li>Maps program into memory</li>
+        <li>Dynamic linker resolves remaining symbols</li>
+        <li>Calls startup code</li>
+        <li>Startup code calls <code>main()</code></li>
+        <li>Your program runs!</li>
+      </ol>
+
+      <h2>Common Runtime Errors in C++ and How to Handle Them</h2>
+      <p>Even after successful compilation and linking, C++ programs can encounter various runtime errors that cause
+        crashes or unexpected behavior. Unlike compile-time errors, these issues only appear when the program is
+        executing.</p>
+
+      <h3>1. Segmentation Fault (Access Violation)</h3>
+      <p><strong>What happens:</strong> Your program tries to access memory it doesn't have permission to use.</p>
+      <p><strong>Common causes:</strong></p>
+      <ul>
+        <li>Dereferencing null or invalid pointers</li>
+        <li>Accessing array elements out of bounds</li>
+        <li>Using dangling pointers (pointers to freed memory)</li>
+      </ul>
+
+      <p><strong>Example:</strong></p>
+      <pre><code>int* ptr = nullptr;
+*ptr = 5;  // Crash! Segmentation fault</code></pre>
+
+      <p><strong>Prevention:</strong></p>
+      <ul>
+        <li>Always initialize pointers</li>
+        <li>Check pointer validity before dereferencing</li>
+        <li>Use smart pointers (<code>std::unique_ptr</code>, <code>std::shared_ptr</code>)</li>
+        <li>Prefer standard containers (<code>vector</code>, <code>array</code>) over raw arrays</li>
+      </ul>
+
+      <h3>2. Memory Leaks</h3>
+      <p><strong>What happens:</strong> Your program allocates memory but never frees it, gradually consuming all
+        available memory.</p>
+
+      <p><strong>Example:</strong></p>
+      <pre><code>void leaky() {
+    int* arr = new int[100];
+    // Forgot to delete[] arr;
+}</code></pre>
+
+      <p><strong>Prevention:</strong></p>
+      <ul>
+        <li>Follow RAII (Resource Acquisition Is Initialization) principle</li>
+        <li>Use smart pointers for dynamic allocations</li>
+        <li>In modern C++, prefer stack allocation or containers</li>
+        <li>Use tools like Valgrind or AddressSanitizer to detect leaks</li>
+      </ul>
+
+      <h3>3. Undefined Behavior</h3>
+      <p><strong>What happens:</strong> The code does something the C++ standard doesn't define, leading to
+        unpredictable results.</p>
+
+      <p><strong>Common cases:</strong></p>
+      <ul>
+        <li>Integer overflow</li>
+        <li>Accessing destroyed objects</li>
+        <li>Modifying a string literal</li>
+        <li>Violating strict aliasing rules</li>
+      </ul>
+
+      <p><strong>Example:</strong></p>
+      <pre><code>int arr[3] = {1, 2, 3};
+int val = arr[5];  // Undefined behavior (out of bounds)</code></pre>
+
+      <p><strong>Prevention:</strong></p>
+      <ul>
+        <li>Enable compiler warnings (<code>-Wall -Wextra</code>)</li>
+        <li>Use bounds-checked containers (<code>vector.at()</code> instead of <code>[]</code>)</li>
+        <li>Avoid type punning through unions or pointer casts</li>
+        <li>Use static analyzers</li>
+      </ul>
+
+      <h3>4. Exceptions</h3>
+      <p><strong>What happens:</strong> An exceptional condition occurs that disrupts normal program flow.</p>
+
+      <p><strong>Common exceptions:</strong></p>
+      <ul>
+        <li><code>std::out_of_range</code> (<code>vector.at()</code>)</li>
+        <li><code>std::bad_alloc</code> (memory allocation failure)</li>
+        <li><code>std::runtime_error</code> (various operations)</li>
+      </ul>
+
+      <p><strong>Example:</strong></p>
+      <pre><code>std::vector&lt;int&gt; v;
+v.at(10) = 5;  // Throws std::out_of_range</code></pre>
+
+      <p><strong>Handling:</strong></p>
+      <ul>
+        <li>Use try-catch blocks for recoverable errors</li>
+        <li>Follow exception safety guarantees</li>
+        <li>Document exception behavior</li>
+        <li>Consider noexcept for performance-critical code</li>
+      </ul>
+      <h3>5. Infinite Loops</h3>
+      <p><strong>What happens:</strong> Your program gets stuck in a loop that never terminates, consuming CPU
+        resources.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>while (true) {
+    // Do something forever
+}</code></pre>
+      <p><strong>Prevention:</strong></p>
+      <ul>
+        <li>Ensure loop conditions will eventually become false</li>
+        <li>Use break statements to exit loops when needed</li>
+        <li>Implement timeouts for long-running operations</li>
+        <li>Use debugging tools to identify infinite loops</li>
+      </ul>
+      <p>By understanding these common runtime errors and how to prevent them, you can write more robust and reliable
+        C++
+        programs. Remember that while compile-time checks catch many issues, runtime errors require careful design,
+        testing, and debugging to resolve.</p>
+
+
+      <h2>Practical Demonstration</h2>
+      <p>Let's see this process in action using GCC:</p>
+
+      <ol>
+        <li><strong>Preprocess only</strong>:
+          <pre><code>g++ -E hello.cpp -o hello.ii</code></pre>
+          (Examine hello.ii to see expanded code)
+        </li>
+        <li><strong>Compile to assembly</strong>:
+          <pre><code>g++ -S hello.cpp</code></pre>
+          (Produces hello.s - human-readable assembly)
+        </li>
+        <li><strong>Compile to object file</strong>:
+          <pre><code>g++ -c hello.cpp</code></pre>
+          (Produces hello.o - machine code)
+        </li>
+        <li><strong>Link and create executable</strong>:
+          <pre><code>g++ hello.o -o hello</code></pre>
+        </li>
+        <li><strong>Run it!</strong>:
+          <pre><code>./hello
+Hello, World!</code></pre>
+        </li>
+      </ol>
+
+      <h2>Key Takeaways</h2>
+      <ol>
+        <li><strong>Preprocessing</strong> - Text manipulation before compilation</li>
+        <li><strong>Compilation</strong> - Translation to machine code with unresolved references</li>
+        <li><strong>Linking</strong> - Combines all pieces into executable</li>
+        <li><strong>Loading</strong> - OS prepares program for execution</li>
+        <li><strong>Execution</strong> - Your code finally runs!</li>
+      </ol>
+
+      <h2>Conclusion: The Code to Winning with C++</h2>
+      <p>Creating a running program from a C++ <code>.cpp</code> program feels much like conducting a festival of code,
+        with preprocessing, compilation, and linking all working together in unity and harmony in the process. Through
+        understanding each step in this pipeline, you will be able to write efficient code, identify and troubleshoot
+        build errors, and manage multi-faceted, more significant projects.</p>
+      <p>Be it a simple, quick-and-dirty script or a complex system with numerous moving parts, understanding the code
+        pipeline to program will empower you to be a C++ powerhouse! The next time your program runs, you will know the
+        code behind it, and how to apply it!</p>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Tanmoy Giri. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

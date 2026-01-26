@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linkers and Libraries in C++ | Tanmoy Giri</title>
+<link rel="stylesheet" href="../styles/style.css">
+</head>
+
+<body>
+<header>…</header>
+
+<main class="blog-content">
+<article>
+<h1>Linkers, Libraries, and Common C++ Build Errors</h1>
+
+<p>
+If compilation is translation, linking is assembly.
+This is where most real-world C++ pain lives.
+</p>
+
+<h2>What the Linker Does</h2>
+<ul>
+<li>Merges object files</li>
+<li>Resolves symbols</li>
+<li>Links libraries</li>
+</ul>
+
+<h2>Static vs Dynamic Linking</h2>
+
+<h3>Static</h3>
+<ul>
+<li>Larger binaries</li>
+<li>No runtime dependencies</li>
+</ul>
+
+<h3>Dynamic</h3>
+<ul>
+<li>Smaller binaries</li>
+<li>Requires shared libraries</li>
+</ul>
+
+<h2>Classic Linker Errors</h2>
+
+<table>
+<tr><th>Error</th><th>Cause</th><th>Fix</th></tr>
+<tr>
+<td>Undefined reference</td>
+<td>Missing object/library</td>
+<td>Add to link command</td>
+</tr>
+<tr>
+<td>Multiple definition</td>
+<td>Symbol defined twice</td>
+<td>Use headers properly</td>
+</tr>
+</table>
+
+<h2>Real-World Pain</h2>
+<ul>
+<li>Incorrect library order</li>
+<li>ABI mismatches</li>
+<li>Missing runtime DLLs</li>
+</ul>
+
+<div class="note">
+If compilation succeeds but linking fails, your syntax is fine — your build system is not.
+</div>
+
+<h2>Debugging Tips</h2>
+<ul>
+<li><code>g++ -v</code></li>
+<li><code>nm</code>, <code>ldd</code></li>
+<li>Check symbol visibility</li>
+</ul>
+</article>
+</main>
+
+<footer>…</footer>
+</body>
+</html>
