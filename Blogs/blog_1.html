@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,94 +9,98 @@
 </head>
 
 <body>
-<header>
-  <nav>
-    <ul>
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../projects.html">Projects</a></li>
-      <li><a href="../education.html">Education</a></li>
-      <li><a href="../blogs.html" aria-current="page">Blogs</a></li>
-      <li><a href="../contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <header>
 
-<main class="blog-content">
-  <img src="blog_1.png" alt="C++ Build Pipeline" class="blog-cover-image">
 
-  <article>
-    <h1>How C++ Works: From Source to Executable (High-Level)</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../education.html">Education</a></li>
+        <li><a href="../blogs.html" aria-current="page">Blogs</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <p>
-      C++ is a compiled language, which means your code does not run directly. Instead, it travels through a
-      multi-stage pipeline that transforms human-readable source files into machine-executable binaries.
-      Understanding this pipeline is essential for debugging build errors, optimizing performance, and
-      working on real-world systems.
-    </p>
+  <main class="blog-content">
+    <img src="blog_1.png" alt="C++ Build Pipeline" class="blog-cover-image">
 
-    <h2>The Big Picture</h2>
-    <p>A C++ program moves through three major stages:</p>
+    <article>
+      <h1>How C++ Works: From Source to Executable (High-Level)</h1>
 
-    <ol>
-      <li><strong>Preprocessing</strong> – Textual preparation</li>
-      <li><strong>Compilation</strong> – Translation to object code</li>
-      <li><strong>Linking</strong> – Combining everything into an executable</li>
-    </ol>
+      <p>
+        C++ is a compiled language, which means your code does not run directly. Instead, it travels through a
+        multi-stage pipeline that transforms human-readable source files into machine-executable binaries.
+        Understanding this pipeline is essential for debugging build errors, optimizing performance, and
+        working on real-world systems.
+      </p>
 
-    <h2>1. Preprocessing (Short)</h2>
-    <p>
-      The preprocessor runs before the compiler and performs pure text manipulation.
-      It does <em>not</em> understand C++ syntax.
-    </p>
+      <h2>The Big Picture</h2>
+      <p>A C++ program moves through three major stages:</p>
 
-    <ul>
-      <li>Expands <code>#include</code> headers</li>
-      <li>Expands macros (<code>#define</code>)</li>
-      <li>Handles conditional compilation (<code>#ifdef</code>)</li>
-      <li>Removes comments</li>
-    </ul>
+      <ol>
+        <li><strong>Preprocessing</strong> – Textual preparation</li>
+        <li><strong>Compilation</strong> – Translation to object code</li>
+        <li><strong>Linking</strong> – Combining everything into an executable</li>
+      </ol>
 
-    <pre><code>#define PI 3.14
+      <h2>1. Preprocessing (Short)</h2>
+      <p>
+        The preprocessor runs before the compiler and performs pure text manipulation.
+        It does <em>not</em> understand C++ syntax.
+      </p>
+
+      <ul>
+        <li>Expands <code>#include</code> headers</li>
+        <li>Expands macros (<code>#define</code>)</li>
+        <li>Handles conditional compilation (<code>#ifdef</code>)</li>
+        <li>Removes comments</li>
+      </ul>
+
+      <pre><code>#define PI 3.14
 double area = PI * 10;</code></pre>
 
-    <div class="note">
-      The compiler never sees <code>#define PI</code>,  it only sees the expanded result (i.e., <code>double area = 3.14 * 10;</code>).
-    </div>
+      <div class="note">
+        The compiler never sees <code>#define PI</code>, it only sees the expanded result (i.e.,
+        <code>double area = 3.14 * 10;</code>).
+      </div>
 
-    <h2>2. Compilation (Short)</h2>
-    <p>
-      Compilation translates preprocessed code into <strong>object files</strong> (<code>.o</code> or <code>.obj</code>).
-      Each source file is compiled independently.
-    </p>
+      <h2>2. Compilation (Short)</h2>
+      <p>
+        Compilation translates preprocessed code into <strong>object files</strong> (<code>.o</code> or
+        <code>.obj</code>).
+        Each source file is compiled independently.
+      </p>
 
-    <ul>
-      <li>Syntax and type checking</li>
-      <li>Generation of machine instructions</li>
-      <li>Creation of symbol tables</li>
-    </ul>
+      <ul>
+        <li>Syntax and type checking</li>
+        <li>Generation of machine instructions</li>
+        <li>Creation of symbol tables</li>
+      </ul>
 
-    <p>
-      The output is <em>not</em> a runnable program yet — unresolved symbols may remain.
-    </p>
+      <p>
+        The output is <em>not</em> a runnable program yet — unresolved symbols may remain.
+      </p>
 
-    <h2>3. Linking (Short)</h2>
-    <p>
-      The linker merges object files and libraries into a final executable.
-    </p>
+      <h2>3. Linking (Short)</h2>
+      <p>
+        The linker merges object files and libraries into a final executable.
+      </p>
 
-    <ul>
-      <li>Resolves function and variable references</li>
-      <li>Combines multiple translation units</li>
-      <li>Produces the final binary</li>
-    </ul>
+      <ul>
+        <li>Resolves function and variable references</li>
+        <li>Combines multiple translation units</li>
+        <li>Produces the final binary</li>
+      </ul>
 
-    <div class="warning">
-      Most “undefined reference” errors happen here — not during compilation.
-    </div>
+      <div class="warning">
+        Most “undefined reference” errors happen here — not during compilation.
+      </div>
 
-    <h2>The Complete Flow</h2>
+      <h2>The Complete Flow</h2>
 
-    <pre><code>
+      <pre><code>
 hello.cpp
    ↓  Preprocessor
 hello.ii
@@ -105,24 +110,25 @@ hello.o
 hello.exe / a.out
     </code></pre>
 
-    <h2>Why This Matters</h2>
-    <ul>
-      <li>Explains why headers vs source files exist</li>
-      <li>Makes compiler and linker errors less mysterious</li>
-      <li>Helps you design scalable C++ projects</li>
-    </ul>
+      <h2>Why This Matters</h2>
+      <ul>
+        <li>Explains why headers vs source files exist</li>
+        <li>Makes compiler and linker errors less mysterious</li>
+        <li>Helps you design scalable C++ projects</li>
+      </ul>
 
-    <h2>Conclusion</h2>
-    <p>
-      C++ doesn’t magically run — it is carefully transformed step by step.
-      Once you understand this pipeline, build errors stop being scary and
-      start becoming solvable engineering problems.
-    </p>
-  </article>
-</main>
+      <h2>Conclusion</h2>
+      <p>
+        C++ doesn’t magically run — it is carefully transformed step by step.
+        Once you understand this pipeline, build errors stop being scary and
+        start becoming solvable engineering problems.
+      </p>
+    </article>
+  </main>
 
-<footer>
-  <p>&copy; 2025 Tanmoy Giri. All rights reserved.</p>
-</footer>
+  <footer>
+    <p>&copy; 2025 Tanmoy Giri. All rights reserved.</p>
+  </footer>
 </body>
+
 </html>

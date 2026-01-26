@@ -1,6 +1,15 @@
 /* ===========================================================
    Base / Global Styles
    =========================================================== */
+/* Prevent horizontal overflow */
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
 
 body {
     margin: 0;
@@ -87,6 +96,33 @@ nav ul li a.active {
     background: #ff6347;
     border-radius: 5px;
 }
+
+
+/* ----------------------------------- */
+
+/* ==============================
+   Navbar – Always Visible (≤1000px)
+   ============================== */
+@media (max-width: 1000px) {
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    nav ul li {
+        margin: 6px 0;
+    }
+
+    nav ul li a {
+        width: 100%;
+        text-align: center;
+        padding: 14px;
+        font-size: 17px;
+    }
+}
+
 
 /* ===========================================================
    Shared Utilities
@@ -541,7 +577,7 @@ nav ul li a.active {
 }
 
 .blog-content {
-    max-width: 900px;
+    /* max-width: 900px; */
     margin: 0 auto;
     padding: 2rem;
     display: flex;
@@ -596,6 +632,28 @@ article code {
     font-size: 0.9em;
 }
 
+@media (max-width: 1000px) {
+
+    .blog-content {
+        width: 100%;
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+
+    article h1 {
+        font-size: 2rem;
+    }
+
+    article h2 {
+        font-size: 1.4rem;
+    }
+
+    pre {
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+}
 
 /* ===========================================================
    Social Links
