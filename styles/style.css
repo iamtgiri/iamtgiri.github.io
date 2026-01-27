@@ -809,7 +809,13 @@ nav ul li a.active {
 
 .blog-content article p {
     text-align: justify;
+    margin: 0px;
 }
+
+.blog-content article ul, ol, h2, h3 {
+    margin: 0px;
+}
+
 
 .blog-content h1 {
     text-align: center;
@@ -872,6 +878,19 @@ article code {
     font-size: 0.9em;
 }
 
+/* ==============================
+   Blog Article Tables
+   ============================== */
+
+.blog-content article table th,
+.blog-content article table td {
+    border: 1px solid #000000;
+
+    /* padding: 0.75rem 1rem;
+    text-align: left;
+    vertical-align: top; */
+}
+
 
 
 
@@ -881,11 +900,12 @@ article code {
 
 .blog-cover-image {
     display: block;
-    width: 80%;
-    max-width: 100%;
+    width: 90%;
+    max-width: 900px;
     height: auto;
     margin: 0 auto 2rem auto;
     border-radius: 10px;
+    align-items: center;
 }
 
 /* ==============================
@@ -929,6 +949,7 @@ article code {
         margin: 1rem auto;
     }
 }
+
 
 /* ==============================
    Responsive – Mobile
@@ -977,7 +998,7 @@ article code {
 
     .blog-content p {
         font-size: 1rem;
-        text-align: left;
+        text-align: justify;
         /* better readability on mobile */
     }
 
