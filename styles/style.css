@@ -143,29 +143,30 @@ nav ul li a.active {
 }
 
 /* ===========================================================
-   Home Page
+   Home Page – Responsive
    =========================================================== */
 
 #hero {
     margin: 20px;
-    /* padding: 0px 20px; */
-    padding-bottom: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding: 2rem;
     background: #fff;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Text */
 #hero p {
-    font-size: 18px;
-    padding: 0 40px;
+    font-size: 1.125rem;
+    padding: 0 2.5rem;
     text-align: justify;
+    line-height: 1.7;
 }
 
+/* Images */
 .hero-content img {
     width: 250px;
+    max-width: 100%;
     margin-top: 20px;
     border-radius: 50%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -173,10 +174,55 @@ nav ul li a.active {
 
 .profile-photo {
     width: 200px;
+    max-width: 100%;
     border-radius: 50%;
     margin-bottom: 10px;
     border: 3px solid #ff6347;
 }
+
+@media (max-width: 1000px) {
+
+    #hero {
+        margin: 16px;
+        padding: 1.75rem;
+    }
+
+    #hero p {
+        padding: 0 1.5rem;
+        font-size: 1.05rem;
+    }
+
+    .hero-content img {
+        width: 220px;
+    }
+
+    .profile-photo {
+        width: 180px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    #hero {
+        margin: 12px;
+        padding: 1.25rem;
+    }
+
+    #hero p {
+        padding: 0;
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    .hero-content img {
+        width: 160px;
+    }
+
+    .profile-photo {
+        width: 140px;
+    }
+}
+
 
 /* ===========================================================
    Projects Page
@@ -395,7 +441,7 @@ nav ul li a.active {
 
 
 /* ===========================================================
-   Education Page
+   Education Page – Responsive
    =========================================================== */
 
 #education {
@@ -406,12 +452,15 @@ nav ul li a.active {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Education Card */
 .education-item {
-    margin: 50px;
+    margin: 32px auto;
     padding: 20px;
+    max-width: 900px;
     background: #f9f9f9;
     border-left: 4px solid #ff6347;
-    border-radius: 5px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
 }
 
 .education-item:hover {
@@ -419,12 +468,52 @@ nav ul li a.active {
 }
 
 .education-item h3 {
-    font-size: 24px;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
 }
 
 .education-item p {
-    font-size: 16px;
+    font-size: 1rem;
+    margin: 6px 0;
+    line-height: 1.6;
 }
+
+@media (max-width: 1000px) {
+
+    .education-item {
+        margin: 24px 16px;
+        padding: 18px;
+    }
+
+    .education-item h3 {
+        font-size: 1.35rem;
+    }
+}
+
+@media (max-width: 600px) {
+
+    #education {
+        margin: 12px;
+        padding: 16px;
+    }
+
+    .education-item {
+        margin: 16px 0;
+        padding: 16px;
+    }
+
+    .education-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .education-item p {
+        font-size: 0.95rem;
+    }
+}
+
+
+
+
 
 /* ===========================================================
    Contact Page
