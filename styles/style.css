@@ -227,7 +227,7 @@ nav ul li a.active {
 @media (max-width: 420px) {
 
     #hero {
-        margin: 6px;
+        margin: 8px;
         padding: 1rem;
         border-radius: 8px;
     }
@@ -246,14 +246,7 @@ nav ul li a.active {
         border-width: 2px;
     }
 }
-@media (max-width: 420px) {
 
-    #hero {
-        margin: 0;
-        padding: 1rem;
-        border-radius: 0;
-    }
-}
 
 
 /* ===========================================================
@@ -552,13 +545,19 @@ nav ul li a.active {
    =========================================================== */
 
 #contact {
-    margin: 20px;
-    padding: 40px 20px;
+    margin: 20px auto;
+    padding: 40px 24px;
+
+    max-width: 900px;
+    /* optional, but recommended */
     background: #fff;
     border-radius: 10px;
     text-align: center;
+
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
+
 
 .contact-content {
     max-width: 610px;
@@ -572,56 +571,71 @@ nav ul li a.active {
 }
 
 .contact-content a {
-    color: #ff6347;
+    color: #2f00a7;
     font-weight: bold;
+    word-break: break-word;
+    /* legacy support */
+    overflow-wrap: anywhere;
+    /* modern, correct */
 }
 
 /* ===========================================================
    Social Media Links – Contact Page
    =========================================================== */
 
-.social-links {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
-    margin: 25px 0;
+/* Wrapper breaks free from text width illusion */
+.social-wrapper {
+    display: flex;
+    justify-content: center;
 }
 
+/* Grid stays compact */
+.social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px auto;
+}
+
+/* Buttons */
 .social-btn {
+    height: 56px;
+    width: 130px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 18px;
+
     font-size: 16px;
     font-weight: 600;
     border-radius: 8px;
     text-decoration: none;
-    color: #ffffff;
-    letter-spacing: 0.3px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); */
 
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
+
 
 .social-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
 }
 
+/* Brand styles */
 .social-btn.portfolio {
     background: #333;
     color: #ee9282;
 }
 
 .social-btn.linkedin {
-    color: #fff;
     background: #0a66c2;
+    color: #fff;
 }
 
 .social-btn.github {
+    background: #000;
     color: #fff;
-    background: #000000;
 }
 
 .social-btn.leetcode {
@@ -629,21 +643,86 @@ nav ul li a.active {
     color: #000;
 }
 
-/* Mobile */
-@media (max-width: 480px) {
+.contact-content a {
+    word-break: break-word;
+    /* legacy support */
+    overflow-wrap: anywhere;
+    /* modern, correct */
+}
+
+/* ===============================
+   ≤ 768px (tablets & small laptops)
+   =============================== */
+@media (max-width: 930px) {
+    #contact {
+        margin: 16px;
+        padding: 32px 20px;
+    }
+}
+
+/* ===============================
+   ≤ 646px (small tablets / large phones)
+   =============================== */
+@media (max-width: 646px) {
+    .social-links {
+        grid-template-columns: 2fr;
+    }
+
     .social-btn {
+        width: 100px;
+        height: 48px;
         font-size: 15px;
-        padding: 12px 16px;
+    }
+}
+
+/* ===============================
+   ≤ 480px (phones)
+   =============================== */
+@media (max-width: 480px) {
+    #contact {
+        margin: 10px;
+        padding: 20px 14px;
+        border-radius: 8px;
+    }
+
+    .contact-content p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .contact-content a {
+        font-size: 14px;
+    }
+}
+
+/* ===============================
+   ≤ 360px (very small phones)
+   =============================== */
+@media (max-width: 360px) {
+    #contact {
+        margin: 6px;
+        padding: 16px 12px;
+    }
+
+    .social-links {
+        grid-template-columns: 1fr;
+    }
+
+    .social-btn {
+        width: 50%;
+        height: 48px;
+        font-size: 15px;
     }
 }
 
 
-/* ===========================================================
+/* 
+===========================================================
    Blogs Page
-   =========================================================== */
+=========================================================== 
+*/
 
 #blogs {
-    /* max-width: 1200px; */
     margin: 20px;
     padding: 0.8rem;
     background: #fff;
@@ -658,15 +737,22 @@ nav ul li a.active {
     color: #2c3e50;
 }
 
+/* ==============================
+   Blog Grid
+   ============================== */
+
 .blog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
 }
 
-/* Blog Card */
+/* ==============================
+   Blog Card
+   ============================== */
 
 .blog-card {
+    width: 100%;
     display: flex;
     flex-direction: column;
     background: #fff;
@@ -680,6 +766,15 @@ nav ul li a.active {
     background: cyan;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.blog-card h2 {
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================
+   Blog Item (Article Content)
+   ============================== */
 
 .blog-item {
     margin: 2rem 0;
@@ -697,8 +792,11 @@ nav ul li a.active {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* ==============================
+   Blog Content
+   ============================== */
+
 .blog-content {
-    /* max-width: 900px; */
     margin: 0 auto;
     padding: 2rem;
     display: flex;
@@ -709,7 +807,9 @@ nav ul li a.active {
     box-sizing: border-box;
 }
 
-/* Blog Button */
+/* ==============================
+   Blog Button
+   ============================== */
 
 .blog-btn {
     align-self: flex-start;
@@ -725,63 +825,28 @@ nav ul li a.active {
 
 .blog-btn:hover {
     background-color: #943426;
-    /* transform: translateY(-2px); */
-    /* box-shadow: #2c3e50 0px 4px 8px rgba(0, 0, 0, 0.2); */
 }
 
-/* ---------------------------------- */
-
 /* ==============================
-   Blog Cover Image (Responsive)
+   Blog Cover Image
    ============================== */
 
 .blog-cover-image {
     display: block;
     width: 80%;
     max-width: 100%;
-    align-items: center;
     height: auto;
     margin: 0 auto 2rem auto;
     border-radius: 10px;
 }
 
-/* @media (max-width: 1000px) {
-    .blog-cover-image {
-        max-height: 360px;
-        object-fit: contain;
-    }
-} */
-
-
-.note {
-    background-color: #f8fafc;
-    /* very light gray-blue */
-    border-left: 4px solid #38bdf8;
-    /* accent blue */
-    padding: 1rem 1.25rem;
-    margin: 1.5rem 0;
-    border-radius: 6px;
-    color: #0f172a;
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-
-article code {
-    background-color: #d8dfe8;
-    font-weight: bold;
-    padding: 0.15rem 0.35rem;
-    border-radius: 4px;
-    font-family: "Fira Code", monospace;
-    font-size: 0.9em;
-}
+/* ==============================
+   Responsive – Tablets
+   ============================== */
 
 @media (max-width: 1000px) {
-
     .blog-content {
-        width: 100%;
-        max-width: 100%;
-        padding: 1.5rem;
+        padding: 1.25rem;
     }
 
     article h1 {
@@ -797,73 +862,121 @@ article code {
         white-space: pre-wrap;
         word-break: break-word;
     }
-}
 
-/* ===========================================================
-   Social Links
-   =========================================================== */
+    .blog-card h2 {
+        font-size: 1.3rem;
+    }
 
-.social-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin: 20px auto;
-}
+    .blog-excerpt {
+        font-size: 0.95rem;
+    }
 
-.social-links .btn {
-    flex: 1 1 200px;
-    max-width: 250px;
-    background: #0a66c2;
-}
-
-/* ===========================================================
-   Responsive Overrides
-   =========================================================== */
-
-/* @media (max-width: 992px) {
-    .blog-content {
-        padding: 1.5rem;
+    .blog-btn {
+        margin-top: 0.75rem;
     }
 }
 
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
+/* ==============================
+   Responsive – Mobile
+   ============================== */
+
+@media (max-width: 600px) {
+    #blogs {
+        margin: 12px;
+        padding: 0.6rem;
     }
 
-    .hero-content img {
-        width: 150px;
-    }
-
-    .project-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-
-    .project-images {
-        flex-direction: column;
-    }
-
-    .social-links {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 480px) {
-    .btn {
-        padding: 8px 16px;
-        font-size: 14px;
-    }
-
-    .hero-content img {
-        width: 120px;
-    }
-
-    .project-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    .blog-grid {
+        gap: 1.25rem;
     }
 
     .blog-content {
         padding: 1rem;
     }
-} */
+
+    .blog-card {
+        border-radius: 8px;
+    }
+
+    .blog-card h2 {
+        font-size: 1.15rem;
+        line-height: 1.4;
+    }
+
+    .blog-excerpt {
+        font-size: 0.9rem;
+    }
+
+    .blog-btn {
+        align-self: stretch;
+        text-align: center;
+        padding: 10px;
+        font-size: 0.95rem;
+        border-radius: 6px;
+    }
+}
+
+/* Force single column on very small devices */
+@media (max-width: 480px) {
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .blog-content {
+        padding: 0.9rem;
+    }
+}
+
+/* Extra-small phones */
+@media (max-width: 360px) {
+    #blogs {
+        margin: 8px;
+        padding: 0.5rem;
+    }
+
+    .blog-content {
+        padding: 0.85rem;
+    }
+
+    .blog-card h2 {
+        font-size: 1.05rem;
+    }
+
+    .blog-excerpt {
+        font-size: 0.85rem;
+    }
+}
+
+/* Disable hover effects on touch devices */
+@media (hover: none) {
+    .blog-card:hover {
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+}
+
+/* ==============================
+   Notes & Code
+   ============================== */
+
+.note {
+    background-color: #f8fafc;
+    border-left: 4px solid #38bdf8;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    border-radius: 6px;
+    color: #0f172a;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+article code {
+    background-color: #d8dfe8;
+    font-weight: bold;
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+    font-family: "Fira Code", monospace;
+    font-size: 0.9em;
+}
+
+
