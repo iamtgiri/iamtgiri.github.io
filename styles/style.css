@@ -555,7 +555,6 @@ nav ul li a.active {
     padding: 40px 24px;
 
     max-width: 900px;
-    /* optional, but recommended */
     background: #fff;
     border-radius: 10px;
     text-align: center;
@@ -775,27 +774,7 @@ nav ul li a.active {
 }
 
 /* ==============================
-   Blog Item (Article Content)
-   ============================== */
-
-.blog-item {
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background: #f9f9f9;
-    border-left: 4px solid #ff6347;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.blog-item:hover {
-    background: #f0f8ff;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* ==============================
-   Blog Content
+   Blog Article Content
    ============================== */
 
 .blog-content {
@@ -804,9 +783,49 @@ nav ul li a.active {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    line-height: 1.6;
+    line-height: 1.5;
     color: #333;
     box-sizing: border-box;
+}
+
+.blog-content article {
+    width: 100%;
+    max-width: 900px;
+    /* Ideal reading width */
+    margin: 1.5rem auto;
+    /* Center horizontally */
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+    box-sizing: border-box;
+}
+
+.blog-content article p {
+    text-align: justify;
+}
+
+.blog-content h1 {
+    text-align: center;
+}
+
+.blog-content p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    font-size: 1.1rem;
+    color: #444;
+    text-align: justify;
+}
+
+.blog-excerpt {
+    text-align: justify;
+
 }
 
 /* ==============================
@@ -828,6 +847,33 @@ nav ul li a.active {
 .blog-btn:hover {
     background-color: #943426;
 }
+
+/* ==============================
+   Notes & Code
+   ============================== */
+
+.note {
+    background-color: #f8fafc;
+    border-left: 4px solid #38bdf8;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    border-radius: 6px;
+    color: #0f172a;
+    font-size: 0.95rem;
+    line-height: 1.2;
+}
+
+article code {
+    background-color: #d8dfe8;
+    font-weight: bold;
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+    font-family: "Fira Code", monospace;
+    font-size: 0.9em;
+}
+
+
+
 
 /* ==============================
    Blog Cover Image
@@ -876,6 +922,12 @@ nav ul li a.active {
     .blog-btn {
         margin-top: 0.75rem;
     }
+
+    .blog-content article {
+        max-width: 100%;
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
 }
 
 /* ==============================
@@ -916,6 +968,24 @@ nav ul li a.active {
         font-size: 0.95rem;
         border-radius: 6px;
     }
+
+    .blog-content article {
+        padding: 1.1rem;
+        margin: 0.75rem auto;
+        border-radius: 8px;
+    }
+
+    .blog-content p {
+        font-size: 1rem;
+        text-align: left;
+        /* better readability on mobile */
+    }
+
+    pre {
+        font-size: 0.85rem;
+        padding: 0.75rem;
+        overflow-x: auto;
+    }
 }
 
 /* Force single column on very small devices */
@@ -927,6 +997,8 @@ nav ul li a.active {
     .blog-content {
         padding: 0.9rem;
     }
+
+
 }
 
 /* Extra-small phones */
@@ -947,38 +1019,10 @@ nav ul li a.active {
     .blog-excerpt {
         font-size: 0.85rem;
     }
-}
 
-/* Disable hover effects on touch devices */
-@media (hover: none) {
-    .blog-card:hover {
-        background: #fff;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    .blog-content article {
+        padding: 0.9rem;
+        margin: 0.5rem auto;
+        border-radius: 6px;
     }
 }
-
-/* ==============================
-   Notes & Code
-   ============================== */
-
-.note {
-    background-color: #f8fafc;
-    border-left: 4px solid #38bdf8;
-    padding: 1rem 1.25rem;
-    margin: 1.5rem 0;
-    border-radius: 6px;
-    color: #0f172a;
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-article code {
-    background-color: #d8dfe8;
-    font-weight: bold;
-    padding: 0.15rem 0.35rem;
-    border-radius: 4px;
-    font-family: "Fira Code", monospace;
-    font-size: 0.9em;
-}
-
-

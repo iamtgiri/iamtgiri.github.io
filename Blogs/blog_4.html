@@ -26,51 +26,121 @@
       <h1>Common Runtime Errors in C++ (and How to Avoid Them)</h1>
 
       <p>
-        C++ gives you power — and responsibility. Many bugs only appear at runtime.
+        C++ is a powerful systems programming language that gives developers fine-grained control over memory,
+        performance, and hardware. However, this power comes with responsibility. Unlike higher-level languages,
+        many mistakes in C++ are not caught at compile time and only surface when the program is running.
+      </p>
+
+      <p>
+        These runtime errors can be difficult to debug, unpredictable, and sometimes catastrophic.
+        In this article, we explore the most common runtime errors in C++, why they occur,
+        and how modern C++ practices can help you avoid them.
       </p>
 
       <h2>Segmentation Faults</h2>
+      <p>
+        A segmentation fault occurs when your program tries to access memory that it is not allowed to access.
+        This is one of the most frequent runtime errors encountered by C++ developers, especially beginners.
+      </p>
+
       <pre><code>int* p = nullptr;
 *p = 5;</code></pre>
 
+      <p>
+        In the example above, the pointer <code>p</code> does not point to a valid memory location.
+        Dereferencing it leads to undefined behavior and usually results in a segmentation fault.
+      </p>
+
       <ul>
-        <li>Null pointers</li>
-        <li>Out-of-bounds access</li>
+        <li>Dereferencing null or uninitialized pointers</li>
+        <li>Accessing arrays or vectors out of bounds</li>
+        <li>Using memory after it has been freed</li>
       </ul>
 
       <h2>Undefined Behavior</h2>
       <p>
-        The compiler is allowed to assume UB never happens.
+        Undefined behavior (UB) is a category of errors where the C++ standard imposes no requirements
+        on what should happen. The program may crash, appear to work, or behave inconsistently across systems.
       </p>
 
-      <pre><code>int x = arr[100];</code></pre>
+      <pre><code>int arr[10];
+int x = arr[100];</code></pre>
+
+      <p>
+        Accessing memory beyond the bounds of an array is undefined behavior.
+        Compilers are allowed to assume that undefined behavior never occurs, which can lead to
+        aggressive optimizations that make bugs extremely hard to trace.
+      </p>
+
+      <p>
+        Common sources of undefined behavior include integer overflow, invalid pointer arithmetic,
+        double deletion, and accessing uninitialized variables.
+      </p>
 
       <h2>Memory Leaks</h2>
+      <p>
+        A memory leak occurs when dynamically allocated memory is never released.
+        While the program may continue running, memory usage grows over time,
+        which can degrade performance or crash long-running applications.
+      </p>
+
       <pre><code>int* p = new int(5);
 // no delete</code></pre>
 
+      <p>
+        In this case, the allocated memory is never freed.
+        Repeating this pattern in loops or large applications leads to serious memory issues.
+      </p>
+
+      <p>
+        Memory leaks are especially dangerous in servers, games, and embedded systems
+        where applications are expected to run continuously.
+      </p>
+
       <h2>Exceptions</h2>
+      <p>
+        C++ uses exceptions to signal error conditions at runtime.
+        If exceptions are not properly handled, they can cause abrupt program termination.
+      </p>
+
       <ul>
-        <li><code>std::out_of_range</code></li>
-        <li><code>std::bad_alloc</code></li>
+        <li><code>std::out_of_range</code> — accessing containers with invalid indices</li>
+        <li><code>std::bad_alloc</code> — failure to allocate memory</li>
       </ul>
 
+      <p>
+        Failing to catch exceptions or relying on unchecked operations can result in
+        unexpected crashes. Proper exception handling improves robustness and reliability.
+      </p>
+
       <h2>How to Avoid Runtime Hell</h2>
+      <p>
+        Modern C++ provides tools and patterns that significantly reduce runtime errors.
+        Adopting these practices can make your code safer, cleaner, and easier to maintain.
+      </p>
+
       <ul>
-        <li>RAII</li>
-        <li>Smart pointers</li>
-        <li>Sanitizers</li>
-        <li>Modern C++ containers</li>
+        <li><strong>RAII (Resource Acquisition Is Initialization)</strong> for automatic resource management</li>
+        <li><strong>Smart pointers</strong> like <code>std::unique_ptr</code> and <code>std::shared_ptr</code></li>
+        <li><strong>Sanitizers</strong> such as AddressSanitizer and UndefinedBehaviorSanitizer</li>
+        <li><strong>Modern C++ containers</strong> instead of raw arrays</li>
       </ul>
 
       <div class="note">
-        Most runtime bugs disappear when you stop using raw pointers.
+        Most runtime bugs disappear when you stop using raw pointers
+        and let the language manage lifetimes for you.
       </div>
 
       <h2>Conclusion</h2>
       <p>
-        C++ doesn’t protect you — it empowers you.
-        Knowing runtime failure modes is what separates beginners from professionals.
+        C++ does not aim to protect you from every mistake — it empowers you to write efficient,
+        low-level code when you need it. Understanding runtime errors and their root causes
+        is a key milestone in becoming a proficient C++ developer.
+      </p>
+
+      <p>
+        By following modern C++ practices and developing a strong mental model of memory and object lifetimes,
+        you can avoid most runtime failures and write code that is both powerful and reliable.
       </p>
     </article>
   </main>
