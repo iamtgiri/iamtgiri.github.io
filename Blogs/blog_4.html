@@ -1,79 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Common Runtime Errors in C++ | Tanmoy Giri</title>
-<link rel="stylesheet" href="../styles/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Common Runtime Errors in C++ | Tanmoy Giri</title>
+  <link rel="stylesheet" href="../styles/style.css">
 </head>
 
 <body>
-<header>
-  <nav>
-    <ul>
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../projects.html">Projects</a></li>
-      <li><a href="../education.html">Education</a></li>
-      <li><a href="../blogs.html" aria-current="page">Blogs</a></li>
-      <li><a href="../contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../education.html">Education</a></li>
+        <li><a href="../blogs.html" aria-current="page">Blogs</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main class="blog-content">
-<article>
-<h1>Common Runtime Errors in C++ (and How to Avoid Them)</h1>
+  <main class="blog-content">
+    <article>
+      <h1>Common Runtime Errors in C++ (and How to Avoid Them)</h1>
 
-<p>
-C++ gives you power — and responsibility. Many bugs only appear at runtime.
-</p>
+      <p>
+        C++ gives you power — and responsibility. Many bugs only appear at runtime.
+      </p>
 
-<h2>Segmentation Faults</h2>
-<pre><code>int* p = nullptr;
+      <h2>Segmentation Faults</h2>
+      <pre><code>int* p = nullptr;
 *p = 5;</code></pre>
 
-<ul>
-<li>Null pointers</li>
-<li>Out-of-bounds access</li>
-</ul>
+      <ul>
+        <li>Null pointers</li>
+        <li>Out-of-bounds access</li>
+      </ul>
 
-<h2>Undefined Behavior</h2>
-<p>
-The compiler is allowed to assume UB never happens.
-</p>
+      <h2>Undefined Behavior</h2>
+      <p>
+        The compiler is allowed to assume UB never happens.
+      </p>
 
-<pre><code>int x = arr[100];</code></pre>
+      <pre><code>int x = arr[100];</code></pre>
 
-<h2>Memory Leaks</h2>
-<pre><code>int* p = new int(5);
+      <h2>Memory Leaks</h2>
+      <pre><code>int* p = new int(5);
 // no delete</code></pre>
 
-<h2>Exceptions</h2>
-<ul>
-<li><code>std::out_of_range</code></li>
-<li><code>std::bad_alloc</code></li>
-</ul>
+      <h2>Exceptions</h2>
+      <ul>
+        <li><code>std::out_of_range</code></li>
+        <li><code>std::bad_alloc</code></li>
+      </ul>
 
-<h2>How to Avoid Runtime Hell</h2>
-<ul>
-<li>RAII</li>
-<li>Smart pointers</li>
-<li>Sanitizers</li>
-<li>Modern C++ containers</li>
-</ul>
+      <h2>How to Avoid Runtime Hell</h2>
+      <ul>
+        <li>RAII</li>
+        <li>Smart pointers</li>
+        <li>Sanitizers</li>
+        <li>Modern C++ containers</li>
+      </ul>
 
-<div class="note">
-Most runtime bugs disappear when you stop using raw pointers.
-</div>
+      <div class="note">
+        Most runtime bugs disappear when you stop using raw pointers.
+      </div>
 
-<h2>Conclusion</h2>
-<p>
-C++ doesn’t protect you — it empowers you.
-Knowing runtime failure modes is what separates beginners from professionals.
-</p>
-</article>
-</main>
+      <h2>Conclusion</h2>
+      <p>
+        C++ doesn’t protect you — it empowers you.
+        Knowing runtime failure modes is what separates beginners from professionals.
+      </p>
+    </article>
+  </main>
 
-<footer>…</footer>
+  <footer>
+    <p>&copy; 2025 Tanmoy Giri. All rights reserved.</p>
+  </footer>
 </body>
+
 </html>
