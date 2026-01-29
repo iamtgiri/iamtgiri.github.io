@@ -213,7 +213,7 @@ nav ul li a.active {
     #hero p {
         padding: 0;
         font-size: 1rem;
-        text-align: left;
+        /* text-align: left; */
     }
 
     .hero-content img {
@@ -314,6 +314,7 @@ nav ul li a.active {
 .project-description {
     max-width: 1350px;
     margin: 0 auto;
+    text-align: justify;
 }
 
 .project-description h2 {
