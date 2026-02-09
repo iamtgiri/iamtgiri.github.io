@@ -1,9 +1,0 @@
-<map id="include/ImageElement.h" name="include/ImageElement.h">
-<area shape="rect" id="Node000001" title="Declaration of the ImageElement class, which represents an image element in a document...." alt="" coords="187,5,348,32"/>
-<area shape="rect" id="Node000002" href="$_document_editor_8cpp.html" title="Implementation of the DocumentEditor class, which provides an interface for editing a Document...." alt="" coords="5,80,168,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,41,119,82,117,77,221,36"/>
-<area shape="rect" id="Node000003" href="$_image_element_8cpp.html" title="Implementation of the ImageElement class, which represents an image element in a document." alt="" coords="192,80,344,107"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="270,48,270,80,265,80,265,48"/>
-<area shape="rect" id="Node000004" href="$_plain_text_renderer_8cpp.html" title="Implementation of the PlainTextRenderer class, which renders document elements as plain text...." alt="" coords="368,80,544,107"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="316,35,424,77,422,82,314,40"/>
-</map>

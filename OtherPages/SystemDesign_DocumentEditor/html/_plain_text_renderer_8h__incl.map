@@ -1,8 +1,0 @@
-<map id="include/PlainTextRenderer.h" name="include/PlainTextRenderer.h">
-<area shape="rect" id="Node000001" title="Declaration of the PlainTextRenderer class, which implements the Renderer interface to render documen..." alt="" coords="5,5,190,32"/>
-<area shape="rect" id="Node000002" href="$_renderer_8h.html" title="Declaration of the Renderer interface, which defines methods for rendering different types of documen..." alt="" coords="15,80,100,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,34,74,68,69,65,88,31"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="71,155,124,181"/>
-<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="104,32,115,80,114,111,109,140,103,139,109,111,110,80,99,33"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="67,106,86,140,81,142,62,109"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="TabElement" name="TabElement">
-<area shape="rect" id="Node000001" title="The TabElement class represents a tab element in a document. It inherits from DocumentElement and pro..." alt="" coords="25,80,115,107"/>
-<area shape="rect" id="Node000002" href="$class_document_element.html" title="The DocumentElement class is an abstract base class representing an element in a document...." alt="" coords="5,5,135,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,48,73,80,67,80,67,48"/>
-</map>

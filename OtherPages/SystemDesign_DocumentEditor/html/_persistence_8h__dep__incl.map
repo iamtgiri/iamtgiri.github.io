@@ -1,9 +1,0 @@
-<map id="include/Persistence.h" name="include/Persistence.h">
-<area shape="rect" id="Node000001" title="Interface for saving content to a target location." alt="" coords="87,5,234,32"/>
-<area shape="rect" id="Node000002" href="$_file_persistence_8h.html" title="Declaration of the FilePersistence class, which implements the Persistence interface for saving conte..." alt="" coords="77,80,244,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,48,163,80,158,80,158,48"/>
-<area shape="rect" id="Node000003" href="$_file_persistence_8cpp.html" title="Implementation of the FilePersistence class, which provides functionality to save content to a file...." alt="" coords="5,155,164,181"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="138,119,99,156,96,152,135,116"/>
-<area shape="rect" id="Node000004" href="$main_8cpp.html" title="Entry point for the Document Editor application. This file demonstrates the creation of a document,..." alt="" coords="188,155,285,181"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="186,116,225,152,222,156,183,119"/>
-</map>
