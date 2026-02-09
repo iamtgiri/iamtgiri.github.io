@@ -1,0 +1,25 @@
+<map id="src/DocumentEditor.cpp" name="src/DocumentEditor.cpp">
+<area shape="rect" id="Node000001" title="Implementation of the DocumentEditor class, which provides an interface for editing a Document...." alt="" coords="220,5,382,32"/>
+<area shape="rect" id="Node000002" href="$_document_editor_8h.html" title="Declaration of the DocumentEditor class, which provides an interface for editing a Document...." alt="" coords="72,80,199,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="273,35,180,76,178,71,271,30"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,229,74,256"/>
+<area shape="poly" id="edge13_Node000001_Node000004" title=" " alt="" coords="220,33,126,53,87,66,63,82,45,112,36,148,35,183,37,214,32,214,29,183,31,147,40,110,59,78,85,61,124,47,219,28"/>
+<area shape="rect" id="Node000006" href="$_text_element_8h.html" title="Declaration of the TextElement class, which represents a text element in a document...." alt="" coords="543,80,648,107"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="353,30,530,73,528,78,352,35"/>
+<area shape="rect" id="Node000009" href="$_image_element_8h.html" title="Declaration of the ImageElement class, which represents an image element in a document...." alt="" coords="403,80,519,107"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="330,30,420,71,418,76,328,35"/>
+<area shape="rect" id="Node000010" href="$_whitespace_elements_8h.html" title="Declaration of the NewLineElement and TabElement classes, which represent whitespace elements in a do..." alt="" coords="223,80,379,107"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="304,33,304,64,298,64,298,33"/>
+<area shape="rect" id="Node000003" href="$_document_8h.html" title="Declaration of the Document class, which represents a collection of document elements...." alt="" coords="83,155,175,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="137,107,134,139,129,139,132,107"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="115,184,68,221,65,217,112,180"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="100,229,158,256"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="132,182,132,214,126,214,126,182"/>
+<area shape="rect" id="Node000007" href="$_document_element_8h.html" title="Declaration of the DocumentElement class, which represents an element in a document...." alt="" coords="391,155,531,181"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="573,110,499,149,497,144,571,105"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="562,155,616,181"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="597,107,594,139,589,139,592,107"/>
+<area shape="poly" id="edge9_Node000009_Node000007" title=" " alt="" coords="464,107,464,139,458,139,458,107"/>
+<area shape="poly" id="edge10_Node000009_Node000008" title=" " alt="" coords="484,105,555,144,552,149,482,110"/>
+<area shape="poly" id="edge12_Node000010_Node000007" title=" " alt="" coords="330,105,420,145,418,150,328,110"/>
+</map>

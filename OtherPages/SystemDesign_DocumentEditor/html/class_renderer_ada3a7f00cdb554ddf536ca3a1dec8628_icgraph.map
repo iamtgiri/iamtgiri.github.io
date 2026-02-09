@@ -1,0 +1,11 @@
+<map id="Renderer::visit" name="Renderer::visit">
+<area shape="rect" id="Node000001" title=" " alt="" coords="221,81,327,108"/>
+<area shape="rect" id="Node000002" href="$class_image_element.html#aeb4a8f182e66f7eb65b4493c221fd26e" title="Accepts a renderer to process the document element." alt="" coords="13,5,165,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,76,172,46,140,35,141,30,174,42,236,71"/>
+<area shape="rect" id="Node000003" href="$class_new_line_element.html#a57d217c406473bd88ed5c2f6cd2955a7" title="Accepts a renderer to process the document element." alt="" coords="5,56,173,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,88,173,83,174,78,206,83"/>
+<area shape="rect" id="Node000004" href="$class_tab_element.html#a114c9f3745f32e72ae8e587748759610" title="Accepts a renderer to process the document element." alt="" coords="20,107,158,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="206,107,159,113,158,108,205,101"/>
+<area shape="rect" id="Node000005" href="$class_text_element.html#a7d99753e6a6fb231a2cbe5984651676e" title="Accepts a renderer to process the text element." alt="" coords="18,157,160,184"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="236,118,174,148,141,159,140,154,172,143,234,113"/>
+</map>

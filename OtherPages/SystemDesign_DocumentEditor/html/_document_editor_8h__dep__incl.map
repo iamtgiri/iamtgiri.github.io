@@ -1,0 +1,7 @@
+<map id="include/DocumentEditor.h" name="include/DocumentEditor.h">
+<area shape="rect" id="Node000001" title="Declaration of the DocumentEditor class, which provides an interface for editing a Document...." alt="" coords="77,5,248,32"/>
+<area shape="rect" id="Node000002" href="$_document_editor_8cpp.html" title="Implementation of the DocumentEditor class, which provides an interface for editing a Document...." alt="" coords="5,80,168,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,45,101,82,98,78,137,41"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html" title="Entry point for the Document Editor application. This file demonstrates the creation of a document,..." alt="" coords="192,80,288,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="189,41,228,78,225,82,185,45"/>
+</map>

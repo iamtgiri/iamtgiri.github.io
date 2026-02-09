@@ -1,0 +1,5 @@
+<map id="FilePersistence" name="FilePersistence">
+<area shape="rect" id="Node000001" title="The FilePersistence class is a concrete implementation of the Persistence interface,..." alt="" coords="5,80,117,107"/>
+<area shape="rect" id="Node000002" href="$class_persistence.html" title="Abstract base class for saving content to a target location. This class defines a pure virtual method..." alt="" coords="16,5,106,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,48,64,80,58,80,58,48"/>
+</map>

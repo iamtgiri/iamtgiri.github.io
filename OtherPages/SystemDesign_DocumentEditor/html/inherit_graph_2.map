@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$class_document_element.html" title="The DocumentElement class is an abstract base class representing an element in a document...." alt="" coords="5,81,135,108"/>
+<area shape="rect" id="Node000001" href="$class_image_element.html" title="The ImageElement class represents an image element in a document. It inherits from DocumentElement an..." alt="" coords="190,5,296,32"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="114,72,182,42,208,30,210,35,184,46,116,77"/>
+<area shape="rect" id="Node000002" href="$class_new_line_element.html" title="The NewLineElement class represents a new line element in a document. It inherits from DocumentElemen..." alt="" coords="183,56,303,83"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="150,80,182,76,183,81,151,86"/>
+<area shape="rect" id="Node000003" href="$class_tab_element.html" title="The TabElement class represents a tab element in a document. It inherits from DocumentElement and pro..." alt="" coords="198,107,288,133"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="150,104,198,111,197,116,150,109"/>
+<area shape="rect" id="Node000004" href="$class_text_element.html" title="The TextElement class represents a text element in a document. It inherits from DocumentElement and p..." alt="" coords="196,157,290,184"/>
+<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="116,112,184,143,210,154,208,159,182,148,114,117"/>
+</map>

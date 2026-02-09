@@ -1,0 +1,27 @@
+<map id="include/DocumentElement.h" name="include/DocumentElement.h">
+<area shape="rect" id="Node000001" title="Declaration of the DocumentElement class, which represents an element in a document...." alt="" coords="558,5,743,32"/>
+<area shape="rect" id="Node000002" href="$_image_element_8h.html" title="Declaration of the ImageElement class, which represents an image element in a document...." alt="" coords="570,80,731,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="653,48,653,80,648,80,648,48"/>
+<area shape="rect" id="Node000006" href="$_text_element_8h.html" title="Declaration of the TextElement class, which represents a text element in a document...." alt="" coords="170,80,320,107"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="565,38,317,82,316,77,564,33"/>
+<area shape="rect" id="Node000008" href="$_whitespace_elements_8h.html" title="Declaration of the NewLineElement and TabElement classes, which represent whitespace elements in a do..." alt="" coords="345,80,546,107"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="601,40,482,82,480,77,600,35"/>
+<area shape="rect" id="Node000010" href="$_document_8cpp.html" title="Implementation of the Document class, which manages a collection of document elements...." alt="" coords="756,80,884,107"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="695,36,791,77,789,82,693,41"/>
+<area shape="rect" id="Node000011" href="$main_8cpp.html" title="Entry point for the Document Editor application. This file demonstrates the creation of a document,..." alt="" coords="908,80,1004,107"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="720,34,908,78,907,83,718,39"/>
+<area shape="rect" id="Node000003" href="$_document_editor_8cpp.html" title="Implementation of the DocumentEditor class, which provides an interface for editing a Document...." alt="" coords="171,155,333,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="566,113,322,157,321,151,565,107"/>
+<area shape="rect" id="Node000004" href="$_image_element_8cpp.html" title="Implementation of the ImageElement class, which represents an image element in a document." alt="" coords="773,155,926,181"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="700,110,815,152,814,157,698,115"/>
+<area shape="rect" id="Node000005" href="$_plain_text_renderer_8cpp.html" title="Implementation of the PlainTextRenderer class, which renders document elements as plain text...." alt="" coords="358,155,533,181"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="601,115,482,157,480,152,600,110"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="251,122,254,154,248,155,245,123"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="295,110,411,152,409,157,293,115"/>
+<area shape="rect" id="Node000007" href="$_text_element_8cpp.html" title="Implementation of the TextElement class, which represents a text element in a document." alt="" coords="5,155,147,181"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="203,116,107,156,105,152,201,111"/>
+<area shape="poly" id="edge10_Node000008_Node000003" title=" " alt="" coords="399,115,287,157,285,152,397,110"/>
+<area shape="poly" id="edge11_Node000008_Node000005" title=" " alt="" coords="448,122,448,154,443,154,443,122"/>
+<area shape="rect" id="Node000009" href="$_whitespace_elements_8cpp.html" title="Implementation of the NewLineElement and TabElement classes, which represent whitespace elements in a..." alt="" coords="557,155,750,181"/>
+<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="497,110,618,152,616,157,495,115"/>
+</map>
