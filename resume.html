@@ -1,259 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resume | Tanmoy Giri</title>
   <link rel="stylesheet" href="styles/style.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
 </head>
+
 <body>
 
-<input type="checkbox" id="nav-toggle" aria-label="Toggle navigation">
-<input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
+  <input type="checkbox" id="nav-toggle" aria-label="Toggle navigation">
+  <input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
 
-<div class="site-wrapper">
+  <div class="site-wrapper">
 
-  <header>
-    <div class="nav-inner">
-      <a href="index.html" class="nav-brand">TG</a>
-      <label class="nav-hamburger" for="nav-toggle" aria-label="Open navigation">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </label>
-      <nav aria-label="Main navigation">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="skills.html">Skills</a></li>
-          <li><a href="education.html">Education</a></li>
-          <li><a href="blogs.html">Blogs</a></li>
-          <li><a href="resume.html" class="active" aria-current="page">Resume</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <label class="theme-label" for="theme-toggle" title="Toggle light/dark mode">
-        <span class="toggle-icon">☀︎</span>
-        <div class="toggle-track"><div class="toggle-knob"></div></div>
-        <span class="toggle-icon">☾</span>
-      </label>
-    </div>
-  </header>
-
-  <main>
-    <div class="page-header">
-      <h1>Resume</h1>
-      <p class="subtitle">A full overview of my education, experience, projects, and responsibilities.</p>
-      <div class="accent-line"></div>
-    </div>
-
-    <!-- ── EDUCATION ───────────────────────────────────────── -->
-    <div class="resume-section">
-      <h2 class="resume-section-title">🎓 Education</h2>
-
-      <div class="resume-entry">
-        <span class="resume-entry-title">M.Tech in Computer Science and Data Processing</span>
-        <span class="resume-entry-date">2024 – 2026</span>
-        <span class="resume-entry-org">Indian Institute of Technology (IIT) Kharagpur &mdash; CGPA: 8.69 / 10</span>
-      </div>
-
-      <div class="resume-entry">
-        <span class="resume-entry-title">M.Sc. in Applied Mathematics</span>
-        <span class="resume-entry-date">2021 – 2023</span>
-        <span class="resume-entry-org">Visva-Bharati University &mdash; CGPA: 7.25 / 10</span>
-      </div>
-
-      <div class="resume-entry">
-        <span class="resume-entry-title">B.Sc. (Hons.) in Mathematics</span>
-        <span class="resume-entry-date">2018 – 2021</span>
-        <span class="resume-entry-org">Visva-Bharati University &mdash; CGPA: 6.99 / 10</span>
-      </div>
-
-      <div class="resume-entry">
-        <span class="resume-entry-title">Higher Secondary Examination (Class XII)</span>
-        <span class="resume-entry-date">2018</span>
-        <span class="resume-entry-org">WBCHSE &mdash; 83.6%</span>
-      </div>
-
-      <div class="resume-entry">
-        <span class="resume-entry-title">Secondary Examination (Class X)</span>
-        <span class="resume-entry-date">2016</span>
-        <span class="resume-entry-org">WBBSE &mdash; 82.42%</span>
-      </div>
-    </div>
-
-    <!-- ── INTERNSHIPS ─────────────────────────────────────── -->
-    <div class="resume-section">
-      <h2 class="resume-section-title">🔬 Internships & Experience</h2>
-
-      <div class="resume-entry">
-        <span class="resume-entry-title">MiRAG — Multi-Input Retrieval-Augmented Generation System</span>
-        <span class="resume-entry-date">May 2025 – Jul 2025</span>
-        <span class="resume-entry-org">Supervisor: Prof. Adrijit Goswami, Dept. of Mathematics, IIT Kharagpur</span>
-        <div class="resume-entry-desc">
+    <header>
+      <div class="nav-inner">
+        <a href="index.html" class="nav-brand">TG</a>
+        <label class="nav-hamburger" for="nav-toggle" aria-label="Open navigation">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </label>
+        <nav aria-label="Main navigation">
           <ul>
-            <li>Designed and developed MiRAG, a multi-modal RAG QA system enabling context-aware answering across text, websites, PDFs and YouTube.</li>
-            <li>Engineered modular chains using LangChain, integrating Google Gemini and embedding APIs with FAISS for semantic search and retrieval.</li>
-            <li>Added chain routing and conditional fallback logic to switch between direct LLM QA and RAG based on input type and vectorstore status.</li>
-            <li>Developed chunking, recursive text splitting, and transcript parsing modules for accurate retrieval from long and unstructured documents.</li>
-            <li>Built dynamic chat memory using RunnableParallel for conversational history and context window optimization.</li>
-            <li>Deployed a clean Streamlit interface with modular tabs for multi-source QA, PDF uploads, YouTube transcript processing, and chat history export.</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="resume.html" class="active" aria-current="page">Resume</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
+        </nav>
+        <label class="theme-label" for="theme-toggle" title="Toggle light/dark mode">
+          <span class="toggle-icon">☀︎</span>
+          <div class="toggle-track">
+            <div class="toggle-knob"></div>
+          </div>
+          <span class="toggle-icon">☾</span>
+        </label>
+      </div>
+    </header>
+
+    <main>
+      <div class="page-header">
+        <h1>Resume</h1>
+        <p class="subtitle">A full overview of my education, experience, projects, and responsibilities.</p>
+        <div class="accent-line"></div>
+      </div>
+
+      <!-- ── EDUCATION ───────────────────────────────────────── -->
+      <div class="resume-section">
+        <h2 class="resume-section-title">🎓 Education</h2>
+
+        <div class="resume-entry">
+          <span class="resume-entry-title">M.Tech in Computer Science and Data Processing</span>
+          <span class="resume-entry-date">2024 – 2026</span>
+          <span class="resume-entry-org">Indian Institute of Technology (IIT) Kharagpur &mdash; CGPA: 8.69 / 10</span>
         </div>
-      </div>
-    </div>
 
-    <!-- ── PROJECTS ────────────────────────────────────────── -->
-    <div class="resume-section">
-      <h2 class="resume-section-title">💼 Projects</h2>
-
-      <div class="resume-entry">
-        <span class="resume-entry-title">Real Estate Price Estimation using Machine Learning</span>
-        <span class="resume-entry-date">Jan 2025 – Apr 2025</span>
-        <span class="resume-entry-org">Supervisor: Prof. Adrijit Goswami | M.Tech Project</span>
-        <div class="resume-entry-desc">
-          <ul>
-            <li>Collected and cleaned 1,100+ Kolkata property listings; engineered geospatial features with outlier handling.</li>
-            <li>Trained and evaluated four supervised ML models: ElasticNet, Random Forest, Gradient Boosting, and XGBoost.</li>
-            <li>Best result with XGBoost (RMSE = ₹30.30L, R² = 0.84) outperforming ElasticNet (RMSE = ₹36.35L, R² = 0.77).</li>
-            <li>Deployed a Streamlit app with real-time inference, model selection, and feature contribution visualization.</li>
-          </ul>
+        <div class="resume-entry">
+          <span class="resume-entry-title">M.Sc. in Applied Mathematics</span>
+          <span class="resume-entry-date">2021 – 2023</span>
+          <span class="resume-entry-org">Visva-Bharati University &mdash; CGPA: 7.25 / 10</span>
         </div>
-      </div>
 
-      <div class="resume-entry">
-        <span class="resume-entry-title">High-Performance k-NN Classification Pipeline in C++</span>
-        <span class="resume-entry-date">May 2025 – Jun 2025</span>
-        <!-- <span class="resume-entry-org">Supervisor: Prof. Sourav Mukhopadhyay | IIT Kharagpur</span> -->
-        <span class="resume-entry-org">Self Project</span>
-        <div class="resume-entry-desc">
-          <ul>
-            <li>Implemented brute-force and KD-Tree-based k-NN in C++ for 734-dimensional Fashion-MNIST (10K samples).</li>
-            <li>Achieved ~55× brute-force and ~2.5× KD-Tree speedups via OpenMP parallelization; maintained 84.04% accuracy.</li>
-            <li>Designed a custom C++ vector library with element-wise ops and squared Euclidean distance computation.</li>
-            <li>Built a CLI tool (via cxxopts) with runtime config for dataset path, neighbors, split ratio, algorithm, and OpenMP toggle.</li>
-          </ul>
+        <div class="resume-entry">
+          <span class="resume-entry-title">B.Sc. (Hons.) in Mathematics</span>
+          <span class="resume-entry-date">2018 – 2021</span>
+          <span class="resume-entry-org">Visva-Bharati University &mdash; CGPA: 6.99 / 10</span>
         </div>
-      </div>
 
-      <div class="resume-entry">
-        <span class="resume-entry-title">Image-Based Fruit Quality Detection using CNN and Transfer Learning</span>
-        <span class="resume-entry-date">Jan 2025 – Mar 2025</span>
-        <span class="resume-entry-org">Self Project</span>
-        <div class="resume-entry-desc">
-          <ul>
-            <li>Built a custom CNN (~113K params) for 18 fruit classes using ~23.6K images with stratified splits and normalization.</li>
-            <li>Achieved 88.9% test accuracy (F1 ≈ 0.82) using conv blocks, batch norm, dropout, and global average pooling.</li>
-            <li>Fine-tuned MobileNetV2 (ImageNet) with last 30 layers unfrozen; used mixed precision and Dropout (0.4).</li>
-            <li>Achieved 99.35% test accuracy with early stopping, model checkpointing, and dynamic class extraction.</li>
-          </ul>
+        <div class="resume-entry">
+          <span class="resume-entry-title">Higher Secondary Examination (Class XII)</span>
+          <span class="resume-entry-date">2018</span>
+          <span class="resume-entry-org">WBCHSE &mdash; 83.6%</span>
         </div>
-      </div>
 
-      <div class="resume-entry">
-        <span class="resume-entry-title">Web-Based URL Shortener with Database Integration</span>
-        <span class="resume-entry-date">Jul 2025 – Aug 2025</span>
-        <span class="resume-entry-org">Mini Project</span>
-        <div class="resume-entry-desc">
-          <ul>
-            <li>Implemented a URL shortener with FastAPI backend and MySQL database for end-to-end URL management.</li>
-            <li>Designed Base62 encoding for auto-incremented IDs to generate unique short URLs with click tracking.</li>
-            <li>Developed API endpoints for URL shortening, redirection, and health checks with input validation and error handling.</li>
-            <li>Built a minimal web interface with HTML/CSS and Flask, integrating frontend form submission with the backend API.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── SKILLS ──────────────────────────────────────────── -->
-    <div class="resume-section">
-      <h2 class="resume-section-title">⌨ Skills & Expertise</h2>
-
-      <div class="resume-entry">
-        <span class="resume-entry-title">Programming Languages & Web</span>
-        <div class="resume-entry-desc">C, C++, Python, SQL, HTML, CSS, Streamlit</div>
-      </div>
-      <div class="resume-entry">
-        <span class="resume-entry-title">Frameworks & Libraries</span>
-        <div class="resume-entry-desc">C++ STL, Pandas, NumPy, Scikit-Learn, TensorFlow, Keras, XGBoost, LangChain, FAISS, Hugging Face, Flask, FastAPI, Matplotlib, Seaborn</div>
-      </div>
-      <div class="resume-entry">
-        <span class="resume-entry-title">AI / ML Concepts</span>
-        <div class="resume-entry-desc">Supervised Learning, Regularization, CNNs, k-NN, Transfer Learning, RAG Pipelines, Semantic Search, Model Evaluation</div>
-      </div>
-      <div class="resume-entry">
-        <span class="resume-entry-title">Tools & Platforms</span>
-        <div class="resume-entry-desc">Git, GitHub, MySQL, CMake, OpenMP, VS Code, Jupyter Notebook, Google Colab, Streamlit Cloud</div>
-      </div>
-      <div class="resume-entry">
-        <span class="resume-entry-title">Operating Systems</span>
-        <div class="resume-entry-desc">Linux, Windows</div>
-      </div>
-      <div class="resume-entry">
-        <span class="resume-entry-title">Other</span>
-        <div class="resume-entry-desc">Data Structures & Algorithms, Competitive Programming, Technical Communication</div>
-      </div>
-    </div>
-
-    <!-- ── COURSEWORK ──────────────────────────────────────── -->
-    <div class="resume-section">
-      <h2 class="resume-section-title">📖 Coursework</h2>
-      <div class="resume-entry">
-        <div class="resume-entry-desc">
-          Data Structures and Algorithms &bull; Object-Oriented Programming &bull; File Organization and Database Systems &bull;
-          Operating Systems Design &bull; Graph Theory and Algorithms &bull; Artificial Intelligence and Machine Learning
-        </div>
-      </div>
-    </div>
-
-    <!-- ── POSITIONS ───────────────────────────────────────── -->
-    <div class="resume-section">
-      <h2 class="resume-section-title">🏛 Positions of Responsibility</h2>
-
-      <div class="resume-entry">
-        <span class="resume-entry-title">Teaching Assistant — Design and Analysis of Algorithms Lab (MA39203)</span>
-        <span class="resume-entry-date">Jul 2025 – Ongoing</span>
-        <span class="resume-entry-org">IIT Kharagpur</span>
-        <div class="resume-entry-desc">
-          <ul>
-            <li>Mentor 80+ students in core DSA concepts through weekly tutorials, coding sessions, and algorithm debugging.</li>
-            <li>Evaluate lab submissions, conduct viva assessments, and deliver structured feedback across all components.</li>
-          </ul>
+        <div class="resume-entry">
+          <span class="resume-entry-title">Secondary Examination (Class X)</span>
+          <span class="resume-entry-date">2016</span>
+          <span class="resume-entry-org">WBBSE &mdash; 82.42%</span>
         </div>
       </div>
 
-      <div class="resume-entry">
-        <span class="resume-entry-title">Library Friend (Student Representative) — Central Library</span>
-        <span class="resume-entry-date">Apr 2022 – Apr 2023</span>
-        <span class="resume-entry-org">Visva-Bharati University</span>
-        <div class="resume-entry-desc">
-          Collected and conveyed student feedback, suggestions, and issues to the Central Library administration.
+      <!-- ── INTERNSHIPS ─────────────────────────────────────── -->
+      <div class="resume-section">
+        <h2 class="resume-section-title">🔬 Internships & Experience</h2>
+
+        <div class="resume-entry">
+          <span class="resume-entry-title">MiRAG — Multi-Input Retrieval-Augmented Generation System</span>
+          <span class="resume-entry-date">May 2025 – Jul 2025</span>
+          <span class="resume-entry-org">Supervisor: Prof. Adrijit Goswami, Dept. of Mathematics, IIT Kharagpur</span>
+          <div class="resume-entry-desc">
+            <ul>
+              <li>Designed and developed MiRAG, a multi-modal RAG QA system enabling context-aware answering across
+                text, websites, PDFs and YouTube.</li>
+              <li>Engineered modular chains using LangChain, integrating Google Gemini and embedding APIs with FAISS for
+                semantic search and retrieval.</li>
+              <li>Added chain routing and conditional fallback logic to switch between direct LLM QA and RAG based on
+                input type and vectorstore status.</li>
+              <li>Developed chunking, recursive text splitting, and transcript parsing modules for accurate retrieval
+                from long and unstructured documents.</li>
+              <li>Built dynamic chat memory using RunnableParallel for conversational history and context window
+                optimization.</li>
+              <li>Deployed a clean Streamlit interface with modular tabs for multi-source QA, PDF uploads, YouTube
+                transcript processing, and chat history export.</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- ── EXTRACURRICULAR ─────────────────────────────────── -->
-    <div class="resume-section">
-      <h2 class="resume-section-title">🌟 Extra-Curricular</h2>
+      <!-- ── PROJECTS ────────────────────────────────────────── -->
+      <div class="resume-section">
+        <h2 class="resume-section-title">💼 Projects</h2>
 
-      <div class="resume-entry">
-        <span class="resume-entry-title">Golden Badge — Pratilipi Bengali</span>
-        <span class="resume-entry-date">May 2022</span>
-        <div class="resume-entry-desc">Awarded for excellence in short story writing and creative contributions on the platform.</div>
+        <div class="resume-entry">
+          <span class="resume-entry-title">Real Estate Price Estimation using Machine Learning</span>
+          <span class="resume-entry-date">Jan 2025 – Apr 2025</span>
+          <span class="resume-entry-org">Supervisor: Prof. Adrijit Goswami | M.Tech Project</span>
+          <div class="resume-entry-desc">
+            <ul>
+              <li>Collected and cleaned 1,100+ Kolkata property listings; engineered geospatial features with outlier
+                handling.</li>
+              <li>Trained and evaluated four supervised ML models: ElasticNet, Random Forest, Gradient Boosting, and
+                XGBoost.</li>
+              <li>Best result with XGBoost (RMSE = ₹30.30L, R² = 0.84) outperforming ElasticNet (RMSE = ₹36.35L, R² =
+                0.77).</li>
+              <li>Deployed a Streamlit app with real-time inference, model selection, and feature contribution
+                visualization.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resume-entry">
+          <span class="resume-entry-title">High-Performance k-NN Classification Pipeline in C++</span>
+          <span class="resume-entry-date">May 2025 – Jun 2025</span>
+          <!-- <span class="resume-entry-org">Supervisor: Prof. Sourav Mukhopadhyay | IIT Kharagpur</span> -->
+          <span class="resume-entry-org">Self Project</span>
+          <div class="resume-entry-desc">
+            <ul>
+              <li>Implemented brute-force and KD-Tree-based k-NN in C++ for 734-dimensional Fashion-MNIST (10K samples).
+              </li>
+              <li>Achieved ~55× brute-force and ~2.5× KD-Tree speedups via OpenMP parallelization; maintained 84.04%
+                accuracy.</li>
+              <li>Designed a custom C++ vector library with element-wise ops and squared Euclidean distance computation.
+              </li>
+              <li>Built a CLI tool (via cxxopts) with runtime config for dataset path, neighbors, split ratio,
+                algorithm, and OpenMP toggle.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resume-entry">
+          <span class="resume-entry-title">Image-Based Fruit Quality Detection using CNN and Transfer Learning</span>
+          <span class="resume-entry-date">Jan 2025 – Mar 2025</span>
+          <span class="resume-entry-org">Self Project</span>
+          <div class="resume-entry-desc">
+            <ul>
+              <li>Built a custom CNN (~113K params) for 18 fruit classes using ~23.6K images with stratified splits and
+                normalization.</li>
+              <li>Achieved 88.9% test accuracy (F1 ≈ 0.82) using conv blocks, batch norm, dropout, and global average
+                pooling.</li>
+              <li>Fine-tuned MobileNetV2 (ImageNet) with last 30 layers unfrozen; used mixed precision and Dropout
+                (0.4).</li>
+              <li>Achieved 99.35% test accuracy with early stopping, model checkpointing, and dynamic class extraction.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resume-entry">
+          <span class="resume-entry-title">Web-Based URL Shortener with Database Integration</span>
+          <span class="resume-entry-date">Jul 2025 – Aug 2025</span>
+          <span class="resume-entry-org">Mini Project</span>
+          <div class="resume-entry-desc">
+            <ul>
+              <li>Implemented a URL shortener with FastAPI backend and MySQL database for end-to-end URL management.
+              </li>
+              <li>Designed Base62 encoding for auto-incremented IDs to generate unique short URLs with click tracking.
+              </li>
+              <li>Developed API endpoints for URL shortening, redirection, and health checks with input validation and
+                error handling.</li>
+              <li>Built a minimal web interface with HTML/CSS and Flask, integrating frontend form submission with the
+                backend API.</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="resume-entry">
-        <span class="resume-entry-title">Hobbies & Interests</span>
-        <div class="resume-entry-desc">Creative writing, digital art, mobile photography, literature and storytelling.</div>
+      <!-- ── SKILLS ──────────────────────────────────────────── -->
+      <div class="resume-section">
+        <h2 class="resume-section-title">⌨ Skills & Expertise</h2>
+
+        <div class="resume-entry">
+          <span class="resume-entry-title">Programming Languages & Web</span>
+          <div class="resume-entry-desc">C, C++, Python, SQL, HTML, CSS, Streamlit</div>
+        </div>
+        <div class="resume-entry">
+          <span class="resume-entry-title">Frameworks & Libraries</span>
+          <div class="resume-entry-desc">C++ STL, Pandas, NumPy, Scikit-Learn, TensorFlow, Keras, XGBoost, LangChain,
+            FAISS, Hugging Face, Flask, FastAPI, Matplotlib, Seaborn</div>
+        </div>
+        <div class="resume-entry">
+          <span class="resume-entry-title">AI / ML Concepts</span>
+          <div class="resume-entry-desc">Supervised Learning, Regularization, CNNs, k-NN, Transfer Learning, RAG
+            Pipelines, Semantic Search, Model Evaluation</div>
+        </div>
+        <div class="resume-entry">
+          <span class="resume-entry-title">Tools & Platforms</span>
+          <div class="resume-entry-desc">Git, GitHub, MySQL, CMake, OpenMP, VS Code, Jupyter Notebook, Google Colab,
+            Streamlit Cloud</div>
+        </div>
+        <div class="resume-entry">
+          <span class="resume-entry-title">Operating Systems</span>
+          <div class="resume-entry-desc">Linux, Windows</div>
+        </div>
+        <div class="resume-entry">
+          <span class="resume-entry-title">Other</span>
+          <div class="resume-entry-desc">Data Structures & Algorithms, Competitive Programming, Technical Communication
+          </div>
+        </div>
       </div>
-    </div>
 
-  </main>
+      <!-- ── COURSEWORK ──────────────────────────────────────── -->
+      <div class="resume-section">
+        <h2 class="resume-section-title">📖 Coursework</h2>
+        <div class="resume-entry">
+          <div class="resume-entry-desc">
+            Data Structures and Algorithms &bull; Object-Oriented Programming &bull; File Organization and Database
+            Systems &bull;
+            Operating Systems Design &bull; Graph Theory and Algorithms &bull; Artificial Intelligence and Machine
+            Learning
+          </div>
+        </div>
+      </div>
 
-  <footer>
-    <p>&copy; 2026 Tanmoy Giri &mdash; <a href="https://github.com/iamtgiri" target="_blank">iamtgiri</a></p>
-  </footer>
+      <!-- ── POSITIONS ───────────────────────────────────────── -->
+      <div class="resume-section">
+        <h2 class="resume-section-title">🏛 Positions of Responsibility</h2>
 
-</div>
+        <div class="resume-entry">
+          <span class="resume-entry-title">Teaching Assistant — Design and Analysis of Algorithms Lab (MA39203)</span>
+          <span class="resume-entry-date">Jul 2025 – Ongoing</span>
+          <span class="resume-entry-org">IIT Kharagpur</span>
+          <div class="resume-entry-desc">
+            <ul>
+              <li>Mentor 80+ students in core DSA concepts through weekly tutorials, coding sessions, and algorithm
+                debugging.</li>
+              <li>Evaluate lab submissions, conduct viva assessments, and deliver structured feedback across all
+                components.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resume-entry">
+          <span class="resume-entry-title">Library Friend (Student Representative) — Central Library</span>
+          <span class="resume-entry-date">Apr 2022 – Apr 2023</span>
+          <span class="resume-entry-org">Visva-Bharati University</span>
+          <div class="resume-entry-desc">
+            Collected and conveyed student feedback, suggestions, and issues to the Central Library administration.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── EXTRACURRICULAR ─────────────────────────────────── -->
+      <div class="resume-section">
+        <h2 class="resume-section-title">🌟 Extra-Curricular</h2>
+
+        <div class="resume-entry">
+          <span class="resume-entry-title">Golden Badge — Pratilipi Bengali</span>
+          <span class="resume-entry-date">May 2022</span>
+          <div class="resume-entry-desc">Awarded for excellence in short story writing and creative contributions on the
+            platform.</div>
+        </div>
+
+        <div class="resume-entry">
+          <span class="resume-entry-title">Hobbies & Interests</span>
+          <div class="resume-entry-desc">Creative writing, digital art, mobile photography, literature and storytelling.
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Tanmoy Giri &mdash; <a href="https://github.com/iamtgiri" target="_blank">iamtgiri</a></p>
+    </footer>
+
+  </div>
 </body>
+
 </html>
