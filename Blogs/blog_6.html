@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Parallel Code Doesn't Always Go Faster | Tanmoy Giri</title>
+  <link rel="stylesheet" href="../styles/style.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="apple-touch-icon" href="../favicon.svg">
+
+  <!-- Primary Meta -->
+  <meta name="description" content="A deep dive into why parallel C++ code plateaus or slows down — race conditions, false sharing, atomics vs reductions, and Amdahl's Law explained with examples.">
+  <meta name="author" content="Tanmoy Giri">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamtgiri.github.io/Blogs/blog_6.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iamtgiri.github.io/Blogs/blog_6.html">
+  <meta property="og:title" content="Why Parallel Code Doesn't Always Go Faster | Tanmoy Giri">
+  <meta property="og:description" content="A deep dive into why parallel C++ code plateaus or slows down — race conditions, false sharing, atomics vs reductions, and Amdahl's Law explained with examples.">
+  <meta property="og:image" content="https://iamtgiri.github.io/images/profile_1.png">
+  <meta property="og:site_name" content="Tanmoy Giri">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Why Parallel Code Doesn't Always Go Faster | Tanmoy Giri">
+  <meta name="twitter:description" content="A deep dive into why parallel C++ code plateaus or slows down — race conditions, false sharing, atomics vs reductions, and Amdahl's Law explained with examples.">
+  <meta name="twitter:image" content="https://iamtgiri.github.io/images/profile_1.png">
+
+  <!-- Mobile browser chrome color -->
+  <meta name="theme-color" content="#1a1a2e">
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle" aria-label="Toggle navigation">
+<input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
+
+<div class="site-wrapper">
+
+  <header>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">TG</a>
+      <label class="nav-hamburger" for="nav-toggle" aria-label="Open navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </label>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../education.html">Education</a></li>
+          <li><a href="../blogs.html" class="active" aria-current="page">Blogs</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <label class="theme-label" for="theme-toggle" title="Toggle light/dark mode">
+        <span class="toggle-icon">&#9788;&#65038;</span>
+        <div class="toggle-track"><div class="toggle-knob"></div></div>
+        <span class="toggle-icon">&#9790;</span>
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <div class="blog-article-wrap">
+      <span class="blog-card-tag">C++ / Performance</span>
+      <h1>Why Parallel Code Doesn't Always Go Faster</h1>
+      <p class="blog-article-meta">March 2026</p>
+
+      <div class="blog-article-body">
+
+        <p>The previous article showed real benchmarks from parallelizing six DSA problems with OpenMP. Some scaled well. Some barely moved. In every case, the speedup eventually plateaued — well below what the number of CPU cores might suggest is possible.</p>
+
+        <p>This article explains why. Adding <code>#pragma omp parallel for</code> to a loop is the easy part. Understanding what silently limits or breaks your parallel program is what separates a working parallel implementation from a correct and fast one.</p>
+
+        <h2>1. Race Conditions</h2>
+
+        <p>A race condition occurs when two or more threads read and write the same memory location concurrently, and the final result depends on which thread happens to execute first. The program produces different — and usually wrong — output on different runs.</p>
+
+        <p>Consider a naive parallel frequency count:</p>
+
+        <pre><code>int count = 0;
+
+#pragma omp parallel for
+for (int i = 0; i &lt; n; i++) {
+    if (arr[i] == target)
+        count++;  // RACE CONDITION
+}</code></pre>
+
+        <p>The operation <code>count++</code> compiles to three instructions: read the current value, increment it, write it back. If two threads read the same value before either has written back, one increment is silently lost. The result is almost always lower than the correct answer — and it changes between runs.</p>
+
+        <p>Race conditions also appear in BFS when multiple threads try to mark the same node as visited, and in histogram building when threads write to the same bucket simultaneously. The code compiles cleanly and often runs without crashing — the corruption is silent, which makes these bugs particularly dangerous.</p>
+
+        <h2>2. Fixing Races: Atomics vs Reductions</h2>
+
+        <p>There are two main tools for eliminating race conditions in OpenMP. They solve the same problem but with very different performance characteristics.</p>
+
+        <h3>Atomics</h3>
+
+        <p>An atomic operation guarantees that a read-modify-write sequence completes without interruption from other threads:</p>
+
+        <pre><code>#pragma omp parallel for
+for (int i = 0; i &lt; n; i++) {
+    if (arr[i] == target)
+        #pragma omp atomic
+        count++;
+}</code></pre>
+
+        <p>This is correct, but slow under contention. Every atomic increment forces all threads to serialize on that single memory location. When the loop runs millions of iterations and many threads hit the condition, threads spend more time waiting for the atomic lock than doing actual work. The speedup from parallelism is eaten by contention.</p>
+
+        <h3>Reductions</h3>
+
+        <p>A reduction gives each thread its own private copy of the variable. Each thread increments its local copy independently. When the parallel region ends, all private copies are combined into the final result:</p>
+
+        <pre><code>#pragma omp parallel for reduction(+:count)
+for (int i = 0; i &lt; n; i++) {
+    if (arr[i] == target)
+        count++;
+}</code></pre>
+
+        <p>No contention during the loop. The combination step happens once at the end. This is the correct default for commutative accumulation operations like sum, product, min, and max. In the counting benchmark from the previous article, using a reduction was what produced the clean 2.08&times; speedup.</p>
+
+        <div class="note">Use atomics when you need to update a shared data structure that cannot be reduced — like inserting into a shared list or updating specific indices of an array. Use reductions whenever you are aggregating a single scalar result across iterations.</div>
+
+        <h2>3. False Sharing</h2>
+
+        <p>False sharing is one of the most counterintuitive performance problems in parallel programming. It can silently destroy performance even when your code has no race conditions and produces correct results.</p>
+
+        <p>CPUs do not read memory one byte at a time. They operate on <em>cache lines</em> — contiguous blocks of memory, typically 64 bytes on modern x86 processors. When one thread writes to a memory location, the entire cache line containing that location is invalidated in every other core's cache.</p>
+
+        <p>Now suppose you give each thread its own counter, stored in a simple array:</p>
+
+        <pre><code>int local_counts[NUM_THREADS];  // Each thread writes to local_counts[thread_id]</code></pre>
+
+        <p>This looks safe — each thread writes to a different index. But if <code>local_counts[0]</code> and <code>local_counts[1]</code> sit on the same 64-byte cache line (which they do, since each <code>int</code> is only 4 bytes), then every write by Thread 0 invalidates Thread 1's cache entry for that line, and vice versa. Both threads continuously trigger cache misses and stall waiting for the line to be reloaded — even though they are never touching the same actual data.</p>
+
+        <p>The fix is to pad each thread's data so it occupies its own cache line:</p>
+
+        <pre><code>struct alignas(64) PaddedCounter {
+    int value;
+};
+PaddedCounter local_counts[NUM_THREADS];</code></pre>
+
+        <p>This guarantees that no two threads share a cache line. False sharing in array aggregations and per-thread buffers was one of the more surprising performance issues I encountered when tuning the kNN pipeline — the slowdown was real and visible in profiling, but the code looked perfectly correct.</p>
+
+        <h2>4. Algorithmic Dependencies</h2>
+
+        <p>Some algorithms simply cannot be fully parallelized because later steps depend on earlier results. No amount of clever threading eliminates a structural dependency.</p>
+
+        <p>Prefix sum is the canonical example. The definition is:</p>
+
+        <pre><code>output[i] = output[i-1] + input[i]</code></pre>
+
+        <p>Every element depends on the one before it. A parallel implementation exists — compute partial sums in one pass, propagate offsets in a second pass — but it requires explicit synchronization barriers between phases. Every barrier forces all threads to wait for the slowest one before proceeding. The result is that prefix sum on 100 million elements only achieved 1.13&times; speedup, as the previous benchmarks showed.</p>
+
+        <p>BFS has the same structure at a higher level. Within a single frontier level, all nodes can be processed in parallel. But level <em>k+1</em> cannot begin until level <em>k</em> is complete, because the frontier for the next level is determined by the current one. The barrier between levels is unavoidable.</p>
+
+        <h2>5. Why Speedups Plateau</h2>
+
+        <p>Even on problems that parallelize well, adding more threads eventually stops helping. Several forces converge to create this ceiling:</p>
+
+        <p><strong>Amdahl's Law.</strong> Every program has a sequential fraction — initialization, I/O, final aggregation — that cannot be parallelized. If 10% of your runtime is inherently sequential, your maximum possible speedup is 10&times;, regardless of how many cores you add. Real programs have much higher sequential fractions than people expect.</p>
+
+        <p><strong>Memory bandwidth saturation.</strong> Multiple threads reading large arrays in parallel compete for the same memory bus. Once the memory bandwidth is saturated, adding more threads does not improve throughput — they all stall waiting for data. This is why all-pairs distance computation showed a less-than-expected speedup despite being computationally intensive: the memory access pattern is not cache-friendly and bandwidth becomes the bottleneck.</p>
+
+        <p><strong>Thread overhead.</strong> Creating, scheduling, and synchronizing threads has a fixed cost. For small workloads, this overhead exceeds the time saved by parallelism. The crossover point — where parallel becomes faster than sequential — depends on the problem and the machine. Always benchmark at realistic input sizes.</p>
+
+        <p><strong>Load imbalance.</strong> If iterations vary significantly in how long they take, some threads will finish early and sit idle waiting for others. The parallel region only ends when the slowest thread finishes. Uneven work distribution wastes the cores that completed early and limits the effective speedup.</p>
+
+        <h2>A Mental Model for Parallel Code</h2>
+
+        <p>After working through these issues, the most useful mental model I have found is to ask three questions before parallelizing anything:</p>
+
+        <ol>
+          <li><strong>Are the iterations independent?</strong> If not, restructure or accept limited gains.</li>
+          <li><strong>Is the workload large enough?</strong> Thread overhead is fixed — the benefit must exceed it.</li>
+          <li><strong>Where is the bottleneck?</strong> If memory bandwidth is the limit, more threads will not help and may hurt.</li>
+        </ol>
+
+        <p>Parallel computing is genuinely powerful when these conditions are met. The kNN brute-force search — 10,000 test points each compared against 60,000 training points across 734 dimensions — achieved a ~55&times; speedup with OpenMP because the outer loop over test points was completely independent, the workload per iteration was heavy, and the access pattern was regular enough to use memory bandwidth efficiently.</p>
+
+        <h2>Conclusion</h2>
+
+        <p>Race conditions, false sharing, atomic contention, algorithmic dependencies, and memory bandwidth limits all work against you the moment you move beyond embarrassingly parallel problems. Understanding them does not make parallel programming easy, but it makes the failures predictable and diagnosable rather than mysterious.</p>
+
+        <p>The practical takeaway: parallelize at the outermost independent loop you can find, use reductions instead of atomics wherever possible, be mindful of data layout and cache line boundaries, and always measure — intuitions about where the bottleneck is are frequently wrong.</p>
+
+        <div style="margin-top:2rem;">
+          <a href="blog_5.html" class="btn btn-outline">&larr; Previous: Parallelizing DSA Problems with OpenMP</a>
+        </div>
+
+      </div>
+      <div style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+        <a href="../blogs.html" class="btn btn-outline">&larr; Back to Blogs</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Tanmoy Giri &mdash; <a href="https://github.com/iamtgiri" target="_blank">iamtgiri</a></p>
+  </footer>
+
+</div>
+</body>
+</html>

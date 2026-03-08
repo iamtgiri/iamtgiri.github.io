@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallelizing DSA Problems with OpenMP | Tanmoy Giri</title>
+  <link rel="stylesheet" href="../styles/style.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="apple-touch-icon" href="../favicon.svg">
+
+  <!-- Primary Meta -->
+  <meta name="description" content="A practical guide to parallelizing common DSA problems using OpenMP in C++, with real benchmark results across 6 algorithms.">
+  <meta name="author" content="Tanmoy Giri">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamtgiri.github.io/Blogs/blog_5.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iamtgiri.github.io/Blogs/blog_5.html">
+  <meta property="og:title" content="Parallelizing DSA Problems with OpenMP | Tanmoy Giri">
+  <meta property="og:description" content="A practical guide to parallelizing common DSA problems using OpenMP in C++, with real benchmark results across 6 algorithms.">
+  <meta property="og:image" content="https://iamtgiri.github.io/images/profile_1.png">
+  <meta property="og:site_name" content="Tanmoy Giri">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Parallelizing DSA Problems with OpenMP | Tanmoy Giri">
+  <meta name="twitter:description" content="A practical guide to parallelizing common DSA problems using OpenMP in C++, with real benchmark results across 6 algorithms.">
+  <meta name="twitter:image" content="https://iamtgiri.github.io/images/profile_1.png">
+
+  <!-- Mobile browser chrome color -->
+  <meta name="theme-color" content="#1a1a2e">
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle" aria-label="Toggle navigation">
+<input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
+
+<div class="site-wrapper">
+
+  <header>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">TG</a>
+      <label class="nav-hamburger" for="nav-toggle" aria-label="Open navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </label>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../education.html">Education</a></li>
+          <li><a href="../blogs.html" class="active" aria-current="page">Blogs</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <label class="theme-label" for="theme-toggle" title="Toggle light/dark mode">
+        <span class="toggle-icon">&#9788;&#65038;</span>
+        <div class="toggle-track"><div class="toggle-knob"></div></div>
+        <span class="toggle-icon">&#9790;</span>
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <div class="blog-article-wrap">
+      <span class="blog-card-tag">C++ / Performance</span>
+      <h1>Parallelizing DSA Problems with OpenMP: Real Benchmarks</h1>
+      <p class="blog-article-meta">March 2026</p>
+
+      <div class="blog-article-body">
+
+        <p>Most of us learn algorithms assuming a single thread of execution — one loop, one core, one output. But modern CPUs have 4, 8, sometimes 16 hardware threads sitting idle while your code runs on just one of them. When a problem can be split into independent chunks, parallel execution can turn a slow loop into something dramatically faster without changing the algorithm itself.</p>
+
+        <p>This article looks at what that actually means in practice. Working on a high-performance kNN classifier in C++ gave me a good reason to dig into OpenMP seriously, and I ran benchmarks on six common DSA problems to see where parallelism helps, where it barely helps, and why.</p>
+
+        <h2>What is OpenMP?</h2>
+
+        <p>OpenMP is a set of compiler directives, library routines, and environment variables that let you add parallelism to C, C++, or Fortran programs without rewriting them from scratch. The most common pattern looks like this:</p>
+
+        <pre><code>#pragma omp parallel for
+for (int i = 0; i &lt; n; i++) {
+    result[i] = expensive_computation(data[i]);
+}</code></pre>
+
+        <p>That single pragma tells the compiler to distribute the loop iterations across all available threads. Each thread gets a slice of the index range and runs independently. At the end of the loop, execution returns to a single thread.</p>
+
+        <p>To compile with OpenMP support on GCC:</p>
+        <pre><code>g++ -O2 -fopenmp -o program program.cpp</code></pre>
+
+        <p>OpenMP works best when loop iterations are <em>independent</em> — meaning no iteration reads a result written by another iteration in the same loop. Once dependencies creep in, things get more complicated, as the benchmarks below show clearly.</p>
+
+        <h2>The Benchmarks</h2>
+
+        <p>All benchmarks were run on the same machine with the same inputs, comparing sequential execution against parallel execution with OpenMP. The goal was not to find the theoretical maximum speedup but to see realistic gains on a normal development laptop.</p>
+
+        <h3>1. Counting Occurrences in a Large Array</h3>
+        <p><em>Array size: 100 million elements</em></p>
+
+        <table>
+          <tr><th>Mode</th><th>Time</th></tr>
+          <tr><td>Sequential</td><td>0.709 s</td></tr>
+          <tr><td>Parallel (OpenMP)</td><td>0.341 s</td></tr>
+          <tr><td>Speedup</td><td>~2.08&times;</td></tr>
+        </table>
+
+        <p>This is the cleanest case for parallelism. Each element is checked independently and contributes to a local count. Using a <code>reduction</code> clause, each thread maintains its own counter and they are summed at the end — no shared state, no contention. The speedup is close to what you'd expect from two threads doing equal work.</p>
+
+        <h3>2. All-Pairs Distance Computation</h3>
+        <p><em>V = 2000 vertices</em></p>
+
+        <table>
+          <tr><th>Mode</th><th>Time</th></tr>
+          <tr><td>Sequential</td><td>9.857 s</td></tr>
+          <tr><td>Parallel (OpenMP)</td><td>5.522 s</td></tr>
+          <tr><td>Speedup</td><td>~1.78&times;</td></tr>
+        </table>
+
+        <p>Computing distances between every pair of nodes is a compute-heavy O(V&sup2;) workload. The outer loop over source nodes is embarrassingly parallel — each iteration is fully independent. The speedup is good but already not linear, which hints at memory bandwidth starting to matter at this scale.</p>
+
+        <h3>3. Matrix Multiplication</h3>
+        <p><em>N = 800 (square matrices)</em></p>
+
+        <table>
+          <tr><th>Mode</th><th>Time</th></tr>
+          <tr><td>Sequential</td><td>0.837 s</td></tr>
+          <tr><td>Parallel (OpenMP)</td><td>0.343 s</td></tr>
+          <tr><td>Speedup</td><td>~2.44&times;</td></tr>
+        </table>
+
+        <p>Matrix multiplication is one of the most satisfying problems to parallelize. Each output element <code>C[i][j]</code> is computed independently from all others, so the outer loop distributes cleanly across threads. This benchmark shows the best speedup of the set, which makes sense — the computation is heavy, memory access is structured, and there is zero inter-thread communication.</p>
+
+        <h3>4. Prefix Sum</h3>
+        <p><em>Array size: 100 million elements</em></p>
+
+        <table>
+          <tr><th>Mode</th><th>Time</th></tr>
+          <tr><td>Sequential</td><td>1.215 s</td></tr>
+          <tr><td>Parallel (OpenMP)</td><td>1.074 s</td></tr>
+          <tr><td>Speedup</td><td>~1.13&times;</td></tr>
+        </table>
+
+        <p>This is where things get interesting. A prefix sum (or scan) is inherently sequential in its basic form — each element depends on the previous result. Parallelizing it requires a two-phase approach: compute partial sums independently in the first phase, then combine them in the second. The overhead of this coordination nearly cancels out the benefit of parallelism. The ~1.13&times; gain is real but modest, and it illustrates an important point: <strong>not all algorithms are structurally amenable to parallelism</strong>.</p>
+
+        <h3>5. Merge Sort</h3>
+        <p><em>N = 10 million elements</em></p>
+
+        <table>
+          <tr><th>Mode</th><th>Time</th></tr>
+          <tr><td>Sequential</td><td>2.444 s</td></tr>
+          <tr><td>Parallel (OpenMP)</td><td>1.088 s</td></tr>
+          <tr><td>Speedup</td><td>~2.25&times;</td></tr>
+        </table>
+
+        <p>Merge sort is a divide-and-conquer algorithm where the two recursive halves are completely independent of each other. Parallelism here happens at the algorithm level — spawn threads for the left and right subtrees and let them sort simultaneously. The gains are strong but only materialise once the input is large enough to justify the thread creation overhead. On small arrays, parallel merge sort can actually be slower than sequential.</p>
+
+        <h3>6. BFS (Level-by-Level)</h3>
+        <p><em>V = 1,000,000 vertices | E = 10,000,000 edges</em></p>
+
+        <table>
+          <tr><th>Mode</th><th>Time</th></tr>
+          <tr><td>Sequential</td><td>0.035 s</td></tr>
+          <tr><td>Parallel (OpenMP)</td><td>0.012 s</td></tr>
+          <tr><td>Speedup</td><td>~2.91&times;</td></tr>
+        </table>
+
+        <p>The best raw speedup of the set. Within each BFS level, processing all frontier nodes is independent — each node's neighbours can be explored simultaneously. The parallelism is natural and the work per level is substantial enough to make it worthwhile. The catch is that levels themselves are sequential: you cannot start level <em>k+1</em> until level <em>k</em> is fully processed.</p>
+
+        <h2>What the Numbers Actually Say</h2>
+
+        <p>Looking across all six benchmarks, a clear pattern emerges:</p>
+
+        <ul>
+          <li><strong>Problems with independent iterations scale well</strong> — matrix multiplication, BFS within a level, merge sort subtrees.</li>
+          <li><strong>Problems with dependencies barely scale</strong> — prefix sum is the clearest example. The dependency chain limits how much work can be done in parallel regardless of thread count.</li>
+          <li><strong>None hit linear speedup.</strong> Even the best result (2.91&times;) falls well short of the theoretical maximum. This is Amdahl's Law in action — the sequential portions of every program limit the overall speedup.</li>
+        </ul>
+
+        <div class="note">Amdahl's Law states that if a fraction <em>p</em> of a program can be parallelized, the maximum speedup is 1 / (1 &minus; p), regardless of how many threads you add. Even if 90% of your code is parallel, the ceiling is 10&times; — not infinite.</div>
+
+        <h2>A Note on Input Size</h2>
+
+        <p>One thing these benchmarks do not show explicitly but matters a great deal: parallelism has a fixed overhead cost — thread creation, synchronization, and combining results. For small inputs, this overhead can easily exceed the time saved. Always benchmark at the scale you actually expect in production. A parallel prefix sum on 1000 elements will likely be slower than the sequential version.</p>
+
+        <h2>Conclusion</h2>
+
+        <p>OpenMP is a remarkably low-friction way to add parallelism to existing C++ code. A single pragma can cut execution time in half on the right problem. But it rewards problems that are structurally parallel — independent iterations, divide-and-conquer structure, or level-based traversal. Applied to problems with inherent dependencies, the gains are marginal and the code becomes harder to reason about.</p>
+
+        <p>The next article in this series examines exactly why these speedups plateau and sometimes disappear entirely: race conditions, false sharing, atomic operations, and the limits imposed by memory bandwidth.</p>
+
+        <div style="margin-top:2rem;">
+          <a href="blog_6.html" class="btn">Next: Why Parallel Code Doesn't Always Go Faster &rarr;</a>
+        </div>
+
+      </div>
+      <div style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+        <a href="../blogs.html" class="btn btn-outline">&larr; Back to Blogs</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Tanmoy Giri &mdash; <a href="https://github.com/iamtgiri" target="_blank">iamtgiri</a></p>
+  </footer>
+
+</div>
+</body>
+</html>

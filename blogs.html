@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,113 +8,160 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="apple-touch-icon" href="favicon.svg">
-</head>
 
+  <!-- Primary Meta -->
+  <meta name="description" content="Technical articles on C++, systems programming, compilers, linkers, and runtime behaviour.">
+  <meta name="author" content="Tanmoy Giri">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamtgiri.github.io/blogs.html">
+
+  <!-- Open Graph (LinkedIn, WhatsApp, Facebook previews) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iamtgiri.github.io/blogs.html">
+  <meta property="og:title" content="Blogs | Tanmoy Giri">
+  <meta property="og:description" content="Technical articles on C++, systems programming, compilers, linkers, and runtime behaviour.">
+  <meta property="og:image" content="https://iamtgiri.github.io/images/profile_1.png">
+  <meta property="og:site_name" content="Tanmoy Giri">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Blogs | Tanmoy Giri">
+  <meta name="twitter:description" content="Technical articles on C++, systems programming, compilers, linkers, and runtime behaviour.">
+  <meta name="twitter:image" content="https://iamtgiri.github.io/images/profile_1.png">
+
+  <!-- Mobile browser chrome color -->
+  <meta name="theme-color" content="#1a1a2e">
+</head>
 <body>
 
-  <input type="checkbox" id="nav-toggle" aria-label="Toggle navigation">
-  <input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
+<input type="checkbox" id="nav-toggle" aria-label="Toggle navigation">
+<input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
 
-  <div class="site-wrapper">
+<div class="site-wrapper">
 
-    <header>
-      <div class="nav-inner">
-        <a href="index.html" class="nav-brand">TG</a>
-        <label class="nav-hamburger" for="nav-toggle" aria-label="Open navigation">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </label>
-        <nav aria-label="Main navigation">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="skills.html">Skills</a></li>
-            <li><a href="education.html">Education</a></li>
-            <li><a href="blogs.html" class="active" aria-current="page">Blogs</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </nav>
-        <label class="theme-label" for="theme-toggle" title="Toggle light/dark mode">
-          <span class="toggle-icon">☀︎</span>
-          <div class="toggle-track">
-            <div class="toggle-knob"></div>
-          </div>
-          <span class="toggle-icon">☾</span>
-        </label>
-      </div>
-    </header>
+  <header>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">TG</a>
+      <label class="nav-hamburger" for="nav-toggle" aria-label="Open navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </label>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="blogs.html" class="active" aria-current="page">Blogs</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <label class="theme-label" for="theme-toggle" title="Toggle light/dark mode">
+        <span class="toggle-icon">☀︎</span>
+        <div class="toggle-track"><div class="toggle-knob"></div></div>
+        <span class="toggle-icon">☾</span>
+      </label>
+    </div>
+  </header>
 
-    <main>
-      <div class="page-header">
-        <h1>Blog Articles</h1>
-        <p class="subtitle">Thoughts and deep-dives on C++, systems programming, and software engineering.</p>
-        <div class="accent-line"></div>
-      </div>
+  <main>
+    <div class="page-header">
+      <h1>Blog Articles</h1>
+      <p class="subtitle">Thoughts and deep-dives on C++, systems programming, and software engineering.</p>
+      <div class="accent-line"></div>
+    </div>
 
-      <div class="blog-grid">
+    <div class="blog-grid">
 
-        <article class="blog-card">
-          <div class="blog-content">
-            <span class="blog-card-tag">C++ Series</span>
-            <h2>How C++ Works: From Source to Executable</h2>
-            <p class="blog-meta">31 May 2025</p>
-            <p class="blog-excerpt">
-              A high-level walkthrough of the complete C++ build pipeline. Learn how preprocessing,
-              compilation, and linking transform human-readable source code into a runnable executable.
-            </p>
-            <a href="Blogs/blog_1.html" class="blog-btn">Read More →</a>
-          </div>
-        </article>
+      <article class="blog-card">
+        <div class="blog-content">
+          <span class="blog-card-tag">C++ Series</span>
+          <h2>How C++ Works: From Source to Executable</h2>
+          <p class="blog-meta">31 May 2025</p>
+          <p class="blog-excerpt">
+            A high-level walkthrough of the complete C++ build pipeline. Learn how preprocessing,
+            compilation, and linking transform human-readable source code into a runnable executable.
+          </p>
+          <a href="Blogs/blog_1.html" class="blog-btn">Read More →</a>
+        </div>
+      </article>
 
-        <article class="blog-card">
-          <div class="blog-content">
-            <span class="blog-card-tag">C++ Series</span>
-            <h2>Inside the C++ Compiler: From Tokens to Assembly</h2>
-            <p class="blog-meta">02 June 2025</p>
-            <p class="blog-excerpt">
-              Dive deep into the internals of a C++ compiler. This article explores lexing, parsing,
-              semantic analysis, optimizations, and how high-level code turns into assembly.
-            </p>
-            <a href="Blogs/blog_2.html" class="blog-btn">Read More →</a>
-          </div>
-        </article>
+      <article class="blog-card">
+        <div class="blog-content">
+          <span class="blog-card-tag">C++ Series</span>
+          <h2>Inside the C++ Compiler: From Tokens to Assembly</h2>
+          <p class="blog-meta">02 June 2025</p>
+          <p class="blog-excerpt">
+            Dive deep into the internals of a C++ compiler. This article explores lexing, parsing,
+            semantic analysis, optimizations, and how high-level code turns into assembly.
+          </p>
+          <a href="Blogs/blog_2.html" class="blog-btn">Read More →</a>
+        </div>
+      </article>
 
-        <article class="blog-card">
-          <div class="blog-content">
-            <span class="blog-card-tag">C++ Series</span>
-            <h2>Linkers, Libraries, and Common C++ Build Errors</h2>
-            <p class="blog-meta">05 June 2025</p>
-            <p class="blog-excerpt">
-              Understand how linkers work, the difference between static and dynamic libraries,
-              and why errors like "undefined reference" cause so much real-world frustration.
-            </p>
-            <a href="Blogs/blog_3.html" class="blog-btn">Read More →</a>
-          </div>
-        </article>
+      <article class="blog-card">
+        <div class="blog-content">
+          <span class="blog-card-tag">C++ Series</span>
+          <h2>Linkers, Libraries, and Common C++ Build Errors</h2>
+          <p class="blog-meta">05 June 2025</p>
+          <p class="blog-excerpt">
+            Understand how linkers work, the difference between static and dynamic libraries,
+            and why errors like "undefined reference" cause so much real-world frustration.
+          </p>
+          <a href="Blogs/blog_3.html" class="blog-btn">Read More →</a>
+        </div>
+      </article>
 
-        <article class="blog-card">
-          <div class="blog-content">
-            <span class="blog-card-tag">C++ Series</span>
-            <h2>Common Runtime Errors in C++ (and How to Avoid Them)</h2>
-            <p class="blog-meta">08 June 2025</p>
-            <p class="blog-excerpt">
-              From segmentation faults to memory leaks and undefined behavior, this guide explains
-              the most common runtime failures in C++ and practical techniques to prevent them.
-            </p>
-            <a href="Blogs/blog_4.html" class="blog-btn">Read More →</a>
-          </div>
-        </article>
+      <article class="blog-card">
+        <div class="blog-content">
+          <span class="blog-card-tag">C++ Series</span>
+          <h2>Common Runtime Errors in C++ (and How to Avoid Them)</h2>
+          <p class="blog-meta">08 June 2025</p>
+          <p class="blog-excerpt">
+            From segmentation faults to memory leaks and undefined behavior, this guide explains
+            the most common runtime failures in C++ and practical techniques to prevent them.
+          </p>
+          <a href="Blogs/blog_4.html" class="blog-btn">Read More →</a>
+        </div>
+      </article>
 
-      </div>
-    </main>
+      <article class="blog-card">
+        <div class="blog-content">
+          <span class="blog-card-tag">C++ / Performance</span>
+          <h2>Parallelizing DSA Problems with OpenMP: Real Benchmarks</h2>
+          <p class="blog-meta">March 2026</p>
+          <p class="blog-excerpt">
+            A practical guide to parallelizing six common DSA problems — counting, BFS, matrix
+            multiplication, merge sort, and more — with real timing numbers and an honest look
+            at where OpenMP helps and where it doesn't.
+          </p>
+          <a href="Blogs/blog_5.html" class="blog-btn">Read More →</a>
+        </div>
+      </article>
 
-    <footer>
-      <p>&copy; 2026 Tanmoy Giri &mdash; <a href="https://github.com/iamtgiri" target="_blank">iamtgiri</a></p>
-    </footer>
+      <article class="blog-card">
+        <div class="blog-content">
+          <span class="blog-card-tag">C++ / Performance</span>
+          <h2>Why Parallel Code Doesn't Always Go Faster</h2>
+          <p class="blog-meta">March 2026</p>
+          <p class="blog-excerpt">
+            Race conditions, false sharing, atomic contention, algorithmic dependencies, and
+            memory bandwidth limits — a deep dive into why parallel speedups plateau and how
+            to think about each problem before reaching for more threads.
+          </p>
+          <a href="Blogs/blog_6.html" class="blog-btn">Read More →</a>
+        </div>
+      </article>
 
-  </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Tanmoy Giri &mdash; <a href="https://github.com/iamtgiri" target="_blank">iamtgiri</a></p>
+  </footer>
+
+</div>
 </body>
-
 </html>
