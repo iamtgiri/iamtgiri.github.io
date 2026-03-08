@@ -3,192 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inside the C++ Compiler | Tanmoy Giri</title>
+  <title>Inside the C++ Compiler: From Tokens to Assembly | Tanmoy Giri</title>
   <link rel="stylesheet" href="../styles/style.css">
 </head>
-
 <body>
-<header>
-  <nav>
-    <ul>
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../projects.html">Projects</a></li>
-      <li><a href="../education.html">Education</a></li>
-      <li><a href="../blogs.html" aria-current="page">Blogs</a></li>
-      <li><a href="../contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
 
-<main class="blog-content">
-<article>
-<h1>Inside the C++ Compiler: From Tokens to Assembly</h1>
+<input type="checkbox" id="nav-toggle" aria-label="Toggle navigation">
+<input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
 
-<p>
-When you compile a C++ program, a surprising amount of work happens behind the scenes.
-Compilation is not a single transformation from source code to executable, but a carefully
-designed pipeline of stages that progressively analyze, verify, and transform your code.
-</p>
+<div class="site-wrapper">
 
-<p>
-Understanding how a compiler works helps you write better C++,
-interpret error messages more effectively, and reason about performance and optimizations.
-This article walks through the major stages of a modern C++ compiler, from raw text to
-machine instructions.
-</p>
+  <header>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">TG</a>
+      <label class="nav-hamburger" for="nav-toggle" aria-label="Open navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </label>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../education.html">Education</a></li>
+          <li><a href="../blogs.html" class="active" aria-current="page">Blogs</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <label class="theme-label" for="theme-toggle" title="Toggle light/dark mode">
+        <span class="toggle-icon">&#9788;&#65038;</span>
+        <div class="toggle-track"><div class="toggle-knob"></div></div>
+        <span class="toggle-icon">&#9790;</span>
+      </label>
+    </div>
+  </header>
 
-<h2>1. Lexical Analysis (Lexing)</h2>
-<p>
-The first stage of compilation is <strong>lexical analysis</strong>, also known as lexing.
-Here, the compiler reads your source code as plain text and groups characters into
-meaningful units called <em>tokens</em>.
-</p>
+  <main>
+    <div class="blog-article-wrap">
+      <span class="blog-card-tag">C++ Series</span>
+      <h1>Inside the C++ Compiler: From Tokens to Assembly</h1>
+      <p class="blog-article-meta">02 June 2025</p>
+      
+      <div class="blog-article-body">
+        <p>When you compile a C++ program, a surprising amount of work happens behind the scenes. Compilation is not a single transformation from source code to executable, but a carefully designed pipeline of stages that progressively analyze, verify, and transform your code.</p>
 
-<pre><code>int sum = a + b;</code></pre>
+        <h2>1. Lexical Analysis (Lexing)</h2>
+        <p>The compiler reads your source code as plain text and groups characters into meaningful units called <em>tokens</em>.</p>
+        <pre><code>int sum = a + b;</code></pre>
+        <p>This becomes a sequence of tokens:</p>
+        <ul>
+          <li><code>int</code> &mdash; keyword</li>
+          <li><code>sum</code> &mdash; identifier</li>
+          <li><code>=</code> &mdash; assignment operator</li>
+          <li><code>a</code>, <code>b</code> &mdash; identifiers</li>
+          <li><code>+</code> &mdash; arithmetic operator</li>
+          <li><code>;</code> &mdash; statement terminator</li>
+        </ul>
 
-<p>
-During lexing, whitespace and comments are discarded, and the statement above is converted
-into a sequence of tokens:
-</p>
+        <h2>2. Syntax Analysis (Parsing)</h2>
+        <p>The parser organizes tokens according to the C++ grammar and builds an <strong>Abstract Syntax Tree (AST)</strong>, which represents the hierarchical structure of the code.</p>
+        <div class="note">Parsing answers the question: "Is this code grammatically valid C++?" Syntax errors such as missing semicolons or mismatched braces are detected here.</div>
 
-<ul>
-<li><code>int</code> — keyword</li>
-<li><code>sum</code> — identifier</li>
-<li><code>=</code> — assignment operator</li>
-<li><code>a</code> — identifier</li>
-<li><code>+</code> — arithmetic operator</li>
-<li><code>b</code> — identifier</li>
-<li><code>;</code> — statement terminator</li>
-</ul>
+        <h2>3. Semantic Analysis</h2>
+        <p>After structural validation, the compiler verifies whether the code makes sense:</p>
+        <ul>
+          <li>Ensuring type correctness in expressions and assignments</li>
+          <li>Verifying variable scope and object lifetimes</li>
+          <li>Checking function declarations, definitions, and calls</li>
+          <li>Validating access control and const-correctness</li>
+        </ul>
 
-<p>
-At this stage, the compiler does not understand meaning or structure.
-It only recognizes valid symbols of the C++ language.
-</p>
+        <h2>4. Intermediate Representation (IR)</h2>
+        <p>Most modern compilers lower the program into an <strong>Intermediate Representation (IR)</strong> — a simplified, platform-independent form that makes analysis and optimization easier. LLVM-based compilers use LLVM IR; GCC has its own internal representations.</p>
 
-<h2>2. Syntax Analysis (Parsing)</h2>
-<p>
-Once tokens are produced, the compiler checks whether they form a valid C++ program.
-This stage is known as <strong>parsing</strong>.
-</p>
+        <h2>5. Optimization</h2>
+        <p>With the program in IR form, the compiler applies transformations to improve performance without changing observable behavior:</p>
+        <ul>
+          <li><strong>Dead code elimination</strong> &mdash; removes unused computations</li>
+          <li><strong>Constant folding</strong> &mdash; evaluates expressions at compile time</li>
+          <li><strong>Function inlining</strong> &mdash; replaces calls with function bodies</li>
+          <li><strong>Loop unrolling</strong> &mdash; reduces loop overhead</li>
+        </ul>
+        <p>Optimization levels (<code>-O0</code>, <code>-O2</code>, <code>-O3</code>) control how aggressively these are applied.</p>
 
-<p>
-The parser organizes tokens according to the C++ grammar and builds an
-<strong>Abstract Syntax Tree (AST)</strong>, which represents the hierarchical structure
-of the code.
-</p>
-
-<div class="note">
-Parsing answers the question: “Is this code grammatically valid C++?”
-</div>
-
-<p>
-Syntax errors such as missing semicolons, mismatched braces, or incorrect expressions
-are detected here. If parsing fails, compilation stops immediately.
-</p>
-
-<h2>3. Semantic Analysis</h2>
-<p>
-After the code is structurally valid, the compiler verifies whether it makes sense.
-This phase is called <strong>semantic analysis</strong>.
-</p>
-
-<ul>
-<li>Ensuring type correctness in expressions and assignments</li>
-<li>Verifying variable scope and object lifetimes</li>
-<li>Checking function declarations, definitions, and calls</li>
-<li>Validating access control and const-correctness</li>
-</ul>
-
-<p>
-Errors like using an undeclared variable, calling a function with incorrect argument types,
-or violating const rules are caught during this phase.
-</p>
-
-<h2>4. Intermediate Representation (IR)</h2>
-<p>
-Rather than translating C++ directly into machine code, most modern compilers first
-lower the program into an <strong>Intermediate Representation (IR)</strong>.
-</p>
-
-<p>
-IR is a simplified, platform-independent form that makes analysis and optimization easier.
-For example, LLVM-based compilers use LLVM IR, while GCC has its own internal representations.
-</p>
-
-<p>
-This abstraction allows the compiler to apply powerful optimizations without worrying
-about specific CPU instructions too early.
-</p>
-
-<h2>5. Optimization</h2>
-<p>
-With the program in IR form, the compiler applies a wide range of optimizations.
-These transformations aim to improve performance, reduce memory usage, or eliminate
-redundant work—without changing observable behavior.
-</p>
-
-<ul>
-<li><strong>Dead code elimination</strong> — removes unused computations</li>
-<li><strong>Constant folding</strong> — evaluates expressions at compile time</li>
-<li><strong>Function inlining</strong> — replaces calls with function bodies</li>
-<li><strong>Loop unrolling</strong> — reduces loop overhead</li>
-</ul>
-
-<p>
-Optimization levels (<code>-O0</code>, <code>-O2</code>, <code>-O3</code>) control how aggressively
-these transformations are applied.
-</p>
-
-<h2>C++ → Assembly Example</h2>
-<p>
-Consider the following simple C++ function:
-</p>
-
-<pre><code>int add(int a, int b) {
+        <h2>C++ &rarr; Assembly Example</h2>
+        <pre><code>int add(int a, int b) {
   return a + b;
 }</code></pre>
-
-<p>
-After compilation, the compiler may generate assembly code similar to:
-</p>
-
-<pre><code>
-add:
+        <p>After compilation, the compiler may generate:</p>
+        <pre><code>add:
   mov eax, edi
   add eax, esi
-  ret
-</code></pre>
+  ret</code></pre>
+        <div class="note">Optimizations can drastically change the generated assembly — debugging optimized builds is significantly harder than debugging unoptimized ones.</div>
 
-<p>
-This assembly directly reflects the calling convention and instruction set of the target CPU.
-Even simple C++ code can map to very few machine instructions after optimization.
-</p>
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Compilation is a multi-stage pipeline, not a black box</li>
+          <li>Most errors are detected before machine code generation</li>
+          <li>Intermediate representations enable powerful optimizations</li>
+          <li>Optimization improves performance but reduces debuggability</li>
+        </ul>
+      </div>
+      <div style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+        <a href="../blogs.html" class="btn btn-outline">&larr; Back to Blogs</a>
+      </div>
+    </div>
+  </main>
 
-<div class="warning">
-Optimizations can drastically change the generated assembly —
-debugging optimized builds is significantly harder than debugging unoptimized ones.
+  <footer>
+    <p>&copy; 2026 Tanmoy Giri &mdash; <a href="https://github.com/iamtgiri" target="_blank">iamtgiri</a></p>
+  </footer>
+
 </div>
-
-<h2>Key Takeaways</h2>
-<ul>
-<li>Compilation is a multi-stage pipeline, not a black box</li>
-<li>Most errors are detected before machine code generation</li>
-<li>Intermediate representations enable powerful optimizations</li>
-<li>Optimization improves performance but reduces debuggability</li>
-</ul>
-
-<p>
-Understanding how the C++ compiler works gives you deeper insight into performance,
-error diagnostics, and low-level behavior. For systems programming,
-this knowledge is not optional—it is essential.
-</p>
-
-</article>
-</main>
-
-<footer>
-  <p>&copy; 2026 Tanmoy Giri. All rights reserved.</p>
-</footer>
 </body>
 </html>

@@ -3,89 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UrbanNest | Real Estate Price Estimation</title>
+  <title>UrbanNest — Intelligent Flat Price Estimator for Kolkata | Tanmoy Giri</title>
   <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
+
+<input type="checkbox" id="nav-toggle" aria-label="Toggle navigation">
+<input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
+
+<div class="site-wrapper">
+
   <header>
-    <nav>
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../projects.html">Projects</a></li>
-        <li><a href="../education.html">Education</a></li>
-        <li><a href="../blogs.html">Blogs</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">TG</a>
+      <label class="nav-hamburger" for="nav-toggle" aria-label="Open navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </label>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects.html" class="active" aria-current="page">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../education.html">Education</a></li>
+          <li><a href="../blogs.html">Blogs</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <label class="theme-label" for="theme-toggle" title="Toggle light/dark mode">
+        <span class="toggle-icon">&#9788;&#65038;</span>
+        <div class="toggle-track"><div class="toggle-knob"></div></div>
+        <span class="toggle-icon">&#9790;</span>
+      </label>
+    </div>
   </header>
 
   <main>
-    <section id="project-details">
-      <h1 style="text-align: center;">UrbanNest - Intelligent Flat Price Estimator for Kolkata</h1>
+    <div id="project-details">
+      <h1>UrbanNest — Intelligent Flat Price Estimator for Kolkata</h1>
+
       <div class="project-description">
         <h2>Project Description</h2>
-        <p>
-          UrbanNest is a Streamlit-powered machine learning web application that estimates residential flat prices in the Kolkata region. The system is built using advanced regression models trained on over 1,100 real estate listings scraped from 99acres, incorporating detailed structural, amenity-based, and spatial features.
-        </p>
+        <p><strong>UrbanNest</strong> is a Streamlit-powered machine learning web application that estimates residential flat prices in the Kolkata region. Built using advanced regression models trained on 1,100+ real estate listings scraped from 99acres, incorporating structural, amenity-based, and spatial features.</p>
 
         <h2>Features</h2>
         <ul>
-          <li>Web-based UI for user-friendly price estimation.</li>
-          <li>Reverse geocoding support for location extraction.</li>
-          <li>Real-time prediction with model selection and explainability plots.</li>
-          <li>Input validation and robust feature handling.</li>
-          <li>Joblib-based model serialization for efficient loading.</li>
+          <li>Web-based UI with real-time price prediction and model selection</li>
+          <li>Reverse geocoding support for location feature extraction</li>
+          <li>Feature contribution plots for explainability</li>
+          <li>Input validation and robust feature handling</li>
+          <li>Joblib-based model serialization for efficient loading</li>
+        </ul>
+
+        <h2>Model Performance</h2>
+        <ul>
+          <li><strong>XGBoost:</strong> RMSE = &#8377;30.30L, R&sup2; = 0.8425 &mdash; best model</li>
+          <li><strong>Gradient Boosting:</strong> RMSE = &#8377;31.07L, R&sup2; = 0.8344</li>
+          <li><strong>Random Forest:</strong> RMSE = &#8377;35.48L, R&sup2; = 0.7840</li>
+          <li><strong>ElasticNet:</strong> RMSE = &#8377;36.35L, R&sup2; = 0.7733</li>
         </ul>
 
         <h2>Technical Stack</h2>
         <ul>
           <li><strong>Language:</strong> Python</li>
           <li><strong>Frameworks:</strong> Streamlit, scikit-learn, XGBoost</li>
-          <li><strong>Libraries:</strong> pandas, numpy, joblib, geopy</li>
-          <li><strong>Other Tools:</strong> Google Colab, VS Code</li>
-        </ul>
-
-        <h2>Model Performance</h2>
-        <ul>
-          <li><strong>XGBoost:</strong> RMSE = ₹30.30L, R² = 0.8425</li>
-          <li><strong>Gradient Boosting:</strong> RMSE = ₹31.07L, R² = 0.8344</li>
-          <li><strong>Random Forest:</strong> RMSE = ₹35.48L, R² = 0.7840</li>
-          <li><strong>ElasticNet:</strong> RMSE = ₹36.35L, R² = 0.7733</li>
+          <li><strong>Libraries:</strong> Pandas, NumPy, joblib, geopy</li>
+          <li><strong>Tools:</strong> Google Colab, VS Code</li>
         </ul>
 
         <h2>How It Works</h2>
         <ol>
-          <li><strong>Data Collection:</strong> Web scraping of flat listings across Kolkata.</li>
-          <li><strong>Feature Engineering:</strong> BHK, area, floors, amenities, geo-coordinates, etc.</li>
-          <li><strong>Model Training:</strong> Trained multiple models and evaluated performance.</li>
-          <li><strong>UI Deployment:</strong> Built a clean Streamlit interface with real-time predictions.</li>
+          <li>Web scraping of flat listings across Kolkata (1,100+ entries).</li>
+          <li>Feature engineering: BHK, area, floors, amenities, geo-coordinates.</li>
+          <li>Training and evaluation of multiple regression models.</li>
+          <li>Streamlit interface with real-time prediction and feature contribution visualization.</li>
         </ol>
 
-        <h2>Usage</h2>
-        <ul>
-          <li>Input flat details via sidebar</li>
-          <li>Select regression model for prediction</li>
-          <li>View price estimate and feature contributions</li>
-        </ul>
-
-        <h2>GitHub Link</h2>
+        <h2>GitHub &amp; Live Demo</h2>
         <p>
-          Explore the repository and source code:
-          <br>
-          <a href="https://github.com/iamtgiri/UrbanNest" class="btn" style="color: white;">UrbanNest GitHub Repo</a>
-        </p>
-        <h2>Live Demo</h2>
-        <p>
-          Experience the application live:
-          <br>
-          <a href="https://urbannest.streamlit.app/" class="btn" style="color: white;" target="_blank">UrbanNest Live Demo</a>
+          <a href="https://github.com/iamtgiri/UrbanNest" class="btn btn-outline" target="_blank">View Repository</a>
+          &nbsp;
+          <a href="https://urbannest.streamlit.app/" class="btn btn-outline" target="_blank">Live Demo</a>
         </p>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 2026 Tanmoy Giri. All rights reserved.</p>
+    <p>&copy; 2026 Tanmoy Giri &mdash; <a href="https://github.com/iamtgiri" target="_blank">iamtgiri</a></p>
   </footer>
+
+</div>
 </body>
 </html>

@@ -3,141 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rio - AI Assistant | Project</title>
+  <title>Rio — Personal AI Assistant | Tanmoy Giri</title>
   <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
+
+<input type="checkbox" id="nav-toggle" aria-label="Toggle navigation">
+<input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
+
+<div class="site-wrapper">
+
   <header>
-    <nav>
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../projects.html">Projects</a></li>
-        <li><a href="../education.html">Education</a></li>
-        <li><a href="../blogs.html">Blogs</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">TG</a>
+      <label class="nav-hamburger" for="nav-toggle" aria-label="Open navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </label>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects.html" class="active" aria-current="page">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../education.html">Education</a></li>
+          <li><a href="../blogs.html">Blogs</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <label class="theme-label" for="theme-toggle" title="Toggle light/dark mode">
+        <span class="toggle-icon">&#9788;&#65038;</span>
+        <div class="toggle-track"><div class="toggle-knob"></div></div>
+        <span class="toggle-icon">&#9790;</span>
+      </label>
+    </div>
   </header>
 
   <main>
-    <section id="project-details">
-      <h1>Rio - Personal AI Assistant</h1>
+    <div id="project-details">
+      <h1>Rio — Personal AI Assistant</h1>
       <div class="project-images">
-        <img src="../images/Project_5_2.jpg" alt="Rio AI Assistant" style="border-radius: 10%; width: 20%;">
+          <img src="../images/Project_5_2.jpg" alt="Rio AI Assistant">
       </div>
-
       <div class="project-description">
         <h2>Project Description</h2>
-        <p>
-          <strong>Rio</strong> is a Python-based personal AI assistant designed to perform a wide range of tasks, including web searches, system control, media playback, and automation, using voice commands and a user-friendly GUI. It leverages libraries like <strong>pyttsx3</strong>, <strong>speech_recognition</strong>, <strong>PyQt5</strong>, and <strong>pyautogui</strong> to provide a seamless and interactive experience.
-        </p>
+        <p><strong>Rio</strong> is a Python-based personal AI assistant that performs a wide range of tasks — web searches, system control, media playback, and automation — using voice commands and a PyQt5 GUI.</p>
 
         <h2>Features</h2>
         <ul>
-          <li>
-            <strong>Voice Commands:</strong>
-            <ul>
-              <li>Perform tasks like opening applications, searching the web, playing music, and more using voice commands.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Web Integration:</strong>
-            <ul>
-              <li>Search Wikipedia, Google, and YouTube.</li>
-              <li>Fetch and read the latest news headlines.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>System Control:</strong>
-            <ul>
-              <li>Open and close applications like VS Code, Chrome, Notepad, and more.</li>
-              <li>Control system functions like shutdown, restart, and sleep mode.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Media Playback:</strong>
-            <ul>
-              <li>Play music and movies from local directories.</li>
-              <li>Control media playback (play, pause, volume control).</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Automation:</strong>
-            <ul>
-              <li>Automate repetitive tasks like taking screenshots, reading PDFs, and managing files.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Interactive GUI:</strong>
-            <ul>
-              <li>Built with <strong>PyQt5</strong> for a modern and intuitive user interface.</li>
-            </ul>
-          </li>
+          <li><strong>Voice Commands:</strong> Open applications, search the web, play music via voice</li>
+          <li><strong>Web Integration:</strong> Search Wikipedia, Google, YouTube; fetch latest news headlines</li>
+          <li><strong>System Control:</strong> Open/close apps (VS Code, Chrome, Notepad); shutdown, restart, sleep</li>
+          <li><strong>Media Playback:</strong> Play local music and movies; control playback and volume</li>
+          <li><strong>Automation:</strong> Screenshots, PDF reading, file management</li>
+          <li><strong>Interactive GUI:</strong> Modern PyQt5 interface</li>
         </ul>
 
-        <h2>Technical Details</h2>
+        <h2>Technical Stack</h2>
         <ul>
-          <li>
-            <strong>Languages and Libraries:</strong>
-            <ul>
-              <li><strong>Python</strong> for core logic and scripting.</li>
-              <li><strong>pyttsx3</strong> for text-to-speech functionality.</li>
-              <li><strong>speech_recognition</strong> for voice command processing.</li>
-              <li><strong>PyQt5</strong> for the graphical user interface.</li>
-              <li><strong>pyautogui</strong> for system automation and control.</li>
-              <li><strong>requests</strong> and <strong>BeautifulSoup</strong> for web scraping and integration.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Input/Output:</strong>
-            <ul>
-              <li>Voice commands for input.</li>
-              <li>Text-to-speech and GUI for output.</li>
-            </ul>
-          </li>
+          <li><strong>Language:</strong> Python</li>
+          <li><strong>Speech:</strong> pyttsx3 (TTS), speech_recognition</li>
+          <li><strong>GUI:</strong> PyQt5</li>
+          <li><strong>Automation:</strong> pyautogui</li>
+          <li><strong>Web:</strong> requests, BeautifulSoup</li>
         </ul>
 
         <h2>How It Works</h2>
         <ol>
-          <li>
-            <strong>Initialization:</strong>
-            <ul>
-              <li>Rio greets the user and waits for voice commands.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Command Processing:</strong>
-            <ul>
-              <li>Recognizes voice commands using <strong>speech_recognition</strong>.</li>
-              <li>Executes tasks like web searches, system control, or media playback based on the command.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Output:</strong>
-            <ul>
-              <li>Provides feedback through text-to-speech or updates the GUI.</li>
-            </ul>
-          </li>
+          <li>Rio greets the user and listens for voice commands.</li>
+          <li>Commands are recognized and mapped to tasks (search, control, media, etc.).</li>
+          <li>Output is delivered via text-to-speech or GUI updates.</li>
         </ol>
-
-        <h2>Usage</h2>
-        <ul>
-          <li>Ideal for personal use to automate daily tasks and improve productivity.</li>
-          <li>Can be extended with additional features like email integration, calendar management, and more.</li>
-        </ul>
-
-        <!-- <h2>GitHub Link</h2>
-        <p>
-          Check out the code and contribute on GitHub:
-          <br>
-          <a href="https://github.com/your-username/rio-ai-assistant" target="_blank">Rio AI Assistant Repository</a>
-        </p> -->
       </div>
-    </section>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 2026 Tanmoy Giri. All rights reserved.</p>
-</footer>
+    <p>&copy; 2026 Tanmoy Giri &mdash; <a href="https://github.com/iamtgiri" target="_blank">iamtgiri</a></p>
+  </footer>
+
+</div>
 </body>
 </html>

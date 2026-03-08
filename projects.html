@@ -1,112 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Tanmoy Giri</title>
-    <link rel="stylesheet" href="styles/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Tanmoy Giri</title>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
-
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#" class="active">Projects</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="blogs.html">Blogs</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section id="projects">
-            <!-- <h2>My Projects</h2> -->
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="images/project_8.png" alt="Multi-input RAG Application">
-                    <h3>MiRAG</h3>
-                    <p>An interactive Streamlit app for question-answering and summarization using RAG across web pages,
-                        PDFs, YouTube videos and custom text, powered by LangChain, Gemini and FAISS.</p>
-                    <a href="/projects/project_8.html" class="btn">View Details</a>
-                </div>
-                <div class="project-card">
-                    <img src="images/project_9.png" alt="UrbanNest Project">
-                    <h3>UrbanNest</h3>
-                    <p>UrbanNest is a Streamlit-powered machine learning web application that estimates residential flat
-                        prices in the Kolkata region. The system is built using advanced regression models trained on
-                        real estate listings scraped from 99acres</p>
-                    <a href="/projects/project_9.html" class="btn">View Details</a>
-                </div>
+<input type="checkbox" id="nav-toggle" aria-label="Toggle navigation">
+<input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
 
-                <div class="project-card">
-                    <img src="images/Project_7.png" alt="KNN Classifier Project">
-                    <h3>KNN Classifier in C++</h3>
-                    <p>A high-performance implementation of the kNN algorithm with a focus on modularity, extensibility and computational efficiency. The pipeline supports both brute-force and KD-Tree-based approaches, includes parallel processing with OpenMP and tools for benchmarking on real-world datasets.</p>
-                    <a href="/projects/project_7.html" class="btn">View Details</a>
-                </div>
-            </div>
-            <div class="project-grid">
-                <div class="project-card">
-                    <img style="width: 100%;" src="images/project_4_1.jpg" alt="Project 4">
-                    <h3>Level of Attainment Report Generator</h3>
-                    <p>This is a Python-based desktop application designed for a government college to automate the
-                        generation of detailed academic performance reports, including semester-wise attainment levels,
-                        using Excel data and a user-friendly Tkinter GUI.</p>
-                    <a href="/projects/project_4.html" class="btn">View Details</a>
-                </div>
+<div class="site-wrapper">
 
-                <div class="project-card">
-                    <img style="width: 100%;" src="images/project_2_1.png" alt="Project 2">
-                    <h3>Book Recommendation System</h3>
-                    <p>The Book Recommendation System is a Flask-based web application that uses collaborative filtering
-                        to provide personalized book recommendations, featuring an interactive interface and detailed
-                        book information.</p>
-                    <a href="/projects/project_2.html" class="btn">View Details</a>
-                </div>
-                <div class="project-card">
-                    <img src="images/project_5_1.gif" alt="Project 5">
-                    <h3>Rio</h3>
-                    <p>Rio is a Python-based personal AI assistant designed to perform a wide range of tasks, including
-                        web searches, system control, media playback and automation, using voice commands and a
-                        user-friendly GUI.</p>
-                    <a href="/projects/project_5.html" class="btn">View Details</a>
-                </div>
-            </div>
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="images/project_1.png" alt="Project 1">
-                    <h3>Emoji Guessing Game</h3>
-                    <p>The Emoji Guessing Game, built with Python and PyQt5, challenges players to guess a word or
-                        phrase from an emoji and hint within a limited number of attempts.</p>
-                    <a href="/projects/project_1.html" class="btn">View Details</a>
-                </div>
+  <header>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">TG</a>
+      <label class="nav-hamburger" for="nav-toggle" aria-label="Open navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </label>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" class="active" aria-current="page">Projects</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <label class="theme-label" for="theme-toggle" title="Toggle light/dark mode">
+        <span class="toggle-icon">☀︎</span>
+        <div class="toggle-track"><div class="toggle-knob"></div></div>
+        <span class="toggle-icon">☾</span>
+      </label>
+    </div>
+  </header>
 
-                <div class="project-card">
-                    <img src="images/project_3_1.png" alt="Project 3">
-                    <h3>Turtle Race Game</h3>
-                    <p>This Python-based turtle race game allows users to log in, place bets using points and watch
-                        turtles race to see if their prediction wins.</p>
-                    <a href="/projects/project_3.html" class="btn">View Details</a>
-                </div>
+  <main>
+    <div class="page-header">
+      <h1>Projects</h1>
+      <p class="subtitle">A selection of things I've built — from ML applications to systems programming.</p>
+      <div class="accent-line"></div>
+    </div>
 
-                <div class="project-card">
-                    <img src="images/project_6.png" alt="Project 3">
-                    <h3>YouTube Playlist Downloader</h3>
-                    <p>This project is a Python-based GUI application that allows users to download YouTube whole playlists
-                        or individual (selected) videos in various formats with customizable quality settings, queue management,
-                        progress tracking.</p>
-                    <a href="/projects/project_6.html" class="btn">View Details</a>
-                </div>
-            </div>
-        </section>
-    </main>
+    <div class="project-grid">
 
-    <footer>
-        <p>&copy; 2026 Tanmoy Giri. All rights reserved.</p>
-    </footer>
+      <div class="project-card">
+        <img src="images/project_8.png" alt="MiRAG Application" class="project-card-img">
+        <div class="project-card-body">
+          <h3>MiRAG</h3>
+          <p>An interactive Streamlit app for question-answering and summarization using RAG across web pages,
+            PDFs, YouTube videos and custom text, powered by LangChain, Gemini and FAISS.</p>
+        </div>
+        <div class="project-card-footer">
+          <a href="projects/project_8.html" class="btn">View Details</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/project_9.png" alt="UrbanNest Project" class="project-card-img">
+        <div class="project-card-body">
+          <h3>UrbanNest</h3>
+          <p>A Streamlit-powered ML web application estimating residential flat prices in the Kolkata region,
+            built using advanced regression models trained on real estate listings scraped from 99acres.</p>
+        </div>
+        <div class="project-card-footer">
+          <a href="projects/project_9.html" class="btn">View Details</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/Project_7.png" alt="KNN Classifier" class="project-card-img">
+        <div class="project-card-body">
+          <h3>KNN Classifier in C++</h3>
+          <p>A high-performance kNN implementation with brute-force and KD-Tree approaches, parallel
+            processing via OpenMP, and benchmarking tools for real-world datasets.</p>
+        </div>
+        <div class="project-card-footer">
+          <a href="projects/project_7.html" class="btn">View Details</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/project_4_1.jpg" alt="Level of Attainment Report Generator" class="project-card-img">
+        <div class="project-card-body">
+          <h3>Level of Attainment Report Generator</h3>
+          <p>A Python desktop application automating academic performance report generation for a government
+            college, including semester-wise attainment levels, using Excel data and Tkinter GUI.</p>
+        </div>
+        <div class="project-card-footer">
+          <a href="projects/project_4.html" class="btn">View Details</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/project_2_1.png" alt="Book Recommendation System" class="project-card-img">
+        <div class="project-card-body">
+          <h3>Book Recommendation System</h3>
+          <p>A Flask-based web application using collaborative filtering to provide personalized book
+            recommendations, featuring an interactive interface and detailed book information.</p>
+        </div>
+        <div class="project-card-footer">
+          <a href="projects/project_2.html" class="btn">View Details</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/project_5_1.gif" alt="Rio AI Assistant" class="project-card-img">
+        <div class="project-card-body">
+          <h3>Rio</h3>
+          <p>A Python-based personal AI assistant performing web searches, system control, media playback,
+            and automation via voice commands and a user-friendly GUI.</p>
+        </div>
+        <div class="project-card-footer">
+          <a href="projects/project_5.html" class="btn">View Details</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/project_1.png" alt="Emoji Guessing Game" class="project-card-img">
+        <div class="project-card-body">
+          <h3>Emoji Guessing Game</h3>
+          <p>A Python and PyQt5 game challenging players to guess words or phrases from emoji and hints
+            within a limited number of attempts.</p>
+        </div>
+        <div class="project-card-footer">
+          <a href="projects/project_1.html" class="btn">View Details</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/project_3_1.png" alt="Turtle Race Game" class="project-card-img">
+        <div class="project-card-body">
+          <h3>Turtle Race Game</h3>
+          <p>A Python turtle race game where users log in, place bets using points, and watch turtles race
+            to see if their prediction wins.</p>
+        </div>
+        <div class="project-card-footer">
+          <a href="projects/project_3.html" class="btn">View Details</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/project_6.png" alt="YouTube Playlist Downloader" class="project-card-img">
+        <div class="project-card-body">
+          <h3>YouTube Playlist Downloader</h3>
+          <p>A Python GUI application for downloading YouTube playlists or individual videos in various
+            formats with customizable quality, queue management, and progress tracking.</p>
+        </div>
+        <div class="project-card-footer">
+          <a href="projects/project_6.html" class="btn">View Details</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Tanmoy Giri &mdash; <a href="https://github.com/iamtgiri" target="_blank">iamtgiri</a></p>
+  </footer>
+
+</div>
 </body>
-
 </html>

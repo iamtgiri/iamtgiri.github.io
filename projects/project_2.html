@@ -3,140 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Recommendation System | Project</title>
+  <title>Book Recommendation System | Tanmoy Giri</title>
   <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
+
+<input type="checkbox" id="nav-toggle" aria-label="Toggle navigation">
+<input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
+
+<div class="site-wrapper">
+
   <header>
-    <nav>
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../projects.html">Projects</a></li>
-        <li><a href="../education.html">Education</a></li>
-        <li><a href="../blogs.html">Blogs</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">TG</a>
+      <label class="nav-hamburger" for="nav-toggle" aria-label="Open navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </label>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects.html" class="active" aria-current="page">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../education.html">Education</a></li>
+          <li><a href="../blogs.html">Blogs</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <label class="theme-label" for="theme-toggle" title="Toggle light/dark mode">
+        <span class="toggle-icon">&#9788;&#65038;</span>
+        <div class="toggle-track"><div class="toggle-knob"></div></div>
+        <span class="toggle-icon">&#9790;</span>
+      </label>
+    </div>
   </header>
 
   <main>
-    <section id="project-details">
+    <div id="project-details">
       <h1>Book Recommendation System</h1>
       <div class="project-images">
-        <img src="../images/project_2_1.png" alt="Book Recommendation System Screenshot 1">
-        <img src="../images/project_2_2.png" alt="Book Recommendation System Screenshot 2">
-        <img src="../images/project_2_3.png" alt="Book Recommendation System Screenshot 3">
+          <img src="../images/project_2_1.png" alt="Screenshot 1">
+          <img src="../images/project_2_2.png" alt="Screenshot 2">
+          <img src="../images/project_2_3.png" alt="Screenshot 3">
       </div>
-
       <div class="project-description">
         <h2>Project Description</h2>
-        <p>
-          The <strong>Book Recommendation System</strong> is a Flask-based web application that leverages <strong>collaborative filtering</strong> to provide personalized book recommendations. It features an interactive web interface and detailed book information, including titles, authors, publishers, and cover images.
-        </p>
+        <p>The <strong>Book Recommendation System</strong> is a Flask-based web application that leverages <strong>collaborative filtering</strong> to provide personalized book recommendations, featuring book titles, authors, publishers, year of publication, and cover images.</p>
 
         <h2>Features</h2>
         <ul>
-          <li>
-            <strong>Personalized Book Recommendations:</strong>
-            <ul>
-              <li>Suggests similar books based on user input.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Interactive Web Interface:</strong>
-            <ul>
-              <li>Built with <strong>Flask</strong> for a seamless user experience.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Detailed Book Information:</strong>
-            <ul>
-              <li>Displays book titles, authors, year of publication, publishers, and cover images.</li>
-            </ul>
-          </li>
+          <li>Personalized book recommendations based on user input</li>
+          <li>Homepage displays top 50 books by popularity</li>
+          <li>Interactive web interface built with Flask, HTML, CSS, and Bootstrap</li>
+          <li>Precomputed similarity scores for fast recommendations</li>
         </ul>
 
-        <h2>Technical Details</h2>
+        <h2>Technical Stack</h2>
         <ul>
-          <li>
-            <strong>Backend:</strong>
-            <ul>
-              <li>Built with <strong>Flask</strong> (Python).</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Frontend:</strong>
-            <ul>
-              <li>Designed using <strong>HTML</strong>, <strong>CSS</strong>, and <strong>Bootstrap</strong>.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Data Handling:</strong>
-            <ul>
-              <li>Uses <strong>pandas</strong> and <strong>NumPy</strong> for efficient data processing.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Modeling:</strong>
-            <ul>
-              <li>Implements <strong>collaborative filtering</strong> for recommendations.</li>
-            </ul>
-          </li>
+          <li><strong>Backend:</strong> Flask (Python)</li>
+          <li><strong>Frontend:</strong> HTML, CSS, Bootstrap</li>
+          <li><strong>Data:</strong> Pandas, NumPy, collaborative filtering</li>
+          <li><strong>Serialization:</strong> Pickle (books, similarity scores, pivot table)</li>
         </ul>
 
-        <h2>How It Works</h2>
-        <ol>
-          <li>
-            <strong>Homepage:</strong>
-            <ul>
-              <li>Displays the top 50 books based on popularity.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Recommendation:</strong>
-            <ul>
-              <li>Users can search for a book in the "Recommend" tab.</li>
-              <li>The system suggests similar books using precomputed similarity scores.</li>
-            </ul>
-          </li>
-        </ol>
+        <h2>Setup</h2>
+        <pre><code>git clone https://github.com/iamtgiri/Book_Recommendation_System.git
+cd Book_Recommendation_System
+pip install -r requirements.txt
+python app.py</code></pre>
+        <p>App runs at <code>http://127.0.0.1:5000/</code></p>
 
-        <h2>Installation and Setup</h2>
-        <ol>
-          <li>
-            <strong>Clone the Repository:</strong>
-            <pre><code>$ git clone https://github.com/iamtgiri/Book_Recommendation_System.git
-$ cd Book_Recommendation_System</code></pre>
-          </li>
-          <li>
-            <strong>Install Dependencies:</strong>
-            <pre><code>$ pip install -r requirements.txt</code></pre>
-          </li>
-          <li>
-            <strong>Add Dataset Files:</strong>
-            <ul>
-              <li>Ensure <code>books.pkl</code>, <code>similarity_score.pkl</code>, <code>popular.pkl</code>, and <code>pt.pkl</code> are in the project directory.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Run the Application:</strong>
-            <pre><code>$ python app.py</code></pre>
-            <p>The app will be live at <code>http://127.0.0.1:5000/</code>.</p>
-          </li>
-        </ol>
-
-        <h2>GitHub Link</h2>
-        <p>
-          Check out the code and contribute on GitHub:
-          <br>
-          <a href="https://github.com/iamtgiri/Book_Recommendation_System" class="btn" style="color: white;">Book Recommendation System Repository</a>
-        </p>
+        <h2>GitHub</h2>
+        <p><a href="https://github.com/iamtgiri/Book_Recommendation_System" class="btn btn-outline" target="_blank">View Repository</a></p>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 2026 Tanmoy Giri. All rights reserved.</p>
-</footer>
+    <p>&copy; 2026 Tanmoy Giri &mdash; <a href="https://github.com/iamtgiri" target="_blank">iamtgiri</a></p>
+  </footer>
+
+</div>
 </body>
 </html>
