@@ -3,11 +3,6 @@
 User-agent: *
 Allow: /
 
-# Block old underscore-prefixed files (previous site versions)
-Disallow: /_blogs.html
-Disallow: /_contact.html
-Disallow: /_education.html
-Disallow: /_index.html
-Disallow: /_projects.html
+
 
 Sitemap: https://iamtgiri.github.io/sitemap.xml
