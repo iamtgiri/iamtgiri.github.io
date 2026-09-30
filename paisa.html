@@ -3,86 +3,291 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6f7f2">
-  <meta name="description" content="Paisa is a private, offline-first finance tracker for managing expenses, budgets, accounts and savings on your device.">
-  <meta property="og:title" content="Paisa — Private personal finance">
-  <meta property="og:description" content="Track spending, plan ahead, and keep your financial records on your device.">
+  <meta name="theme-color" content="#E7EAF2">
+  <meta name="description" content="Paisa is a private, offline-first finance tracker for Android — transactions, budgets, recurring bills, and analytics, all kept on your device.">
+  <meta property="og:title" content="Paisa — Your money, kept to yourself">
+  <meta property="og:description" content="An offline-first personal finance tracker for Android. No login, no cloud, no ads. Built with AI-assisted 'vibe coding' as a personal project.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://iamtgiri.github.io/paisa/">
   <link rel="canonical" href="https://iamtgiri.github.io/paisa/">
-  <title>Paisa</title>
+  <title>Paisa — Your money, kept to yourself</title>
   <style>
-    :root{color-scheme:light;--ink:#17251f;--muted:#62716a;--green:#245c43;--green-dark:#193f30;--mint:#dcecdf;--paper:#f6f7f2;--line:#dfe5dc;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink)}a{color:inherit}.shell{width:min(1120px,calc(100% - 40px));margin:0 auto}.skip-link{position:absolute;left:16px;top:-60px;padding:10px 14px;border-radius:9px;background:var(--green);color:#fff;z-index:10}.skip-link:focus{top:16px}
-    header{height:82px;display:flex;align-items:center;justify-content:space-between}.brand{display:inline-flex;align-items:center;gap:11px;font-weight:750;letter-spacing:-.04em;font-size:1.25rem;text-decoration:none}.brand-mark{width:35px;height:35px;border-radius:12px;color:#fff;background:var(--green);display:grid;place-items:center;font-size:1.1rem}
-    nav{display:flex;align-items:center;gap:27px;font-size:.91rem;color:var(--muted)}nav a{text-decoration:none}nav a:hover{color:var(--green)}.button{display:inline-flex;min-height:48px;align-items:center;justify-content:center;padding:0 20px;border-radius:999px;background:var(--green);color:#fff;font-weight:650;text-decoration:none;transition:transform .18s,background .18s}.button:hover{background:var(--green-dark);transform:translateY(-2px)}.button.secondary{background:transparent;color:var(--green);box-shadow:inset 0 0 0 1px #b9c9bd}.button.secondary:hover{background:#fff}
-    .hero{min-height:590px;padding:67px 0 75px;display:grid;grid-template-columns:1fr .9fr;align-items:center;gap:65px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--mint);color:var(--green-dark);font-size:.78rem;font-weight:700;letter-spacing:.02em}.eyebrow span{font-size:1rem}
-    h1{max-width:610px;margin:22px 0 17px;font-size:clamp(3.25rem,6vw,5.25rem);line-height:.99;letter-spacing:-.075em;font-weight:760}h1 em{color:var(--green);font-style:normal}.intro{max-width:505px;margin:0;color:var(--muted);font-size:1.12rem;line-height:1.72}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.fine-print{margin-top:17px;color:#758179;font-size:.82rem}
-    .visual{position:relative;min-height:400px;display:grid;place-items:center}.phone{position:relative;width:min(290px,76vw);padding:14px;background:#fff;border:1px solid #e4e9e1;border-radius:31px;box-shadow:0 28px 70px #264a3520;transform:rotate(2deg)}.phone-top{height:22px;display:flex;align-items:center;justify-content:space-between;padding:0 5px;color:#7e8d83;font-size:.68rem}.app-screen{min-height:394px;padding:14px 12px 15px;border-radius:21px;background:#f7f8f4}
-    .greeting{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.72rem}.avatar{width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--mint);color:var(--green)}.balance-card{margin-top:14px;padding:17px;color:#fff;border-radius:16px;background:var(--green)}.balance-label{opacity:.76;font-size:.7rem}.balance{margin-top:6px;font-size:1.65rem;font-weight:720;letter-spacing:-.05em}.balance-foot{margin-top:12px;display:flex;gap:6px;align-items:center;font-size:.68rem;opacity:.88}.mini-dot{width:6px;height:6px;border-radius:50%;background:#a9d9b2}
-    .section-row{display:flex;justify-content:space-between;align-items:center;margin:18px 1px 9px;font-size:.75rem;font-weight:700}.section-row small{color:#7c8980;font-size:.63rem;font-weight:500}.spend-card{padding:13px 12px 10px;border:1px solid #e9ede6;border-radius:14px;background:#fff}.spend-head{display:flex;justify-content:space-between;color:#758179;font-size:.63rem}.bars{height:73px;margin-top:7px;display:flex;align-items:end;justify-content:space-around;gap:8px}.bar-group{flex:1;display:grid;gap:5px;justify-items:center;color:#9aa49c;font-size:.55rem}.bar{width:100%;max-width:20px;border-radius:5px 5px 2px 2px;background:#b4d2b7}.bar-group:nth-child(1) .bar{height:24px}.bar-group:nth-child(2) .bar{height:39px;background:#709c7d}.bar-group:nth-child(3) .bar{height:31px}.bar-group:nth-child(4) .bar{height:55px;background:var(--green)}.bar-group:nth-child(5) .bar{height:43px}
-    .activity{display:grid;gap:9px}.transaction{display:flex;align-items:center;gap:9px;font-size:.66rem}.transaction-icon{width:27px;height:27px;display:grid;place-items:center;border-radius:9px;background:#edf2e9}.transaction-name{flex:1;font-weight:650}.transaction small{display:block;margin-top:3px;color:#8a958d;font-size:.57rem;font-weight:450}.amount{font-weight:650}.float-note{position:absolute;right:-3px;bottom:32px;display:flex;align-items:center;gap:10px;padding:13px 16px;border:1px solid #e8ece5;border-radius:15px;background:#fff;box-shadow:0 14px 35px #264a3517;font-size:.78rem;font-weight:650;transform:rotate(-3deg)}.float-icon{width:30px;height:30px;display:grid;place-items:center;border-radius:10px;background:var(--mint);color:var(--green)}
-    .features{padding:73px 0 79px;border-top:1px solid var(--line)}.feature-heading{max-width:650px;margin-bottom:34px}h2{margin:0 0 12px;font-size:clamp(2rem,4vw,3rem);line-height:1.06;letter-spacing:-.06em}.feature-heading p{margin:0;color:var(--muted);line-height:1.7}.feature-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.feature{min-height:195px;padding:22px;border:1px solid var(--line);border-radius:18px;background:#fbfcf9}.feature-icon{width:37px;height:37px;display:grid;place-items:center;border-radius:12px;background:var(--mint);color:var(--green);font-size:1rem}.feature h3{margin:20px 0 8px;font-size:1rem;letter-spacing:-.025em}.feature p{margin:0;color:var(--muted);font-size:.87rem;line-height:1.6}
-    .privacy{margin-bottom:72px;padding:34px 38px;border-radius:22px;background:#e9efe5;display:flex;align-items:center;justify-content:space-between;gap:30px}.privacy-copy{max-width:620px}.privacy h2{font-size:clamp(1.8rem,3vw,2.5rem)}.privacy p{margin:0;color:#56675c;line-height:1.65}.privacy-mark{min-width:86px;height:86px;display:grid;place-items:center;border-radius:26px;background:var(--green);color:#fff;font-size:2rem}
-    footer{min-height:90px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--muted);font-size:.83rem}.footer-links{display:flex;gap:20px}.footer-links a{text-decoration:none}
-    @media(max-width:820px){.hero{grid-template-columns:1fr;gap:20px;padding-top:45px}.hero-copy{text-align:center}.intro{margin:0 auto}.actions{justify-content:center}.visual{min-height:430px}.feature-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:560px){.shell{width:min(100% - 32px,1120px)}header{height:70px}nav{gap:14px;font-size:.8rem}nav .nav-about{display:none}.hero{padding:43px 0 54px}h1{font-size:clamp(3rem,14vw,4.2rem)}.intro{font-size:1rem}.visual{min-height:420px}.float-note{right:-2px;bottom:20px}.features{padding:57px 0}.feature-grid{grid-template-columns:1fr}.feature{min-height:0}.feature h3{margin-top:14px}.privacy{padding:25px;margin-bottom:48px}.privacy-mark{min-width:58px;height:58px;border-radius:18px;font-size:1.5rem}footer{align-items:flex-start;flex-direction:column;justify-content:center;padding:18px 0}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+    :root{
+      color-scheme:light;
+      --ink:#1A1F2E;
+      --muted:#5B6472;
+      --teal:#00BFA5;
+      --teal-dark:#009688;
+      --income:#2E7D32;
+      --expense:#C62828;
+      --amber:#B8860B;
+      --surface:#E7EAF2;
+      --card:#FFFFFF;
+      --card2:#DCE1EB;
+      --divider:#C9D0DE;
+      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--surface);color:var(--ink)}
+    a{color:inherit}
+    .shell{width:min(1080px,calc(100% - 40px));margin:0 auto}
+    .skip-link{position:absolute;left:16px;top:-60px;padding:10px 14px;border-radius:9px;background:var(--teal);color:#fff;z-index:10;text-decoration:none}
+    .skip-link:focus{top:16px}
+
+    /* ── Nav ─────────────────────────────────────────────── */
+    header{position:sticky;top:0;z-index:5;background:rgba(231,234,242,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--divider)}
+    .nav-row{height:72px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.03em;font-size:1.2rem;text-decoration:none}
+    .brand-mark{width:34px;height:34px;border-radius:11px;color:#fff;background:var(--teal);display:grid;place-items:center;font-size:1.05rem;font-weight:800}
+    nav.links{display:flex;align-items:center;gap:26px;font-size:.92rem;color:var(--muted)}
+    nav.links a{text-decoration:none}
+    nav.links a:hover{color:var(--ink)}
+    .btn{display:inline-flex;min-height:44px;align-items:center;justify-content:center;padding:0 20px;border-radius:999px;background:var(--teal);color:#000;font-weight:700;text-decoration:none;border:none;transition:transform .15s,background .15s}
+    .btn:hover{background:var(--teal-dark);transform:translateY(-1px)}
+    .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--divider)}
+    .btn.ghost:hover{background:var(--card)}
+
+    /* ── Hero ────────────────────────────────────────────── */
+    .hero{padding:64px 0 60px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;background:var(--card2);color:var(--teal-dark);font-size:.76rem;font-weight:800;letter-spacing:.03em}
+    h1{max-width:560px;margin:20px 0 16px;font-size:clamp(2.6rem,5vw,3.6rem);line-height:1.04;letter-spacing:-.04em;font-weight:800}
+    h1 em{color:var(--teal-dark);font-style:normal}
+    .intro{max-width:490px;margin:0;color:var(--muted);font-size:1.08rem;line-height:1.68}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+    .trust-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:22px;font-size:.82rem;color:var(--muted)}
+    .trust-row span{display:inline-flex;align-items:center;gap:6px}
+    .trust-row b{color:var(--teal-dark)}
+
+    /* ── Phone mock ──────────────────────────────────────── */
+    .visual{display:grid;place-items:center}
+    .phone{position:relative;width:min(280px,80vw);padding:13px;background:var(--card);border:1px solid var(--divider);border-radius:30px;box-shadow:0 26px 60px rgba(26,31,46,.14)}
+    .phone-top{height:20px;display:flex;align-items:center;justify-content:space-between;padding:0 6px;color:var(--muted);font-size:.65rem}
+    .app-screen{padding:13px 11px 14px;border-radius:19px;background:var(--surface)}
+    .greeting{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.7rem;font-weight:600}
+    .health-card{margin-top:12px;padding:15px;border-radius:15px;background:var(--card);border:1px solid var(--divider)}
+    .health-row{display:flex;justify-content:space-between;align-items:center}
+    .health-score{font-size:1.5rem;font-weight:800;color:var(--teal-dark)}
+    .health-label{font-size:.68rem;color:var(--muted);font-weight:700}
+    .ratio-bar{height:6px;border-radius:4px;background:var(--card2);margin-top:9px;overflow:hidden}
+    .ratio-bar i{display:block;height:100%;background:var(--teal);border-radius:4px}
+    .mini-row{display:flex;gap:8px;margin-top:11px}
+    .mini-card{flex:1;padding:9px;border-radius:11px;background:var(--card);border:1px solid var(--divider)}
+    .mini-card .k{font-size:.58rem;color:var(--muted);font-weight:700}
+    .mini-card .v{margin-top:3px;font-size:.82rem;font-weight:800}
+    .pending-card{margin-top:11px;padding:11px;border-radius:12px;background:var(--card2);border:1px dashed var(--teal-dark)}
+    .pending-head{display:flex;align-items:center;gap:7px;font-size:.66rem;font-weight:800;color:var(--teal-dark)}
+    .pending-body{margin-top:5px;font-size:.66rem;color:var(--muted);line-height:1.5}
+    .activity{margin-top:12px;display:grid;gap:9px}
+    .transaction{display:flex;align-items:center;gap:9px;font-size:.66rem}
+    .transaction-icon{width:26px;height:26px;display:grid;place-items:center;border-radius:9px;background:var(--card2);flex:none}
+    .transaction-name{flex:1;font-weight:700}
+    .transaction small{display:block;margin-top:2px;color:var(--muted);font-size:.58rem;font-weight:500}
+    .amount{font-weight:750}
+    .amount.income{color:var(--income)}
+    .amount.expense{color:var(--expense)}
+
+    /* ── Feature grid ────────────────────────────────────── */
+    .section{padding:58px 0;border-top:1px solid var(--divider)}
+    .section-heading{max-width:640px;margin-bottom:30px}
+    h2{margin:0 0 10px;font-size:clamp(1.7rem,3.4vw,2.35rem);line-height:1.1;letter-spacing:-.03em}
+    .section-heading p{margin:0;color:var(--muted);line-height:1.65}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .feature{padding:22px;border:1px solid var(--divider);border-radius:17px;background:var(--card)}
+    .feature-icon{width:36px;height:36px;display:grid;place-items:center;border-radius:11px;background:var(--card2);color:var(--teal-dark);font-size:1rem;font-weight:800}
+    .feature h3{margin:16px 0 7px;font-size:.98rem;letter-spacing:-.015em}
+    .feature p{margin:0;color:var(--muted);font-size:.86rem;line-height:1.6}
+    .feature.wide{grid-column:span 1}
+
+    /* ── Vibe coding banner ──────────────────────────────── */
+    .vibe{padding:28px 32px;border-radius:20px;background:var(--card);border:1px solid var(--divider);display:flex;gap:22px;align-items:flex-start}
+    .vibe-mark{min-width:46px;height:46px;border-radius:14px;background:var(--card2);color:var(--teal-dark);display:grid;place-items:center;font-size:1.1rem;font-weight:800;flex:none}
+    .vibe h2{font-size:1.3rem;margin-bottom:8px}
+    .vibe p{margin:0 0 8px;color:var(--muted);line-height:1.68;font-size:.95rem}
+    .vibe p:last-child{margin-bottom:0}
+
+    /* ── Privacy band ────────────────────────────────────── */
+    .privacy{margin:56px 0;padding:32px 36px;border-radius:20px;background:var(--card2);display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center}
+    .privacy-mark{width:60px;height:60px;border-radius:17px;background:var(--teal);color:#000;display:grid;place-items:center;font-size:1.5rem;font-weight:800}
+    .privacy h2{font-size:clamp(1.5rem,2.6vw,1.9rem);margin:0 0 8px}
+    .privacy p{margin:0 0 6px;color:var(--muted);line-height:1.65;font-size:.94rem}
+    .privacy ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:.9rem;line-height:1.7}
+
+    footer{padding:26px 0 40px;border-top:1px solid var(--divider);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;color:var(--muted);font-size:.83rem}
+    .footer-links{display:flex;gap:20px;flex-wrap:wrap}
+    .footer-links a{text-decoration:none}
+    .footer-links a:hover{color:var(--ink)}
+
+    @media(max-width:860px){
+      .hero{grid-template-columns:1fr;text-align:center;padding-top:40px}
+      .intro{margin:0 auto}
+      .actions,.trust-row{justify-content:center}
+      .feature-grid{grid-template-columns:repeat(2,1fr)}
+      .privacy{grid-template-columns:1fr;text-align:center}
+      .privacy-mark{margin:0 auto}
+      .vibe{flex-direction:column}
+    }
+    @media(max-width:560px){
+      .shell{width:min(100% - 32px,1080px)}
+      nav.links{gap:12px;font-size:.78rem}
+      nav.links .hide-sm{display:none}
+      .feature-grid{grid-template-columns:1fr}
+      footer{flex-direction:column;align-items:flex-start}
+    }
+    @media(prefers-reduced-motion:reduce){*{transition:none!important}}
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
-  <div class="shell">
-    <header>
+  <header>
+    <div class="shell nav-row">
       <a class="brand" href="#main-content" aria-label="Paisa home"><span class="brand-mark">₹</span><span>Paisa</span></a>
-      <nav aria-label="Main navigation"><a class="nav-about" href="#features">Features</a><a class="nav-about" href="#privacy">Privacy</a><a href="https://github.com/iamtgiri/paisa">GitHub ↗</a></nav>
-    </header>
-    <main id="main-content">
+      <nav class="links" aria-label="Main navigation">
+        <a class="hide-sm" href="#features">Features</a>
+        <a class="hide-sm" href="#vibe-coding">How it's built</a>
+        <a href="#privacy">Privacy</a>
+        <a class="btn ghost" href="https://github.com/iamtgiri/paisa">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="shell">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <div class="eyebrow"><span>✳</span> YOUR MONEY, ON YOUR TERMS</div>
-          <h1 id="hero-title">Money, made <em>clearer.</em></h1>
-          <p class="intro">A calm, private place to keep up with your everyday finances. Track spending, plan a budget, and see where your money goes — all on your device.</p>
-          <div class="actions"><a class="button" href="https://github.com/iamtgiri/paisa">Explore the project <span aria-hidden="true">&nbsp;↗</span></a><a class="button secondary" href="#features">See what it does</a></div>
-          <p class="fine-print">Built with Flutter · Offline-first · MIT licensed</p>
+          <span class="eyebrow">✳ OFFLINE-FIRST · NO ACCOUNT NEEDED</span>
+          <h1 id="hero-title">Your money, kept to <em>yourself.</em></h1>
+          <p class="intro">Paisa is a personal finance tracker for Android that stays entirely on your phone. Log transactions, plan budgets, track recurring bills, and see clear analytics — with nothing synced to a server, because there isn't one.</p>
+          <div class="actions">
+            <a class="btn" href="https://github.com/iamtgiri/paisa">View source on GitHub ↗</a>
+            <a class="btn ghost" href="#features">See what it does</a>
+          </div>
+          <div class="trust-row">
+            <span><b>✓</b> No login</span>
+            <span><b>✓</b> No cloud sync</span>
+            <span><b>✓</b> No ads or tracking</span>
+            <span><b>✓</b> MIT licensed</span>
+          </div>
         </div>
-        <div class="visual" aria-label="Illustration of a personal finance dashboard">
+        <div class="visual" aria-label="Illustration of the Paisa app's financial health and pending transaction review screens">
           <div class="phone">
             <div class="phone-top"><span>9:41</span><span>● ● ▰</span></div>
             <div class="app-screen">
-              <div class="greeting"><span>Good morning</span><span class="avatar">✦</span></div>
-              <div class="balance-card"><div class="balance-label">TOTAL BALANCE</div><div class="balance">₹ 48,560</div><div class="balance-foot"><span class="mini-dot"></span> Your money, at a glance</div></div>
-              <div class="section-row"><span>Spending</span><small>This month⌄</small></div>
-              <div class="spend-card">
-                <div class="spend-head"><span>Monthly overview</span><span>₹ 12,480</span></div>
-                <div class="bars" aria-hidden="true"><div class="bar-group"><i class="bar"></i><span>W1</span></div><div class="bar-group"><i class="bar"></i><span>W2</span></div><div class="bar-group"><i class="bar"></i><span>W3</span></div><div class="bar-group"><i class="bar"></i><span>W4</span></div><div class="bar-group"><i class="bar"></i><span>W5</span></div></div>
+              <div class="greeting"><span>Financial health</span><span>ⓘ</span></div>
+              <div class="health-card">
+                <div class="health-row">
+                  <span class="health-label">THIS MONTH</span>
+                  <span class="health-score">78<span style="font-size:.85rem;color:var(--muted);font-weight:600">/100</span></span>
+                </div>
+                <div class="ratio-bar"><i style="width:62%"></i></div>
+                <div class="mini-row">
+                  <div class="mini-card"><div class="k">NET FLOW</div><div class="v" style="color:var(--income)">+₹12.4k</div></div>
+                  <div class="mini-card"><div class="k">SAVINGS</div><div class="v">24%</div></div>
+                </div>
               </div>
-              <div class="section-row"><span>Recent activity</span><small>See all</small></div>
+              <div class="pending-card">
+                <div class="pending-head">⏳ Pending review</div>
+                <div class="pending-body">₹450 · Meesho — captured locally from a notification. Confirm account &amp; category to add it.</div>
+              </div>
               <div class="activity">
-                <div class="transaction"><span class="transaction-icon">☕</span><span class="transaction-name">Coffee shop<small>Today · Food &amp; drink</small></span><span class="amount">−₹ 180</span></div>
-                <div class="transaction"><span class="transaction-icon">↗</span><span class="transaction-name">Monthly salary<small>Yesterday · Income</small></span><span class="amount">+₹ 42,000</span></div>
+                <div class="transaction"><span class="transaction-icon">🏠</span><span class="transaction-name">Rent<small>Recurring · due 5th</small></span><span class="amount expense">−₹15,000</span></div>
+                <div class="transaction"><span class="transaction-icon">↗</span><span class="transaction-name">Salary<small>Yesterday · Income</small></span><span class="amount income">+₹42,000</span></div>
               </div>
             </div>
           </div>
-          <div class="float-note"><span class="float-icon">✓</span><span>Your data stays on your device</span></div>
         </div>
       </section>
-      <section class="features" id="features" aria-labelledby="features-title">
-        <div class="feature-heading"><h2 id="features-title">The everyday money picture.</h2><p>Keep the details together, then get back to your day. Paisa brings the essentials of personal finance into one simple app.</p></div>
+
+      <section class="section" id="features" aria-labelledby="features-title">
+        <div class="section-heading">
+          <h2 id="features-title">Everything a money tracker needs — nothing it doesn't.</h2>
+          <p>Every feature below runs locally on the device. There's no backend to reach for, so nothing here depends on a server staying online.</p>
+        </div>
         <div class="feature-grid">
-          <article class="feature"><span class="feature-icon">↕</span><h3>Track transactions</h3><p>Record income, expenses, and transfers across your accounts.</p></article>
-          <article class="feature"><span class="feature-icon">◷</span><h3>Plan ahead</h3><p>Set budgets, savings goals, and recurring transactions.</p></article>
-          <article class="feature"><span class="feature-icon">▥</span><h3>See your patterns</h3><p>Review spending by category, account, month, or date range.</p></article>
-          <article class="feature"><span class="feature-icon">◴</span><h3>Know your rhythm</h3><p>Get optional daily, weekly, and monthly spending reports with period comparisons.</p></article>
-          <article class="feature"><span class="feature-icon">⇄</span><h3>Keep your own copy</h3><p>Import and export your local data for backup or migration.</p></article>
+          <article class="feature">
+            <span class="feature-icon">↕</span>
+            <h3>Transactions &amp; accounts</h3>
+            <p>Multiple accounts, transfers, tags, favorites, search, and filters — with balances that stay accurate through every edit, undo, and duplicate.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon">◔</span>
+            <h3>Budgets, goals &amp; recurring bills</h3>
+            <p>Per-category budgets with alerts, savings goals with progress tracking, and recurring bills with an exact due-date — rent on the 5th, SIP on the 3rd.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon">⌗</span>
+            <h3>Optional auto-capture</h3>
+            <p>Opt-in, off by default: locally reads bank notifications and turns them into a Pending Transaction you review and confirm — nothing posts automatically.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon">◈</span>
+            <h3>Financial Health score</h3>
+            <p>A 0–100 score built from your Needs/Wants/Savings split, with an outlier-resistant month-end spending projection and a clear explanation of the score.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon">▥</span>
+            <h3>Analytics that go deep</h3>
+            <p>Category breakdowns, 6-month trends, a daily spending heatmap, a local net-worth chart, weekday patterns, and your biggest expenses ranked.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon">⇄</span>
+            <h3>Safe backup &amp; export</h3>
+            <p>Full JSON backup and CSV export. Restores are validated before anything is touched, and a safety copy is made automatically before every import.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon">◷</span>
+            <h3>Reports you can share</h3>
+            <p>A structured monthly report — income, spending, budgets, top expenses — copied or shared as plain text, only when you choose to.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon">⏰</span>
+            <h3>Local notifications</h3>
+            <p>Budget alerts, recurring due reminders, and daily/weekly/monthly spending summaries — all generated on-device, never through a push service.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon">◐</span>
+            <h3>PIN lock &amp; themes</h3>
+            <p>An optional PIN for casual privacy, dark and light themes, and configurable currency formatting.</p>
+          </article>
         </div>
       </section>
-      <section class="privacy" id="privacy" aria-labelledby="privacy-title">
-        <div class="privacy-copy"><h2 id="privacy-title">Private by design.</h2><p>Your financial records stay on your device. Paisa does not need an account, a server, or cloud sync. You decide when and where to store an exported backup.</p></div>
-        <div class="privacy-mark" aria-hidden="true">⌂</div>
+
+      <section class="section" id="vibe-coding" aria-labelledby="vibe-title">
+        <div class="vibe">
+          <span class="vibe-mark" aria-hidden="true">✦</span>
+          <div>
+            <h2 id="vibe-title">Built with "vibe coding"</h2>
+            <p>Paisa is a personal project developed with heavy help from AI coding tools rather than a professional engineering team. Features, fixes, and even this page were written and iterated on together with an AI pair-programmer.</p>
+            <p>It's not being oversold as a polished commercial product — it's a real, working app that's actively improved, with the usual rough edges of an independently built side project. Issues and feedback on <a href="https://github.com/iamtgiri/paisa">GitHub</a> are welcome.</p>
+          </div>
+        </div>
       </section>
-    </main>
-    <footer><span>© 2026 Paisa · Made for a clearer view of your money.</span><div class="footer-links"><a href="https://github.com/iamtgiri/paisa">Source code</a><a href="https://github.com/iamtgiri/paisa/blob/main/LICENSE">MIT License</a><a href="https://github.com/iamtgiri/paisa/blob/main/SECURITY.md">Security</a></div></footer>
+
+      <section class="privacy" id="privacy" aria-labelledby="privacy-title">
+        <div class="privacy-mark" aria-hidden="true">⌂</div>
+        <div>
+          <h2 id="privacy-title">Private by default, not by promise.</h2>
+          <p>Paisa stores everything on your device using a local database and local preference files. There's no account, no server, and no cloud sync to opt out of — because it was never built.</p>
+          <ul>
+            <li>The optional notification-based auto-capture is off by default, requires your explicit Android permission, and never posts a transaction without your confirmation.</li>
+            <li>The optional PIN is a casual-privacy convenience, not encryption — it doesn't replace your device's own security.</li>
+            <li>Exported backups can contain sensitive data; store them somewhere only you control.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="shell">
+    <footer>
+      <span>© 2026 Paisa · An independently built, AI-assisted personal project.</span>
+      <div class="footer-links">
+        <a href="https://github.com/iamtgiri/paisa">Source code</a>
+        <a href="https://github.com/iamtgiri/paisa/blob/main/LICENSE">MIT License</a>
+        <a href="https://github.com/iamtgiri/paisa/blob/main/SECURITY.md">Security</a>
+        <a href="https://github.com/iamtgiri/paisa/blob/main/CHANGELOG.md">Changelog</a>
+      </div>
+    </footer>
   </div>
 </body>
 </html>
+
