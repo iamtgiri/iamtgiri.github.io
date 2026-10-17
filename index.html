@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tanmoy Giri | R&amp;D Software Engineer</title>
+  <meta name="description" content="Tanmoy Giri is an R&amp;D Software Engineer at Siemens EDA, working on software issues, debugging, enhancements, and testing.">
+  <meta name="author" content="Tanmoy Giri">
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+  <main class="terminal" aria-label="Tanmoy Giri personal website">
+    <div class="terminal-bar" aria-hidden="true">
+      <span class="terminal-icon">$_</span>
+      <span class="terminal-title">Terminal - tanmoy@iamtgiri: ~/webpage</span>
+    </div>
+
+    <div class="terminal-nav">
+      <nav aria-label="Page sections">
+        <a href="#about">about</a>
+        <a href="#work">projects</a>
+        <a href="#connect">connect</a>
+      </nav>
+    </div>
+
+    <div class="terminal-body">
+      <section class="terminal-section" id="about" aria-labelledby="about-title">
+        <p class="command"><span class="prompt">[tanmoy@iamtgiri</span> <span class="path">webpage</span><span class="prompt">]$</span> cat about.txt</p>
+        <article class="output">
+          <h1 id="about-title">Tanmoy Giri</h1>
+          <p>R&amp;D Software Engineer at Siemens EDA</p>
+          <p>I am comfortable working with C++ and Python. I currently work at Siemens EDA, fixing issues, debugging problems, building enhancements and testing software.</p>
+          <p>Outside work, I enjoy photography and learning new things.</p>
+        </article>
+      </section>
+
+      <section class="terminal-section" id="work" aria-label="Selected work">
+        <p class="command"><span class="prompt">[tanmoy@iamtgiri</span> <span class="path">webpage</span><span class="prompt">]$</span> cat projects.txt</p>
+        <pre class="output file-output">
+knncpp
+A C++ k-nearest neighbors implementation with brute-force and KD-tree approaches, OpenMP parallelism and benchmarking tools.
+https://github.com/iamtgiri/knncpp
+
+Memory-Energy-Benchmark
+A project exploring how memory allocators affect energy use, measured with Intel RAPL.
+https://github.com/iamtgiri/Memory-Energy-Benchmark</pre>
+      </section>
+
+      <section class="terminal-section connect-section" id="connect" aria-label="Find me online">
+        <p class="command"><span class="prompt">[tanmoy@iamtgiri</span> <span class="path">webpage</span><span class="prompt">]$</span> cat links.txt</p>
+        <pre class="output file-output">GitHub: https://github.com/iamtgiri
+LinkedIn: https://www.linkedin.com/in/iamtgiri/</pre>
+      </section>
+
+      <div class="terminal-session" id="terminal-session" role="log" aria-label="Command history" aria-live="polite" aria-relevant="additions"></div>
+
+      <form class="terminal-input-form" id="terminal-form" hidden>
+        <label class="terminal-input-prompt" id="terminal-prompt" for="terminal-command"></label>
+        <div class="terminal-input-control">
+          <input id="terminal-command" name="command" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder=" " aria-label="Enter a portfolio command">
+          <span class="terminal-input-cursor" aria-hidden="true"></span>
+        </div>
+        <button class="sr-only" type="submit">Run command</button>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    const terminalForm = document.querySelector('#terminal-form');
+    const terminalCommand = document.querySelector('#terminal-command');
+    const terminalPrompt = document.querySelector('#terminal-prompt');
+    const terminalSession = document.querySelector('#terminal-session');
+    const terminalTitle = document.querySelector('.terminal-title');
+    const homeDirectory = '/home/tanmoy';
+    const webDirectory = `${homeDirectory}/webpage`;
+    const fileContents = {
+      [`${webDirectory}/about.txt`]: 'Tanmoy Giri\nR&D Software Engineer at Siemens EDA\n\nI am comfortable working with C++ and Python. I currently work at Siemens EDA, fixing issues, debugging problems, building enhancements and testing software.\n\nOutside work, I enjoy photography and learning new things.',
+      [`${webDirectory}/projects.txt`]: '\nknncpp\nA C++ k-nearest neighbors implementation with brute-force and KD-tree approaches, OpenMP parallelism and benchmarking tools.\nhttps://github.com/iamtgiri/knncpp\n\nMemory-Energy-Benchmark\nA project exploring how memory allocators affect energy use, measured with Intel RAPL.\nhttps://github.com/iamtgiri/Memory-Energy-Benchmark',
+      [`${webDirectory}/links.txt`]: 'GitHub: https://github.com/iamtgiri\nLinkedIn: https://www.linkedin.com/in/iamtgiri/'
+    };
+    const directories = new Map([
+      ['/', ['home']],
+      ['/home', ['tanmoy']],
+      [homeDirectory, ['webpage']],
+      [webDirectory, ['about.txt', 'projects.txt', 'links.txt']]
+    ]);
+    const commandHistory = [];
+    let historyIndex = 0;
+    let currentDirectory = webDirectory;
+
+    function formatDirectory(path) {
+      if (path === homeDirectory) return '~';
+      if (path.startsWith(`${homeDirectory}/`)) return `~/${path.slice(homeDirectory.length + 1)}`;
+      return path;
+    }
+
+    function createPrompt(path) {
+      const prompt = document.createElement('span');
+      prompt.className = 'prompt';
+      const identity = document.createElement('span');
+      identity.textContent = '[tanmoy@iamtgiri ';
+      const directory = document.createElement('span');
+      directory.className = 'path';
+      directory.textContent = formatDirectory(path);
+      const suffix = document.createElement('span');
+      suffix.textContent = ']$';
+      prompt.append(identity, directory, suffix);
+      return prompt;
+    }
+
+    function updatePrompt() {
+      terminalPrompt.replaceChildren(createPrompt(currentDirectory));
+      terminalTitle.textContent = `Terminal - tanmoy@iamtgiri: ${formatDirectory(currentDirectory)}`;
+    }
+
+    function resolvePath(path, base = currentDirectory) {
+      let target = path;
+      if (target === '~') target = homeDirectory;
+      else if (target.startsWith('~/')) target = `${homeDirectory}/${target.slice(2)}`;
+      const parts = target.startsWith('/') ? [] : base.split('/').filter(Boolean);
+
+      for (const part of target.split('/')) {
+        if (!part || part === '.') continue;
+        if (part === '..') parts.pop();
+        else parts.push(part);
+      }
+
+      return `/${parts.join('/')}`;
+    }
+
+    function runCommand(command) {
+      const [name, ...args] = command.split(/\s+/);
+
+      if (name === 'help') {
+        return { output: 'Commands: help, pwd, whoami, ls [path], cd [directory], cat <file>, clear.' };
+      }
+      if (name === 'pwd') return { output: currentDirectory };
+      if (name === 'whoami') return { output: 'tanmoy' };
+      if (name === 'clear' && args.length === 0) return { clear: true };
+
+      if (name === 'ls') {
+        const paths = args.length ? args : ['.'];
+        return {
+          output: paths.map((path) => {
+            const target = resolvePath(path);
+            if (directories.has(target)) return directories.get(target).join('  ');
+            if (Object.hasOwn(fileContents, target)) return target.split('/').pop();
+            return `ls: cannot access '${path}': No such file or directory`;
+          }).join('\n')
+        };
+      }
+
+      if (name === 'cd') {
+        if (args.length > 1) return { output: 'bash: cd: too many arguments' };
+        const destination = resolvePath(args[0] || '~');
+        if (!directories.has(destination)) return { output: `bash: cd: ${args[0]}: No such file or directory` };
+        return { output: '', directory: destination };
+      }
+
+      if (name === 'cat') {
+        if (args.length === 0) return { output: 'cat: missing file operand' };
+        return {
+          output: args.map((path) => fileContents[resolvePath(path)] ?? `cat: ${path}: No such file or directory`).join('\n')
+        };
+      }
+
+      return { output: `bash: ${name}: command not found` };
+    }
+
+    function appendCommand(command, output, directory) {
+      const entry = document.createElement('div');
+      entry.className = 'session-entry';
+      const commandLine = document.createElement('p');
+      commandLine.className = 'session-command';
+      commandLine.append(createPrompt(directory), document.createTextNode(` ${command}`));
+      entry.append(commandLine);
+
+      if (output) {
+        const result = document.createElement('pre');
+        result.className = 'session-output';
+        result.textContent = output;
+        entry.append(result);
+      }
+
+      terminalSession.append(entry);
+    }
+
+    terminalForm.hidden = false;
+    updatePrompt();
+
+    terminalForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const command = terminalCommand.value.trim();
+      if (!command) return;
+
+      commandHistory.push(command);
+      historyIndex = commandHistory.length;
+      const result = runCommand(command);
+      if (result.clear) {
+        terminalSession.replaceChildren();
+      } else {
+        appendCommand(command, result.output, currentDirectory);
+      }
+
+      if (result.directory) currentDirectory = result.directory;
+      terminalCommand.value = '';
+      updatePrompt();
+      terminalCommand.focus({ preventScroll: true });
+      terminalForm.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'end' });
+    });
+
+    terminalCommand.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowUp' && historyIndex > 0) {
+        event.preventDefault();
+        historyIndex -= 1;
+        terminalCommand.value = commandHistory[historyIndex];
+      } else if (event.key === 'ArrowDown' && historyIndex < commandHistory.length) {
+        event.preventDefault();
+        historyIndex += 1;
+        terminalCommand.value = commandHistory[historyIndex] || '';
+      }
+    });
+  </script>
+</body>
+
+</html>
